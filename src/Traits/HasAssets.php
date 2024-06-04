@@ -61,38 +61,60 @@ trait HasAssets
      * @var array
      */
     public static $baseCss = [
-        'vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css',
-        'vendor/laravel-admin/font-awesome/css/font-awesome.min.css',
+        'vendor/laravel-admin/fontawesome-free/css/all.min.css',
         'vendor/laravel-admin/laravel-admin/laravel-admin.css',
         'vendor/laravel-admin/nprogress/nprogress.css',
-        'vendor/laravel-admin/sweetalert2/dist/sweetalert2.css',
+        'vendor/laravel-admin/sweetalert2/sweetalert2.min.css',
         'vendor/laravel-admin/nestable/nestable.css',
-        'vendor/laravel-admin/toastr/build/toastr.min.css',
-        'vendor/laravel-admin/bootstrap3-editable/css/bootstrap-editable.css',
-        'vendor/laravel-admin/google-fonts/fonts.css',
-        'vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css',
+        'vendor/laravel-admin/AdminLTE/css/adminlte.min.css',
+        'vendor/laravel-admin/bootstrap-iconpicker/dist/css/bootstrap-iconpicker.min.css',
+        'vendor/laravel-admin/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+        'vendor/laravel-admin/icheck-bootstrap/icheck-bootstrap.min.css',
+        'vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css?v=5.1.3',
+        'vendor/laravel-admin/bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        'vendor/laravel-admin/select2/css/select2.min.css',
+        'vendor/laravel-admin/select2-bootstrap4-theme/select2-bootstrap4.min.css',
+        'vendor/laravel-admin/bootstrap4-toggle/css/bootstrap4-toggle.min.css',
+        'vendor/laravel-admin/bootstrap4-duallistbox/bootstrap-duallistbox.min.css',
+//        'vendor/laravel-admin/ion-rangeslider/css/ion.rangeSlider.min.css',
+
     ];
 
     /**
      * @var array
      */
     public static $baseJs = [
-        'vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js',
-        'vendor/laravel-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js',
-        'vendor/laravel-admin/AdminLTE/dist/js/app.min.js',
+        'vendor/laravel-admin/bootstrap/js/bootstrap.bundle.min.js',
+        'vendor/laravel-admin/AdminLTE/js/adminlte.min.js',
         'vendor/laravel-admin/jquery-pjax/jquery.pjax.js',
         'vendor/laravel-admin/nprogress/nprogress.js',
         'vendor/laravel-admin/nestable/jquery.nestable.js',
-        'vendor/laravel-admin/toastr/build/toastr.min.js',
-        'vendor/laravel-admin/bootstrap3-editable/js/bootstrap-editable.min.js',
-        'vendor/laravel-admin/sweetalert2/dist/sweetalert2.min.js',
+        'vendor/laravel-admin/sweetalert2/sweetalert2.min.js',
         'vendor/laravel-admin/laravel-admin/laravel-admin.js',
+        'vendor/laravel-admin/jquery.initialize/jquery.initialize.min.js',
+        'vendor/laravel-admin/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.min.js',
+        'vendor/laravel-admin/bootstrap-iconpicker/dist/js/bootstrap-iconpicker.bundle.min.js',
+        'vendor/laravel-admin/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+        'vendor/laravel-admin/bootstrap-fileinput/js/fileinput.min.js?v=5.1.3',
+        'vendor/laravel-admin/bootstrap-fileinput/themes/fas/theme.min.js',
+        'vendor/laravel-admin/bootstrap-fileinput/js/plugins/piexif.min.js?v=5.1.3',
+        'vendor/laravel-admin/bootstrap-fileinput/js/plugins/purify.min.js?v=5.1.3',
+        'vendor/laravel-admin/bootstrap-fileinput/js/plugins/sortable.min.js?v=5.1.3',
+        'vendor/laravel-admin/moment/moment-with-locales.min.js',
+        'vendor/laravel-admin/bootstrap4-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'vendor/laravel-admin/select2/js/select2.full.min.js',
+        'vendor/laravel-admin/bootstrap-input-spinner/bootstrap-input-spinner.js',
+        'vendor/laravel-admin/bootstrap4-toggle/js/bootstrap4-toggle.min.js',
+        'vendor/laravel-admin/inputmask/min/jquery.inputmask.bundle.min.js',
+        'vendor/laravel-admin/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js',
+//        'vendor/laravel-admin/ion-rangeslider/js/ion.rangeSlider.min.js',
+//        'https://cdn.jsdelivr.net/npm/wangeditor@3.1.1/release/wangEditor.min.js',
     ];
 
     /**
      * @var string
      */
-    public static $jQuery = 'vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js';
+    public static $jQuery = 'vendor/laravel-admin/jquery/jquery.min.js';
 
     /**
      * @var array

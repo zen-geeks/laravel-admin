@@ -289,7 +289,95 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application theme
+    |--------------------------------------------------------------------------
+    |
+    | @see https://adminlte.io/docs/3.0/layout.html
+    |
+    */
+    'theme' => [
+
+        /*
+        |--------------------------------------------------------------------------
+        | Available layout options.
+        |--------------------------------------------------------------------------
+        | Fixed Sidebar: use the class `.layout-fixed` to get a fixed sidebar.
+        | Fixed Navbar: use the class `.layout-navbar-fixed` to get a fixed navbar.
+        | Fixed Footer: use the class `.layout-footer-fixed` to get a fixed footer.
+        | Collapsed Sidebar: use the class `.sidebar-collapse` to have a collapsed sidebar upon loading.
+        | Boxed Layout: use the class `.layout-boxed` to get a boxed layout that stretches only to 1250px.
+        | Top Navigation: use the class `.layout-top-nav` to remove the sidebar and have your links at the top navbar.
+        |
+        */
+        'layout' => ['sidebar-mini', 'sidebar-collapse', 'text-sm'],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Default color for all links.
+        |--------------------------------------------------------------------------
+        |
+        | navbar-light or navbar-dark for content color
+        |
+        | navbar-$color for backgroud color
+        |
+        | Available $color options:
+        |    primary secondary secondary info warning danger black gray-dark  gray
+        |    light indigo  navy purple fuchsia pink maroon orange lime teal olive
+        |
+        */
+        'navbar' => 'navbar-light navbar-white',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Default color for all links.
+        |--------------------------------------------------------------------------
+        |
+        | Available options:
+        |    primary secondary secondary info warning danger black gray-dark  gray
+        |    light indigo  navy purple fuchsia pink maroon orange lime teal olive
+        |
+        */
+        'accent' => 'info',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Default color for card form and buttons.
+        |--------------------------------------------------------------------------
+        |
+        | light-$color or dark-$color
+        |
+        | Available $color options:
+        |    primary secondary secondary info warning danger black gray-dark  gray
+        |    light indigo  navy purple fuchsia pink maroon orange lime teal olive
+        |
+        */
+        'sidebar' => 'light-info',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Default color for card, form and buttons.
+        |--------------------------------------------------------------------------
+        |
+        | Available options:
+        |    primary secondary secondary info warning danger
+        */
+        'color' => 'info',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Logo backgroud color.
+        |--------------------------------------------------------------------------
+        |
+        | Available color options:
+        |    primary secondary secondary info warning danger black gray-dark  gray
+        |    light indigo  navy purple fuchsia pink maroon orange lime teal olive
+        |
+        */
+        'logo' => 'light',
+    ],
 
     /*
     |--------------------------------------------------------------------------
