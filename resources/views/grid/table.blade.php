@@ -1,19 +1,19 @@
-<div class="box grid-box">
+<div class="card table-card card-@color card-outline">
     @if(isset($title))
-    <div class="box-header with-border">
-        <h3 class="box-title"> {{ $title }}</h3>
+    <div class="card-header">
+        <h3 class="card-title"> {{ $title }}</h3>
     </div>
     @endif
 
     @if ( $grid->showTools() || $grid->showExportBtn() || $grid->showCreateBtn() )
-    <div class="box-header with-border">
-        <div class="pull-right">
+    <div class="card-header">
+        <div class="card-tools">
             {!! $grid->renderColumnSelector() !!}
             {!! $grid->renderExportButton() !!}
             {!! $grid->renderCreateButton() !!}
         </div>
         @if ( $grid->showTools() )
-        <div class="pull-left">
+        <div class="float-left d-flex">
             {!! $grid->renderHeaderTools() !!}
         </div>
         @endif
@@ -25,8 +25,8 @@
     {!! $grid->renderHeader() !!}
 
     <!-- /.box-header -->
-    <div class="box-body table-responsive no-padding">
-        <table class="table table-hover grid-table" id="{{ $grid->tableID }}">
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover table-table table-head-fixed" id="{{ $grid->tableID }}">
             <thead>
                 <tr>
                     @foreach($grid->visibleColumns() as $column)
@@ -64,7 +64,7 @@
 
     {!! $grid->renderFooter() !!}
 
-    <div class="box-footer clearfix">
+    <div class="card-footer clearfix">
         {!! $grid->paginator() !!}
     </div>
     <!-- /.box-body -->

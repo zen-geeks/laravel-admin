@@ -47,9 +47,13 @@
 </div>
 
 <script>
-    function LA() {}
-    LA.token = "{{ csrf_token() }}";
-    LA.user = @json($_user_);
+    // function LA() {}
+    {{--LA.token = "{{ csrf_token() }}";--}}
+    {{--LA.user = @json($_user_);--}}
+
+    var __user = @json($__user);
+</script>
+
 </script>
 
 <!-- REQUIRED JS SCRIPTS -->
