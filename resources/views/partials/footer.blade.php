@@ -1,18 +1,28 @@
 <!-- Main Footer -->
+@php($show_footer = config('admin.show_footer'))
 <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
         @if(config('admin.show_environment'))
-            <strong>Env</strong>&nbsp;&nbsp; {!! config('app.env') !!}
+            @if($show_footer)
+                <strong>Env</strong>&nbsp;&nbsp;
+            @endif
+            {!! config('app.env') !!}
         @endif
 
         &nbsp;&nbsp;&nbsp;&nbsp;
 
         @if(config('admin.show_version'))
-        <strong>Version</strong>&nbsp;&nbsp; {!! \Encore\Admin\Admin::VERSION !!}
+            @if($show_footer)
+                <strong>Version</strong>&nbsp;&nbsp
+            @endif
+            {!! \Encore\Admin\Admin::VERSION !!}
         @endif
-
     </div>
     <!-- Default to the left -->
-    <strong>Powered by <a href="https://github.com/z-song/laravel-admin" target="_blank">laravel-admin</a></strong>
+    @if(@$show_footer)
+        <strong>Powered by <a href="https://github.com/z-song/laravel-admin" target="_blank">laravel-admin</a></strong>
+    @else
+        &nbsp;
+    @endif
 </footer>
