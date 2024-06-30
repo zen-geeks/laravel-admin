@@ -414,4 +414,9 @@ return [
     'extensions' => [
 
     ],
+
+    'cache' => [
+        'enable' => true,
+        'store' => null,
+    ],
 ];

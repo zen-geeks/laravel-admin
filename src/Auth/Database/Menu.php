@@ -6,6 +6,7 @@ use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Encore\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -63,6 +64,26 @@ class Menu extends Model
      * @return array
      */
     public function allNodes(): array
+    {
+        $cache = config('admin.cache');
+        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        if (!$cache)
+            return $this->_allNodes();
+
+        $cache_key = 'admin_menu_'.$this->id;
+        $nodes = $cache->get($cache_key);
+        if (is_null($nodes)) {
+            $nodes = $this->_allNodes();
+            $cache->put($cache_key, $nodes, 600);
+        }
+
+        return $nodes;
+    }
+
+    /**
+     * @return array
+     */
+    private function _allNodes(): array
     {
         $connection = config('admin.database.connection') ?: config('database.default');
         $orderColumn = DB::connection($connection)->getQueryGrammar()->wrap($this->orderColumn);
