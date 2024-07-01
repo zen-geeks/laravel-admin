@@ -11,7 +11,7 @@ class :class_nameServiceProvider extends ServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot(:class_name $extension)
+    public function boot(:class_name $extension): void
     {
         if (! :class_name::boot()) {
             return ;

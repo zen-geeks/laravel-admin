@@ -24,7 +24,7 @@ class DummyClass extends AdminController
      *
      * @return Grid
      */
-    protected function grid()
+    protected function grid(): Grid
     {
         $grid = new Grid(new DummyModel());
 
@@ -39,7 +39,7 @@ DummyGrid
      * @param mixed $id
      * @return Show
      */
-    protected function detail($id)
+    protected function detail($id): Show
     {
         $show = new Show(DummyModel::findOrFail($id));
 
@@ -53,7 +53,7 @@ DummyShow
      *
      * @return Form
      */
-    protected function form()
+    protected function form(): Form
     {
         $form = new Form(new DummyModel());
 

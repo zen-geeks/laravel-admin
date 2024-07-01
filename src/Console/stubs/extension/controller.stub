@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 
 class :class_nameController extends Controller
 {
-    public function index(Content $content)
+    public function index(Content $content): Content
     {
         return $content
             ->title('Title')

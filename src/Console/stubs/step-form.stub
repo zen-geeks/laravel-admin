@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DummyNamespace;
 
 use Encore\Admin\Widgets\StepForm;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class DummyClass extends StepForm
@@ -23,7 +24,7 @@ class DummyClass extends StepForm
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request)
+    public function handle(Request $request): RedirectResponse
     {
         //dump($request->all());
 
@@ -35,7 +36,7 @@ class DummyClass extends StepForm
     /**
      * Build a form here.
      */
-    public function form()
+    public function form(): void
     {
         $this->text('name')->rules('required');
         $this->email('email')->rules('email');

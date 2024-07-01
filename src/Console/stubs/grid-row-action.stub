@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DummyNamespace;
 
+use Encore\Admin\Actions\Response;
 use Encore\Admin\Actions\RowAction;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +12,7 @@ class DummyClass extends RowAction
 {
     public $name = 'DummyName';
 
-    public function handle(Model $model)
+    public function handle(Model $model): Response
     {
         // $model ...
 

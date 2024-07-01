@@ -14,7 +14,7 @@ class DummyClass extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // base tables
         \ClassMenu::truncate();
