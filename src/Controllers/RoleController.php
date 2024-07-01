@@ -31,7 +31,9 @@ class RoleController extends AdminController
         $grid->column('slug', trans('admin.slug'));
         $grid->column('name', trans('admin.name'));
 
-        $grid->column('permissions', trans('admin.permission'))->pluck('name')->label();
+        $grid->column('permissions', trans('admin.permission'))->pluck('name')->label()->display(function ($raw) {
+            return str_replace('&nbsp;', '<br>', $raw);
+        });
 
         $grid->column('created_at', trans('admin.created_at'));
         $grid->column('updated_at', trans('admin.updated_at'));

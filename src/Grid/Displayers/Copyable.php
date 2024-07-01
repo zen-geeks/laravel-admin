@@ -16,31 +16,28 @@ class Copyable extends AbstractDisplayer
         $script = <<<SCRIPT
 $('#{$this->grid->tableID}').on('click','.grid-column-copyable',(function (e) {
     var content = $(this).data('content');
-    
     var temp = $('<input>');
-    
     $("body").append(temp);
     temp.val(content).select();
     document.execCommand("copy");
     temp.remove();
-    
-    $(this).tooltip('show');
+    $(this).tooltip({title: 'Copied!', placement: 'bottom'}).tooltip('show');
 }));
 SCRIPT;
 
         Admin::script($script);
     }
 
-    public function display()
+    public function display(): string
     {
+        $content = $this->getColumn()->getOriginal();
+        if (is_null($content) || $content === '')
+            return '';
+
         $this->addScript();
 
-        $content = $this->getColumn()->getOriginal();
-
         return <<<HTML
-<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="{$content}" title="Copied!" data-placement="bottom">
-    <i class="fa fa-copy"></i>
-</a>&nbsp;{$this->getValue()}
+<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="{$content}"><i class="fa fa-copy"></i></a>&nbsp;{$this->getValue()}
 HTML;
     }
 }
