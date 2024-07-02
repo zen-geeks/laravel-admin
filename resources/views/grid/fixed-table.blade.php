@@ -42,9 +42,7 @@
                         @foreach($grid->rows() as $row)
                         <tr {!! $row->getRowAttributes() !!}>
                             @foreach($grid->visibleColumnNames() as $name)
-                            <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">
-                                {!! $row->column($name) !!}
-                            </td>
+                            <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">{!! $row->column($name) !!}</td>
                             @endforeach
                         </tr>
                         @endforeach
@@ -73,9 +71,7 @@
                                 @php
                                     $name = $column->getName()
                                 @endphp
-                                <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">
-                                    {!! $row->column($name) !!}
-                                </td>
+                                <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">{!! $row->column($name) !!}</td>
                             @endforeach
                         </tr>
                     @endforeach
@@ -106,9 +102,7 @@
                                 @php
                                 $name = $column->getName()
                                 @endphp
-                                <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">
-                                    {!! $row->column($name) !!}
-                                </td>
+                                <td {!! $row->getColumnAttributes($name) !!} class="column-{!! $name !!}">{!! $row->column($name) !!}</td>
                             @endforeach
                         </tr>
                     @endforeach
