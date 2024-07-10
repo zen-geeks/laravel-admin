@@ -892,6 +892,29 @@ class Grid
     }
 
     /**
+     * Set default sort.
+     *
+     * @param string $column
+     * @param null|string $type
+     *
+     * @return $this
+     */
+    public function setDefaultSort(string $column, ?string $type = 'asc'): static
+    {
+        $sort_name = $this->model->getSortName() ?? null;
+        if ($sort_name && !request()->get($sort_name)) {
+            request()->merge([
+                $sort_name => [
+                    'column' => $column,
+                    'type' => $type,
+                ],
+            ]);
+        }
+
+        return $this;
+    }
+
+    /**
      * Set rendering callback.
      *
      * @param callable $callback
