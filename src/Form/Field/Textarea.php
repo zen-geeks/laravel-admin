@@ -36,6 +36,23 @@ class Textarea extends Field
     }
 
     /**
+     * Format as json
+     *
+     * @return $this
+     */
+    public function json(): self
+    {
+        $this->customFormat = function ($val) {
+            $json = json_decode($val);
+            return !$val || json_last_error() !== JSON_ERROR_NONE
+                ? $val
+                : json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        };
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function render()

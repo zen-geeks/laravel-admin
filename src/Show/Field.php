@@ -183,6 +183,86 @@ class Field implements Renderable
     }
 
     /**
+     * Show field as a bool.
+     *
+     * @return $this
+     */
+    public function bool()
+    {
+        return $this->as(function ($val) {
+            return is_null($val) ? 'Undefined' : ($val ? 'Yes' : 'No');
+        });
+    }
+
+    /**
+     * Show field as a check.
+     *
+     * @return $this
+     */
+    public function check()
+    {
+        return $this->unescape()->as(function ($val) {
+            return is_null($val) ? '<i class="fa fa-check text-gray"></i>' : ($val ? '<i class="fa fa-check text-green"></i>' : '<i class="fa fa-close text-red"></i>');
+        });
+    }
+
+    /**
+     * Show field as comma separated map.
+     *
+     * @param array $map
+     *
+     * @return $this
+     */
+    public function commaSeparatedMap(array $map)
+    {
+        return $this->as(self::_commaSeparatedMap($map));
+    }
+
+    public static function _commaSeparatedMap(array $map)
+    {
+        return function($val) use ($map) {
+            if (!$val) {
+                return '';
+            }
+
+            $list = array_intersect_key($map, array_flip(explode(',', $val)));
+
+            return implode(', ', $list);
+        };
+    }
+
+    /**
+     * Show field as parsed json.
+     *
+     * @return $this
+     */
+    public function jsonParse()
+    {
+        return $this->unescape()->as(self::_jsonParse());
+    }
+
+    public static function _jsonParse()
+    {
+        return function ($val) {
+            $json = json_decode($val, true);
+            if (!$json || !is_array($json))
+                return e($val);
+            $res = '<pre>';
+            foreach ($json as $lang => $text) {
+                if (is_string($text) || is_numeric($text)) {
+                    $res .= '<b>'.e($lang).':</b> '.e($text).'<br>';
+                } elseif (is_array($text)) {
+                    foreach ($text as $lang_2 => $text_2) {
+                        $res .= is_string($text_2) ? '<b>'.e($lang.'.'.$lang_2).':</b> '.e($text_2).'<br>' : e(print_r($text_2, true)).'<br>';
+                    }
+                }
+            }
+            $res .= '</pre>';
+            return $res;
+        };
+    }
+
+    /**
      * Display field using array value map.
      *
      * @param array $values

@@ -6,6 +6,7 @@ use Closure;
 use Encore\Admin\Actions\RowAction;
 use Encore\Admin\Grid;
 use Encore\Admin\Grid\Displayers\AbstractDisplayer;
+use Encore\Admin\Show\Field;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Arr;
@@ -414,6 +415,63 @@ class Column
         $this->displayCallbacks[] = $callback;
 
         return $this;
+    }
+
+    /**
+     * Display as comma separated map.
+     *
+     * @param array $map
+     *
+     * @return $this
+     */
+    public function commaSeparatedMap(array $map)
+    {
+        return $this->display(Field::_commaSeparatedMap($map));
+    }
+
+    /**
+     * Display as json code.
+     *
+     * @return $this
+     */
+    public function json(int $max_width = 600)
+    {
+        return $this->display(function ($val) {
+            $json = json_decode($val, true);
+            if (!$json || !is_array($json))
+                return e($val);
+            return '<pre>'.e(json_encode($json, JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)).'</pre>';
+        })->style(implode(';', [
+            'max-width: '.$max_width.'px',
+            'word-break: break-all',
+        ]));
+    }
+
+    /**
+     * Display as parsed json.
+     *
+     * @return $this
+     */
+    public function jsonParse(int $max_width = 600)
+    {
+        return $this->display(Field::_jsonParse())->style(implode(';', [
+            'max-width: '.$max_width.'px',
+            'word-break: break-all',
+        ]));
+    }
+
+    /**
+     * Display as money.
+     *
+     * @param int $decimals
+     *
+     * @return $this
+     */
+    public function money(int $decimals = 2)
+    {
+        return $this->display(function ($val) use ($decimals) {
+            return is_null($val) ? '' : number_format((float)$val, $decimals);
+        });
     }
 
     /**
