@@ -417,6 +417,20 @@ class Column
     }
 
     /**
+     * Display as money.
+     *
+     * @param int $decimals
+     *
+     * @return $this
+     */
+    public function money(int $decimals = 2)
+    {
+        return $this->display(function ($val) use ($decimals) {
+            return is_null($val) ? '' : number_format((float)$val, $decimals);
+        });
+    }
+
+    /**
      * Display using display abstract.
      *
      * @param string $abstract
