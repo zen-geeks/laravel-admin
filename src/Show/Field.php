@@ -183,6 +183,18 @@ class Field implements Renderable
     }
 
     /**
+     * Show field as a bool.
+     *
+     * @return $this
+     */
+    public function bool()
+    {
+        return $this->as(function ($val) {
+            return is_null($val) ? 'Undefined' : ($val ? 'Yes' : 'No');
+        });
+    }
+
+    /**
      * Show field as a check.
      *
      * @return $this
