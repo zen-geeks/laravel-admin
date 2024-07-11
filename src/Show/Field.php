@@ -207,6 +207,31 @@ class Field implements Renderable
     }
 
     /**
+     * Show field as comma separated map.
+     *
+     * @param array $map
+     *
+     * @return $this
+     */
+    public function commaSeparatedMap(array $map)
+    {
+        return $this->as(self::_commaSeparatedMap($map));
+    }
+
+    public static function _commaSeparatedMap(array $map)
+    {
+        return function($val) use ($map) {
+            if (!$val) {
+                return '';
+            }
+
+            $list = array_intersect_key($map, array_flip(explode(',', $val)));
+
+            return implode(', ', $list);
+        };
+    }
+
+    /**
      * Display field using array value map.
      *
      * @param array $values

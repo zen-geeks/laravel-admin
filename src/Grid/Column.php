@@ -6,6 +6,7 @@ use Closure;
 use Encore\Admin\Actions\RowAction;
 use Encore\Admin\Grid;
 use Encore\Admin\Grid\Displayers\AbstractDisplayer;
+use Encore\Admin\Show\Field;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Arr;
@@ -414,6 +415,18 @@ class Column
         $this->displayCallbacks[] = $callback;
 
         return $this;
+    }
+
+    /**
+     * Display as comma separated map.
+     *
+     * @param array $map
+     *
+     * @return $this
+     */
+    public function commaSeparatedMap(array $map)
+    {
+        return $this->display(Field::_commaSeparatedMap($map));
     }
 
     /**
