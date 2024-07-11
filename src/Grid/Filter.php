@@ -666,4 +666,24 @@ class Filter implements Renderable
 
         return $this;
     }
+
+    public function bool(string $field_name, bool $is_int = false, ?string $label = null): void
+    {
+        if ($is_int) {
+            // Значение для типа BIT должно передавать как число, если по полю есть индекс
+            $this->where(function ($query) use ($field_name) {
+                $query->whereRaw('`'.$field_name.'` = '.((int)$this->input));
+            }, $label ?? $field_name, $field_name)->radio([
+                '' => 'All',
+                1 => 'Yes',
+                0 => 'No',
+            ]);
+        } else {
+            $this->in($field_name, $label ?? '')->radio([
+                '' => 'All',
+                1 => 'Yes',
+                0 => 'No',
+            ]);
+        }
+    }
 }
