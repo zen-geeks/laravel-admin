@@ -183,6 +183,18 @@ class Field implements Renderable
     }
 
     /**
+     * Show field as a check.
+     *
+     * @return $this
+     */
+    public function check()
+    {
+        return $this->unescape()->as(function ($val) {
+            return is_null($val) ? '<i class="fa fa-check text-gray"></i>' : ($val ? '<i class="fa fa-check text-green"></i>' : '<i class="fa fa-close text-red"></i>');
+        });
+    }
+
+    /**
      * Display field using array value map.
      *
      * @param array $values
