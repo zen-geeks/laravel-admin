@@ -449,6 +449,19 @@ class Column
     }
 
     /**
+     * Display as parsed json.
+     *
+     * @return $this
+     */
+    public function jsonParse(int $max_width = 600)
+    {
+        return $this->display(Field::_jsonParse())->style(implode(';', [
+            'max-width: '.$max_width.'px',
+            'word-break: break-all',
+        ]));
+    }
+
+    /**
      * Display as money.
      *
      * @param int $decimals

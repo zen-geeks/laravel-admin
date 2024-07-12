@@ -232,6 +232,41 @@ class Field implements Renderable
     }
 
     /**
+     * Show field as parsed json.
+     *
+     * @return $this
+     */
+    public function jsonParse()
+    {
+        return $this->unescape()->as(self::_jsonParse());
+    }
+
+    public static function _jsonParse()
+    {
+        return function ($val) {
+            $json = json_decode($val, true);
+            // todo: correct conditions
+            if (!$json)
+                return e($val);
+            if (empty($json))
+                return '<code>{}</code>';
+            $res = '<pre>';
+            foreach ($json as $lang => $text) {
+                if (is_string($text) || is_numeric($text)) {
+                    $res .= '<b>'.e($lang).':</b> '.e($text).'<br>';
+                } elseif (is_array($text)) {
+                    // дополнительное поле в $lang имя поля, в $text массив переводов
+                    foreach ($text as $lang_2 => $text_2) {
+                        $res .= is_string($text_2) ? '<b>'.e($lang.'.'.$lang_2).':</b> '.e($text_2).'<br>' : e(print_r($text_2, true)).'<br>';
+                    }
+                }
+            }
+            $res .= '</pre>';
+            return $res;
+        };
+    }
+
+    /**
      * Display field using array value map.
      *
      * @param array $values
