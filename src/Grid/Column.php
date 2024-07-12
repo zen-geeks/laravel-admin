@@ -430,6 +430,25 @@ class Column
     }
 
     /**
+     * Display as json code.
+     *
+     * @return $this
+     */
+    public function json(int $max_width = 600)
+    {
+        return $this->display(function ($val) {
+            $json = json_decode($val, true);
+            // todo:
+            if (!$json || !is_array($json))
+                return e($val);
+            return empty($json) ? '<code>{}</code>' : '<pre>'.e(json_encode($json, JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)).'</pre>';
+        })->style(implode(';', [
+            'max-width: '.$max_width.'px',
+            'word-break: break-all',
+        ]));
+    }
+
+    /**
      * Display as money.
      *
      * @param int $decimals
