@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -119,6 +120,10 @@ class UserController extends AdminController
             if ($form->password && $form->model()->password != $form->password) {
                 $form->password = Hash::make($form->password);
             }
+        });
+
+        $form->saved(function (Form $form) {
+            Admin::clearCache();
         });
 
         return $form;

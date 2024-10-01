@@ -32,8 +32,8 @@ class LogController extends AdminController
 
             return "<span class=\"badge bg-$color\">$method</span>";
         });
-        $grid->column('path')->label('info');
-        $grid->column('ip')->label('primary');
+        $grid->column('path');
+        $grid->column('ip');
         $grid->column('input')->display(function ($input) {
             $input = json_decode($input, true);
             $input = Arr::except($input, ['_pjax', '_token', '_method', '_previous_']);
@@ -41,8 +41,11 @@ class LogController extends AdminController
                 return '<code>{}</code>';
             }
 
-            return '<pre>'.json_encode($input, JSON_PRETTY_PRINT | JSON_HEX_TAG).'</pre>';
-        });
+            return '<pre>'.json_encode($input, JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES).'</pre>';
+        })->style(implode(';', [
+            'max-width: 600px',
+            'word-break: break-all',
+        ]));
 
         $grid->column('created_at', trans('admin.created_at'));
 
@@ -60,6 +63,7 @@ class LogController extends AdminController
             $filter->equal('method')->select(array_combine(OperationLog::$methods, OperationLog::$methods));
             $filter->like('path');
             $filter->equal('ip');
+            $filter->like('input');
         });
 
         return $grid;

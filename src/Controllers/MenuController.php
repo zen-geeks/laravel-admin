@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
@@ -136,6 +137,10 @@ class MenuController extends Controller
 
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));
+
+        $form->saved(function (Form $form) {
+            Admin::clearCache();
+        });
 
         return $form;
     }

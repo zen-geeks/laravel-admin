@@ -67,24 +67,14 @@ class Menu extends Model
     {
         $cache = config('admin.cache');
         $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
-        if (!$cache)
-            return $this->_allNodes();
-
-        $cache_key = 'admin_menu_'.$this->id;
-        $nodes = $cache->get($cache_key);
-        if (is_null($nodes)) {
-            $nodes = $this->_allNodes();
-            $cache->put($cache_key, $nodes, 600);
+        $cache_key = 'admin_menu';
+        if ($cache) {
+            $nodes = $cache->get($cache_key);
+            if (!is_null($nodes)) {
+                return $nodes;
+            }
         }
 
-        return $nodes;
-    }
-
-    /**
-     * @return array
-     */
-    private function _allNodes(): array
-    {
         $connection = config('admin.database.connection') ?: config('database.default');
         $orderColumn = DB::connection($connection)->getQueryGrammar()->wrap($this->orderColumn);
 
@@ -96,7 +86,13 @@ class Menu extends Model
             $query->with('roles');
         }
 
-        return $query->selectRaw('*, '.$orderColumn.' ROOT')->orderByRaw($byOrder)->get()->toArray();
+        $nodes = $query->selectRaw('*, '.$orderColumn.' ROOT')->orderByRaw($byOrder)->get()->toArray();
+
+        if ($cache) {
+            $cache->put($cache_key, $nodes, 600);
+        }
+
+        return $nodes;
     }
 
     /**

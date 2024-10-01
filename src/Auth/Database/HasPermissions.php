@@ -7,26 +7,58 @@ use Illuminate\Support\Facades\Cache;
 
 trait HasPermissions
 {
-    /**
-     * Get all permissions of user.
-     *
-     * @return mixed
-     */
-    public function allPermissions(): Collection
+    private function _getRolePermissions(): array
     {
+        static $role_permissions = [];
+        if (!empty($role_permissions))
+            return $role_permissions;
+
         $cache = config('admin.cache');
         $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
-        if (!$cache)
-            return $this->_allPermissions();
-
-        $cache_key = 'admin_permissions_all_'.$this->id;
-        $permissions = $cache->get($cache_key);
-        if (!$permissions) {
-            $permissions = $this->_allPermissions();
-            $cache->put($cache_key, $permissions, 600);
+        $cache_key = 'admin_role_permissions';
+        if ($cache) {
+            $role_permissions = $cache->get($cache_key) ?? [];
+            if (!empty($role_permissions))
+                return $role_permissions;
         }
 
-        return $permissions;
+        $roles = Role::with('permissions')->get();
+        foreach ($roles as $role) {
+            $role_permissions[$role->id] = $role['permissions']->toArray();
+        }
+
+        if ($cache) {
+            $cache->put($cache_key, $role_permissions, 600);
+        }
+
+        return $role_permissions;
+    }
+
+    private function _getUserPermissions(): array
+    {
+        static $user_permissions = [];
+        if (!empty($user_permissions[$this->id]))
+            return $user_permissions[$this->id];
+
+        $cache = config('admin.cache');
+        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        $cache_key = 'admin_user_permissions';
+        if ($cache) {
+            $user_permissions = $cache->get($cache_key) ?? [];
+            if (!empty($user_permissions[$this->id]))
+                return $user_permissions[$this->id];
+        }
+
+        $user_permissions[$this->id] = [
+            'roles' => $this->roles->toArray(),
+            'permissions' => $this->permissions->toArray(),
+        ];
+
+        if ($cache) {
+            $cache->put($cache_key, $user_permissions, 600);
+        }
+
+        return $user_permissions[$this->id];
     }
 
     /**
@@ -34,9 +66,27 @@ trait HasPermissions
      *
      * @return mixed
      */
-    private function _allPermissions(): Collection
+    public function allPermissions(): Collection
     {
-        return $this->roles()->with('permissions')->get()->pluck('permissions')->flatten()->merge($this->permissions);
+        $permissions = [];
+
+        $role_permissions = $this->_getRolePermissions();
+        $user_permissions = $this->_getUserPermissions();
+        $role_ids = array_column($user_permissions['roles'], 'id');
+        foreach ($role_ids as $role_id) {
+            if (!empty($role_permissions[$role_id])) {
+                foreach ($role_permissions[$role_id] as $permission) {
+                    $permissions[] = new Permission($permission);
+                }
+            }
+        }
+        if (!empty($user_permissions['permissions'])) {
+            foreach ($user_permissions['permissions'] as $permission) {
+                $permissions[] = new Permission($permission);
+            }
+        }
+
+        return collect($permissions);
     }
 
     /**
@@ -57,40 +107,27 @@ trait HasPermissions
             return true;
         }
 
-        $cache = config('admin.cache');
-        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
-
-        static $user_permissions = [];
-        if (!isset($user_permissions[$this->id])) {
-            if (!$cache) {
-                $user_permissions[$this->id] = $this->permissions->pluck('slug');
-            } else {
-                $permissions_key = 'admin_permissions_can_' . $this->id;
-                $user_permissions[$this->id] = $cache->get($permissions_key);
-                if (!$user_permissions[$this->id]) {
-                    $user_permissions[$this->id] = $this->permissions->pluck('slug');
-                    $cache->put($permissions_key, $user_permissions[$this->id], 600);
-                }
-            }
+        static $can = [];
+        if (!isset($can[$this->id])) {
+            $can[$this->id] = [
+                'user_permissions' => array_column($this->_getUserPermissions()['permissions'], 'slug'),
+            ];
         }
-        if ($user_permissions[$this->id]->contains($ability)) {
+        if (in_array($ability, $can[$this->id]['user_permissions']))
             return true;
+
+        if (!isset($can[$this->id]['role_permissions'])) {
+            $permissions = [];
+            $role_ids = array_column($this->_getUserPermissions()['roles'], 'id');
+            $role_permissions = $this->_getRolePermissions();
+            foreach ($role_ids as $role_id) {
+                if (!empty($role_permissions[$role_id]))
+                    $permissions = array_merge($permissions, $role_permissions[$role_id]);
+            }
+            $can[$this->id]['role_permissions'] = array_column($permissions, 'slug');
         }
 
-        static $user_roles = [];
-        if (!isset($user_roles[$this->id])) {
-            if (!$cache) {
-                $user_roles[$this->id] = $this->roles->pluck('permissions')->flatten()->pluck('slug');
-            } else {
-                $roles_key = 'admin_roles_permissions_' . $this->id;
-                $user_roles[$this->id] = $cache->get($roles_key);
-                if (!$user_roles[$this->id]) {
-                    $user_roles[$this->id] = $this->roles->pluck('permissions')->flatten()->pluck('slug');
-                    $cache->put($roles_key, $user_roles[$this->id], 600);
-                }
-            }
-        }
-        return $user_roles[$this->id]->contains($ability);
+        return in_array($ability, $can[$this->id]['role_permissions']);
     }
 
     /**
@@ -112,10 +149,12 @@ trait HasPermissions
      */
     public function isAdministrator(): bool
     {
-        static $res = [];
-        if (!isset($res[$this->id]))
-            $res[$this->id] = $this->isRole('administrator');
-        return $res[$this->id];
+        static $is_administrator = [];
+        if (!isset($is_administrator[$this->id])) {
+            $is_administrator[$this->id] = $this->isRole('administrator');
+        }
+
+        return $is_administrator[$this->id];
     }
 
     /**
@@ -127,8 +166,7 @@ trait HasPermissions
      */
     public function isRole(string $role): bool
     {
-        $user_roles = $this->getUserRoles();
-        return $user_roles->contains($role);
+        return in_array($role, $this->getUserRoles());
     }
 
     /**
@@ -140,27 +178,16 @@ trait HasPermissions
      */
     public function inRoles(array $roles = []): bool
     {
-        $user_roles = $this->getUserRoles();
-        return $user_roles->intersect($roles)->isNotEmpty();
+        return !empty(array_intersect($this->getUserRoles(), $roles));
     }
 
-    private function getUserRoles()
+    private function getUserRoles(): array
     {
         static $user_roles = [];
         if (!isset($user_roles[$this->id])) {
-            $cache = config('admin.cache');
-            $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
-            if (!$cache) {
-                $user_roles[$this->id] = $this->roles->pluck('slug');
-            } else {
-                $cache_key = 'admin_roles__' . $this->id;
-                $user_roles[$this->id] = $cache->get($cache_key);
-                if (!$user_roles[$this->id]) {
-                    $user_roles[$this->id] = $this->roles->pluck('slug');
-                    $cache->put($cache_key, $user_roles[$this->id], 600);
-                }
-            }
+            $user_roles[$this->id] = array_column($this->_getUserPermissions()['roles'], 'slug');
         }
+
         return $user_roles[$this->id];
     }
 
