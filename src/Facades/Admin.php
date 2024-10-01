@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Facades;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -36,5 +37,16 @@ class Admin extends Facade
     protected static function getFacadeAccessor()
     {
         return \Encore\Admin\Admin::class;
+    }
+
+    public static function clearCache(): void
+    {
+        $cache = config('admin.cache')['enable'] ? Cache::store(config('admin.cache')['store']) : null;
+        if (!$cache)
+            return;
+
+        $cache->delete('admin_menu');
+        $cache->delete('admin_role_permissions');
+        $cache->delete('admin_user_permissions');
     }
 }

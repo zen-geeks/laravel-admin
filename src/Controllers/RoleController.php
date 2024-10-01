@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
@@ -98,6 +99,10 @@ class RoleController extends AdminController
 
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));
+
+        $form->saved(function (Form $form) {
+            Admin::clearCache();
+        });
 
         return $form;
     }

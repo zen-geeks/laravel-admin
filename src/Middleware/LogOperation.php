@@ -25,7 +25,7 @@ class LogOperation
                 'path'    => substr($request->path(), 0, 255),
                 'method'  => $request->method(),
                 'ip'      => $request->getClientIp(),
-                'input'   => json_encode($request->input()),
+                'input'   => json_encode($request->input(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
             ];
 
             try {
