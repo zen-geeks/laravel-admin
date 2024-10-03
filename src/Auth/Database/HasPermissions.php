@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\Cache;
 
 trait HasPermissions
 {
-    private function _getRolePermissions(): array
+    private function getRolePermissions(): array
     {
         static $role_permissions = [];
         if (!empty($role_permissions))
             return $role_permissions;
 
-        $cache = config('admin.cache');
-        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        $cache = config('admin.cache')['enable'] ? Cache::store(config('admin.cache')['store']) : null;
         $cache_key = 'admin_role_permissions';
         if ($cache) {
             $role_permissions = $cache->get($cache_key) ?? [];
@@ -34,14 +33,13 @@ trait HasPermissions
         return $role_permissions;
     }
 
-    private function _getUserPermissions(): array
+    private function getUserPermissions(): array
     {
         static $user_permissions = [];
         if (!empty($user_permissions[$this->id]))
             return $user_permissions[$this->id];
 
-        $cache = config('admin.cache');
-        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        $cache = config('admin.cache')['enable'] ? Cache::store(config('admin.cache')['store']) : null;
         $cache_key = 'admin_user_permissions';
         if ($cache) {
             $user_permissions = $cache->get($cache_key) ?? [];
@@ -70,8 +68,8 @@ trait HasPermissions
     {
         $permissions = [];
 
-        $role_permissions = $this->_getRolePermissions();
-        $user_permissions = $this->_getUserPermissions();
+        $role_permissions = $this->getRolePermissions();
+        $user_permissions = $this->getUserPermissions();
         $role_ids = array_column($user_permissions['roles'], 'id');
         foreach ($role_ids as $role_id) {
             if (!empty($role_permissions[$role_id])) {
@@ -110,7 +108,7 @@ trait HasPermissions
         static $can = [];
         if (!isset($can[$this->id])) {
             $can[$this->id] = [
-                'user_permissions' => array_column($this->_getUserPermissions()['permissions'], 'slug'),
+                'user_permissions' => array_column($this->getUserPermissions()['permissions'], 'slug'),
             ];
         }
         if (in_array($ability, $can[$this->id]['user_permissions']))
@@ -118,8 +116,8 @@ trait HasPermissions
 
         if (!isset($can[$this->id]['role_permissions'])) {
             $permissions = [];
-            $role_ids = array_column($this->_getUserPermissions()['roles'], 'id');
-            $role_permissions = $this->_getRolePermissions();
+            $role_ids = array_column($this->getUserPermissions()['roles'], 'id');
+            $role_permissions = $this->getRolePermissions();
             foreach ($role_ids as $role_id) {
                 if (!empty($role_permissions[$role_id]))
                     $permissions = array_merge($permissions, $role_permissions[$role_id]);
@@ -185,7 +183,7 @@ trait HasPermissions
     {
         static $user_roles = [];
         if (!isset($user_roles[$this->id])) {
-            $user_roles[$this->id] = array_column($this->_getUserPermissions()['roles'], 'slug');
+            $user_roles[$this->id] = array_column($this->getUserPermissions()['roles'], 'slug');
         }
 
         return $user_roles[$this->id];

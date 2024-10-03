@@ -65,8 +65,7 @@ class Menu extends Model
      */
     public function allNodes(): array
     {
-        $cache = config('admin.cache');
-        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        $cache = config('admin.cache')['enable'] ? Cache::store(config('admin.cache')['store']) : null;
         $cache_key = 'admin_menu';
         if ($cache) {
             $nodes = $cache->get($cache_key);

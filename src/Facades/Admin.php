@@ -41,8 +41,7 @@ class Admin extends Facade
 
     public static function clearCache(): void
     {
-        $cache = config('admin.cache');
-        $cache = $cache['enable'] ? Cache::store($cache['store']) : null;
+        $cache = config('admin.cache')['enable'] ? Cache::store(config('admin.cache')['store']) : null;
         if (!$cache)
             return;
 
