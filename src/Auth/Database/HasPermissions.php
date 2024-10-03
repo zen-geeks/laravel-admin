@@ -23,12 +23,11 @@ trait HasPermissions
 
         $roles = Role::with('permissions')->get();
         foreach ($roles as $role) {
-            $role_permissions[$role->id] = $role['permissions']->toArray();
+            $role_permissions[$role->id] = $role->permissions->toArray();
         }
 
-        if ($cache) {
+        if ($cache)
             $cache->put($cache_key, $role_permissions, 600);
-        }
 
         return $role_permissions;
     }
@@ -52,9 +51,8 @@ trait HasPermissions
             'permissions' => $this->permissions->toArray(),
         ];
 
-        if ($cache) {
+        if ($cache)
             $cache->put($cache_key, $user_permissions, 600);
-        }
 
         return $user_permissions[$this->id];
     }
@@ -68,13 +66,15 @@ trait HasPermissions
     {
         $permissions = [];
 
-        $role_permissions = $this->getRolePermissions();
         $user_permissions = $this->getUserPermissions();
-        $role_ids = array_column($user_permissions['roles'], 'id');
-        foreach ($role_ids as $role_id) {
-            if (!empty($role_permissions[$role_id])) {
-                foreach ($role_permissions[$role_id] as $permission) {
-                    $permissions[] = new Permission($permission);
+        if (!empty($user_permissions['roles'])) {
+            $role_ids = array_column($user_permissions['roles'], 'id');
+            $role_permissions = $this->getRolePermissions();
+            foreach ($role_ids as $role_id) {
+                if (!empty($role_permissions[$role_id])) {
+                    foreach ($role_permissions[$role_id] as $permission) {
+                        $permissions[] = new Permission($permission);
+                    }
                 }
             }
         }
@@ -148,9 +148,8 @@ trait HasPermissions
     public function isAdministrator(): bool
     {
         static $is_administrator = [];
-        if (!isset($is_administrator[$this->id])) {
+        if (!isset($is_administrator[$this->id]))
             $is_administrator[$this->id] = $this->isRole('administrator');
-        }
 
         return $is_administrator[$this->id];
     }
@@ -182,9 +181,8 @@ trait HasPermissions
     private function getUserRoles(): array
     {
         static $user_roles = [];
-        if (!isset($user_roles[$this->id])) {
+        if (!isset($user_roles[$this->id]))
             $user_roles[$this->id] = array_column($this->getUserPermissions()['roles'], 'slug');
-        }
 
         return $user_roles[$this->id];
     }
