@@ -6,16 +6,16 @@
     "homepage": "https://github.com/zen-geeks/laravel-admin",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "symfony/dom-crawler": "~3.1|~4.0|~5.0",
+        "php": "^8.3",
+        "symfony/dom-crawler": "^7.0",
         "laravel/framework": "^11.0"
     },
     "require-dev": {
-        "laravel/laravel": ">=5.5",
-        "fzaninotto/faker": "~1.4",
-        "intervention/image": "~2.3",
-        "laravel/browser-kit-testing": "^6.0",
-        "spatie/phpunit-watcher": "^1.22.0"
+        "laravel/laravel": "^11.0",
+        "fzaninotto/faker": "^1.5",
+        "intervention/image": "^3.8",
+        "laravel/browser-kit-testing": "^7.2",
+        "spatie/phpunit-watcher": "^1.24"
     },
     "autoload": {
         "psr-4": {
