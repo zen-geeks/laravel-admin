@@ -41,9 +41,10 @@ abstract class RowSimpleAction extends RowAction
         $attributes = $this->formatAttributes();
 
         return sprintf(
-            "<a data-_key='%s' href='javascript:void(0);' class='%s' {$attributes}>%s</a>",
+            "<a data-_key='%s' href='javascript:void(0);' class='%s' %s>%s</a>",
             $this->getKey(),
             ltrim($this->actionSelector(), '.'),
+            $attributes,
             $this->asColumn ? $this->display($this->row($this->column->getName())) : $this->name()
         );
     }
