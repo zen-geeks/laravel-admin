@@ -32,6 +32,7 @@ use Illuminate\Support\Str;
  * @method AbstractFilter day($column, $label = '')
  * @method AbstractFilter month($column, $label = '')
  * @method AbstractFilter year($column, $label = '')
+ * @method AbstractFilter period($column, $label = '')
  * @method AbstractFilter hidden($name, $value)
  * @method AbstractFilter group($column, $label = '', $builder = null)
  */
@@ -66,6 +67,7 @@ class Filter implements Renderable
         'day'        => Filter\Day::class,
         'month'      => Filter\Month::class,
         'year'       => Filter\Year::class,
+        'period'     => Filter\Period::class,
         'hidden'     => Filter\Hidden::class,
         'contains'   => Filter\Like::class,
         'startsWith' => Filter\StartsWith::class,
