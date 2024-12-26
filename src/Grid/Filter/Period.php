@@ -17,12 +17,14 @@ class Period extends AbstractFilter
     const LAST_12_HOURS = 'last_12_hours';
     const LAST_24_HOURS = 'last_24_hours';
     const LAST_2_DAYS = 'last_2_days';
+    const LAST_3_DAYS = 'last_3_days';
     const LAST_7_DAYS = 'last_7_days';
+    const LAST_14_DAYS = 'last_14_days';
     const LAST_30_DAYS = 'last_30_days';
     const LAST_90_DAYS = 'last_90_days';
     const LAST_YEAR = 'last_year';
     const LAST_2_YEARS = 'last_2_years';
-    const LAST_5_YEARS = 'last_5_years';
+    const LAST_3_YEARS = 'last_3_years';
     const YESTERDAY = 'yesterday';
     const DAY_BEFORE_YESTERDAY = 'day_before_yesterday';
     const PREVIOUS_WEEK = 'previous_week';
@@ -45,12 +47,14 @@ class Period extends AbstractFilter
         self::LAST_12_HOURS => '-12 hours',
         self::LAST_24_HOURS => '-1 day',
         self::LAST_2_DAYS => '-2 days',
+        self::LAST_3_DAYS => '-3 days',
         self::LAST_7_DAYS => '-7 days',
+        self::LAST_14_DAYS => '-14 days',
         self::LAST_30_DAYS => '-30 days',
         self::LAST_90_DAYS => '-90 days',
         self::LAST_YEAR => '-1 year',
         self::LAST_2_YEARS => '-2 years',
-        self::LAST_5_YEARS => '-5 years',
+        self::LAST_3_YEARS => '-3 years',
         self::YESTERDAY => [
             'start' => 'yesterday 00:00',
             'end' => 'yesterday 23:59'
@@ -87,6 +91,8 @@ class Period extends AbstractFilter
         self::LAST_HOUR,
         self::LAST_3_HOURS,
         self::LAST_6_HOURS,
+        self::LAST_12_HOURS,
+        self::LAST_24_HOURS,
         self::LAST_2_DAYS,
         self::LAST_7_DAYS,
         self::YESTERDAY,
