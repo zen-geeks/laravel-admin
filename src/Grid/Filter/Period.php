@@ -243,7 +243,7 @@ class Period extends AbstractFilter
             $script .= <<<EOT
                 $('#{$this->column}_type').on('change', function() {
                     let toggle_id = 'toggle_{$this->column}_'+$(this).val();
-                    $('div.js-filter-period-toggle-item').addClass('hidden');
+                    $('div[id^="toggle_{$this->column}_"]').addClass('hidden');
                     if ($('#'+toggle_id).length > 0) {
                         $('#'+toggle_id).removeClass('hidden');
                     }
