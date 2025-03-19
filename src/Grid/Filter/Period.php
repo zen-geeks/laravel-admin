@@ -95,11 +95,11 @@ class Period extends AbstractFilter
         self::LAST_24_HOURS,
         self::LAST_2_DAYS,
         self::LAST_7_DAYS,
+        self::TODAY,
         self::YESTERDAY,
         self::DAY_BEFORE_YESTERDAY,
-        self::PREVIOUS_WEEK,
-        self::TODAY,
         self::THIS_WEEK,
+        self::PREVIOUS_WEEK,
         self::CUSTOM_DATE,
         self::CUSTOM_DATETIME,
     ];
