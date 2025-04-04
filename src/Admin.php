@@ -25,7 +25,7 @@ class Admin
      *
      * @var string
      */
-    const VERSION = '1.9.13';
+    const VERSION = '1.9.14';
 
     /**
      * @var Navbar
@@ -294,7 +294,7 @@ class Admin
      *
      * @deprecated Use Admin::routes() instead();
      */
-    public function registerAuthRoutes()
+    public function registerAuthRoutes(): void
     {
         $this->routes();
     }
@@ -304,7 +304,7 @@ class Admin
      *
      * @return void
      */
-    public function routes()
+    public function routes(): void
     {
         $attributes = [
             'prefix'     => config('admin.route.prefix'),
@@ -333,7 +333,7 @@ class Admin
 
             /* @var \Illuminate\Routing\Router $router */
             $router->get('auth/login', $authController.'@getLogin')->name('admin.login');
-            $router->post('auth/login', $authController.'@postLogin');
+            $router->post('auth/login', $authController.'@postLogin')->name('admin.login-post');
             $router->get('auth/logout', $authController.'@getLogout')->name('admin.logout');
             $router->get('auth/setting', $authController.'@getSetting')->name('admin.setting');
             $router->put('auth/setting', $authController.'@putSetting');
@@ -348,7 +348,7 @@ class Admin
      *
      * @return void
      */
-    public static function extend($name, $class)
+    public static function extend(string $name, string $class): void
     {
         static::$extensions[$name] = $class;
     }
@@ -356,7 +356,7 @@ class Admin
     /**
      * @param callable $callback
      */
-    public static function booting(callable $callback)
+    public static function booting(callable $callback): void
     {
         static::$bootingCallbacks[] = $callback;
     }
@@ -364,7 +364,7 @@ class Admin
     /**
      * @param callable $callback
      */
-    public static function booted(callable $callback)
+    public static function booted(callable $callback): void
     {
         static::$bootedCallbacks[] = $callback;
     }
@@ -372,7 +372,7 @@ class Admin
     /**
      * Bootstrap the admin application.
      */
-    public function bootstrap()
+    public function bootstrap(): void
     {
         $this->fireBootingCallbacks();
 
@@ -386,7 +386,7 @@ class Admin
     /**
      * Add JS & CSS assets to pages.
      */
-    protected function addAdminAssets()
+    protected function addAdminAssets(): void
     {
         $assets = Form::collectFieldAssets();
 
@@ -397,7 +397,7 @@ class Admin
     /**
      * Call the booting callbacks for the admin application.
      */
-    protected function fireBootingCallbacks()
+    protected function fireBootingCallbacks(): void
     {
         foreach (static::$bootingCallbacks as $callable) {
             call_user_func($callable);
@@ -407,7 +407,7 @@ class Admin
     /**
      * Call the booted callbacks for the admin application.
      */
-    protected function fireBootedCallbacks()
+    protected function fireBootedCallbacks(): void
     {
         foreach (static::$bootedCallbacks as $callable) {
             call_user_func($callable);
@@ -419,7 +419,7 @@ class Admin
      *
      * @return void
      */
-    public function disablePjax()
+    public function disablePjax(): void
     {
         if (request()->pjax()) {
             request()->headers->set('X-PJAX', false);
