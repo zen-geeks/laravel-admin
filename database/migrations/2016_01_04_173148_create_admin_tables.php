@@ -28,6 +28,12 @@ class CreateAdminTables extends Migration
             $table->string('name');
             $table->string('avatar')->nullable();
             $table->string('remember_token', 100)->nullable();
+            $table->boolean('is_blocked')->default(0);
+            $table->boolean('is_need_relogin')->default(0);
+            $table->boolean('is_google2fa')->default(0);
+            $table->string('google2fa_secret', 100)->nullable();
+            $table->string('google2fa_remember_token', 100)->nullable();
+            $table->smallInteger('failed_auths')->default(0);
             $table->timestamps();
         });
 
