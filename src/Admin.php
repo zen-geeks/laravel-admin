@@ -337,6 +337,8 @@ class Admin
             $router->get('auth/logout', $authController.'@getLogout')->name('admin.logout');
             $router->get('auth/setting', $authController.'@getSetting')->name('admin.setting');
             $router->put('auth/setting', $authController.'@putSetting');
+            $router->match(['get', 'post'], '2fa/set', $authController.'@set2Fa')->name('admin.2fa-set');
+            $router->match(['get', 'post'], '2fa', $authController.'@show2FaForm')->name('admin.2fa-form');
         });
     }
 

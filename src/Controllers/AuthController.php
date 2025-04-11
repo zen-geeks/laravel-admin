@@ -2,15 +2,21 @@
 
 namespace Encore\Admin\Controllers;
 
+use BaconQrCode\Writer;
+use BaconQrCode\Renderer;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Layout\Content;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
+use PragmaRX\Google2FA\Google2FA;
 
 class AuthController extends Controller
 {
@@ -215,5 +221,112 @@ class AuthController extends Controller
     protected function guard()
     {
         return Admin::guard();
+    }
+
+    public function show2FaForm(Request $request): View|RedirectResponse
+    {
+        $user = Admin::user();
+
+        if (!$user->is_google2fa || empty($user->google2fa_secret)) {
+            return redirect()->route('admin.home');
+        }
+
+        if ($request->isMethod('POST')) {
+            $validator = Validator::make(
+                array_merge($request->all(), ['google2fa_secret' => $user->google2fa_secret],),
+                [
+                    'code' => 'required|string|digits:6',
+                    'google2fa_secret' => 'required'
+                ],
+                ['google2fa_secret.required' => 'QR code is not installed for you, please contact our support team.']
+            );
+
+            if ($validator->fails()) {
+                return back()->withErrors($validator);
+            }
+
+            $code = $request->string('code', '')->trim()->value();
+            $google2fa = new Google2FA();
+            $is_valid = $google2fa->verifyKey($user->google2fa_secret, $code);
+
+            if ($is_valid) {
+                $user->google2fa_remember_token = $user->remember_token;
+                $user->save();
+                $request->session()->put('2fa_admin', 'valid');
+                return redirect()->route('admin.home');
+            } else {
+                return back()->withErrors(new MessageBag(['code' => 'Code is invalid']));
+            }
+        }
+
+        return view('admin::google2fa.index');
+    }
+
+    public function set2Fa(Request $request): View|RedirectResponse
+    {
+        $user = Admin::user();
+
+        if (!$user->is_google2fa || !empty($user->google2fa_secret)) {
+            return redirect()->route('admin.home');
+        }
+
+        $qr_code = $request->session()->get('2fa_admin_set');
+        if (!$qr_code) {
+            $qr_code = $this->getQRCode($user->username);
+            $request->session()->put('2fa_admin_set', $qr_code);
+        }
+
+        if ($request->isMethod('POST')) {
+            $validator = Validator::make($request->all(), [
+                    'code' => 'bail|required|string|digits:6',
+                ]
+            );
+            if ($validator->fails()) {
+                return back()->withErrors($validator);
+            }
+            $code = $request->string('code', '')->trim()->value();
+
+            $google2fa = new Google2FA();
+            $is_valid = $google2fa->verifyKey($qr_code['secret'], $code);
+
+            if ($is_valid) {
+                $user->google2fa_secret = $qr_code['secret'];
+                $user->google2fa_remember_token = $user->remember_token;
+                $user->save();
+                // стираем код и выставляем 2fa проверенной
+                $request->session()->remove('2fa_admin_set');
+                $request->session()->put('2fa_admin', 'valid');
+
+                return redirect()->route('admin.home');
+            } else {
+                return back()->withErrors(new MessageBag(['code' => 'Code is invalid']));
+            }
+        }
+
+        return view('admin::google2fa.set', [
+            'username'      => $user->username,
+            'secret_key'    => $qr_code['secret'],
+            'qr_code_image' => $qr_code['image'],
+        ]);
+    }
+
+    protected function getQRCode(string $login, string $secret_key = null): array
+    {
+        $google2fa = new Google2FA();
+
+        if (empty($secret_key)) {
+            $secret_key = $google2fa->generateSecretKey();
+        }
+
+        $google2fa_url = $google2fa->getQRCodeUrl('BW Gate Manual', $login, $secret_key);
+        $writer = new Writer(
+            new Renderer\ImageRenderer(
+                new Renderer\RendererStyle\RendererStyle(150),
+                new Renderer\Image\SvgImageBackEnd()
+            )
+        );
+        $qrcode_image = base64_encode($writer->writeString($google2fa_url));
+
+        return ['secret' => $secret_key, 'image' => $qrcode_image];
     }
 }

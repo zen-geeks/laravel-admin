@@ -51,7 +51,7 @@ class AdminTablesSeeder extends Seeder
                 'name'        => 'Login',
                 'slug'        => 'auth.login',
                 'http_method' => '',
-                'http_path'   => "/auth/login\r\n/auth/logout",
+                'http_path'   => "/auth/login\r\n/auth/logout\r\n/2fa/set\r\n/2fa",
             ],
             [
                 'name'        => 'User setting',

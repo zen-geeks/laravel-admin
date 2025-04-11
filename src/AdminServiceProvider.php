@@ -3,9 +3,13 @@
 namespace Encore\Admin;
 
 use Encore\Admin\Layout\Content;
+use Encore\Admin\Listeners\AuthListener;
+use Illuminate\Auth\Events\Authenticated;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
@@ -41,6 +45,7 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
+        'admin.2fa'        => Middleware\Google2FAMiddleware::class,
         'admin.auth'       => Middleware\Authenticate::class,
         'admin.pjax'       => Middleware\Pjax::class,
         'admin.log'        => Middleware\LogOperation::class,
@@ -56,6 +61,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     protected $middlewareGroups = [
         'admin' => [
+            'admin.2fa',
             'admin.auth',
             'admin.pjax',
             'admin.log',
@@ -91,6 +97,8 @@ class AdminServiceProvider extends ServiceProvider
         Blade::directive('endbox', function ($expression) {
             return "'); echo \$box->render(); ?>";
         });
+
+        Event::listen([Authenticated::class, Failed::class], AuthListener::class);
     }
 
     /**

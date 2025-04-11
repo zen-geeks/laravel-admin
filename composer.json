@@ -8,7 +8,9 @@
     "require": {
         "php": "^8.3",
         "symfony/dom-crawler": "^7.0",
-        "laravel/framework": "^11.0 || ^12.0"
+        "laravel/framework": "^11.0 || ^12.0",
+        "bacon/bacon-qr-code": "^3.0",
+        "pragmarx/google2fa-laravel": "^2.3"
     },
     "require-dev": {
         "laravel/laravel": "^11.0 || ^12.0",

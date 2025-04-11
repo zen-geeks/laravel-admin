@@ -139,6 +139,8 @@ return [
             'auth/login',
             'auth/logout',
         ],
+
+        'failed_auth_limit' => 255,
     ],
 
     /*
