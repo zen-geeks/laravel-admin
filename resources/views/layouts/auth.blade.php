@@ -11,6 +11,7 @@
         <link rel="shortcut icon" href="{{$favicon}}">
     @endif
 
+    <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/laravel-admin/laravel-admin.css") }}">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
@@ -25,7 +26,7 @@
     <![endif]-->
 </head>
 <body @if(config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif>
-<div style="position: fixed; inset: 0; width: fit-content; height: fit-content; margin: auto; text-align: center; padding: 0 15px;">
+<div class="auth-2fa">
     @yield('content')
 </div>
 <!-- jQuery 2.1.4 -->

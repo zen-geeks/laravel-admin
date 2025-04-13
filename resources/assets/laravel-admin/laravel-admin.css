@@ -83,3 +83,33 @@ a.editable-empty {
 .file-input .glyphicon-folder-open {
     display: inline;
 }
+
+.auth-2fa {
+    position: fixed;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    text-align: center;
+    padding: 0 15px;
+    max-width: 400px;
+
+    .form-group {
+        margin-top: 5px;
+    }
+    form.check-code {
+        margin-top: 15px;
+    }
+    .input-group {
+        width: 100%;
+        .btn {
+            position: absolute;
+            z-index: 100;
+            right: 0;
+            border-radius: 0;
+        }
+        .invalid-feedback {
+            margin-top: 45px;
+        }
+    }
+}

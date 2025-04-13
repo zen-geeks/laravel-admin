@@ -24,7 +24,7 @@ class UserService
                 if (!empty($role_slug) && !empty($users[$user->user_id]))
                     $list[$role_slug][$user->user_id] = $users[$user->user_id];
             }
-            $cache->put($cache_key, $list, 3600);
+            $cache?->put($cache_key, $list, 3600);
         }
 
         if (is_array($user_role_slug)) {
@@ -57,7 +57,7 @@ class UserService
             foreach ($users as $user) {
                 $list[$user->id] = $user->toArray();
             }
-            $cache->put($cache_key, $list, 3600);
+            $cache?->put($cache_key, $list, 3600);
         }
 
         if (is_null($id))
@@ -80,7 +80,7 @@ class UserService
                 ];
             }
 
-            $cache->put($cache_key, $list, 3600);
+            $cache?->put($cache_key, $list, 3600);
         }
 
         return $list ?? [];

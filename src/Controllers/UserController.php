@@ -53,14 +53,13 @@ class UserController extends AdminController
             });
         });
 
+        /** @var UserService $user_service */
         $user_service = app(UserService::class);
         $grid->filter(function($filter) use ($user_service) {
             $filter->column(1/2, function ($filter) use ($user_service) {
                 $filter->like('username', trans('admin.username'));
                 $filter->like('name', trans('admin.name'));
-
-                $that = $this;
-                $filter->where(function ($query) use ($that, $user_service) {
+                $filter->where(function ($query) use ($user_service) {
                     $query->whereIn('id', array_keys($user_service->getAdminByRole($this->input)));
                 }, 'Role')->select(array_column($user_service->getRoles(),'name','slug'));
             });
@@ -148,7 +147,7 @@ class UserController extends AdminController
         $form->switch('is_need_relogin', trans('admin.is_need_relogin'));
         $form->switch('is_google2fa', trans('admin.is_google2fa'));
         $form->text('google2fa_secret', trans('admin.google2fa_secret'));
-        $form->number('failed_auths', trans('admin.failed_auths'));
+        $form->number('failed_auths', trans('admin.failed_auths'))->default(0);
 
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));

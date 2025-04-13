@@ -318,7 +318,7 @@ class AuthController extends Controller
             $secret_key = $google2fa->generateSecretKey();
         }
 
-        $google2fa_url = $google2fa->getQRCodeUrl('BW Gate Manual', $login, $secret_key);
+        $google2fa_url = $google2fa->getQRCodeUrl(config('admin.name'), $login, $secret_key);
         $writer = new Writer(
             new Renderer\ImageRenderer(
                 new Renderer\RendererStyle\RendererStyle(150),
