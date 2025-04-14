@@ -140,7 +140,7 @@ return [
             'auth/logout',
         ],
 
-        'failed_auth_limit' => 0,
+        'failed_auth_limit' => 0, // 0 - disabled
     ],
 
     /*

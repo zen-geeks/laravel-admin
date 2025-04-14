@@ -34,10 +34,10 @@ class UserController extends AdminController
         $grid->column('username', trans('admin.username'));
         $grid->column('name', trans('admin.name'));
         $grid->column('roles', trans('admin.roles'))->pluck('name')->label();
-        $grid->column('is_blocked', trans('admin.is_blocked'))->bool();
-        $grid->column('is_need_relogin', trans('admin.is_need_relogin'))->bool();
-        $grid->column('is_google2fa', trans('admin.is_google2fa'))->bool();
-        $grid->column('failed_auths', trans('admin.failed_auths'))->hide();
+        $grid->column('is_blocked', trans('admin.ext.is_blocked'))->bool();
+        $grid->column('is_need_relogin', trans('admin.ext.is_need_relogin'))->bool();
+        $grid->column('is_google2fa', trans('admin.ext.is_google2fa'))->bool();
+        $grid->column('failed_auths', trans('admin.ext.failed_auths'));
         $grid->column('created_at', trans('admin.created_at'));
         $grid->column('updated_at', trans('admin.updated_at'));
 
@@ -61,11 +61,11 @@ class UserController extends AdminController
                 $filter->like('name', trans('admin.name'));
                 $filter->where(function ($query) use ($user_service) {
                     $query->whereIn('id', array_keys($user_service->getAdminByRole($this->input)));
-                }, 'Role')->select(array_column($user_service->getRoles(),'name','slug'));
+                }, trans('admin.roles'))->select(array_column($user_service->getRoles(),'name','slug'));
             });
             $filter->column(1/2, function ($filter) {
-                $filter->bool('is_blocked', true, trans('admin.is_blocked'));
-                $filter->bool('is_google2fa', true, trans('admin.is_google2fa'));
+                $filter->bool('is_blocked', true, trans('admin.ext.is_blocked'));
+                $filter->bool('is_google2fa', true, trans('admin.ext.is_google2fa'));
             });
         });
 
@@ -98,11 +98,11 @@ class UserController extends AdminController
         $show->field('permissions', trans('admin.permissions'))->as(function ($permission) {
             return $permission->pluck('name');
         })->label();
-        $show->field('is_blocked', trans('admin.is_blocked'))->check();
-        $show->field('is_need_relogin', trans('admin.is_need_relogin'))->check();
-        $show->field('is_google2fa', trans('admin.is_google2fa'))->check();
-        $show->field('google2fa_secret', trans('admin.google2fa_secret'));
-        $show->field('failed_auths', trans('admin.failed_auths'));
+        $show->field('is_blocked', trans('admin.ext.is_blocked'))->check();
+        $show->field('is_need_relogin', trans('admin.ext.is_need_relogin'))->check();
+        $show->field('is_google2fa', trans('admin.ext.is_google2fa'))->check();
+        $show->field('google2fa_secret', trans('admin.ext.google2fa_secret'));
+        $show->field('failed_auths', trans('admin.ext.failed_auths'));
         $show->field('created_at', trans('admin.created_at'));
         $show->field('updated_at', trans('admin.updated_at'));
 
@@ -143,11 +143,15 @@ class UserController extends AdminController
         $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
         $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
 
-        $form->switch('is_blocked', trans('admin.is_blocked'));
-        $form->switch('is_need_relogin', trans('admin.is_need_relogin'));
-        $form->switch('is_google2fa', trans('admin.is_google2fa'));
-        $form->text('google2fa_secret', trans('admin.google2fa_secret'));
-        $form->number('failed_auths', trans('admin.failed_auths'))->default(0);
+        $form->text('remember_token', trans('admin.ext.remember_token'))
+            ->updateRules(['nullable', 'string', 'max:100']);
+
+        $form->switch('is_blocked', trans('admin.ext.is_blocked'));
+        $form->switch('is_need_relogin', trans('admin.ext.is_need_relogin'));
+        $form->switch('is_google2fa', trans('admin.ext.is_google2fa'));
+        $form->text('google2fa_secret', trans('admin.ext.google2fa_secret'));
+        $form->text('google2fa_remember_token', trans('admin.ext.google2fa_remember_token'));
+        $form->number('failed_auths', trans('admin.ext.failed_auths'))->default(0);
 
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));

@@ -2,8 +2,8 @@
 
 @section('content')
     <p>
-        <h2>Two-Factor Authentication</h2>
-        <span>Provide your authentication code from <b>Google Authenticator</b> in the field below to complete sign in.</span>
+        <h2>{{ trans('admin.ext.2fa.title') }}</h2>
+        <span>{!! trans('admin.ext.2fa.description_provide') !!}</span>
     </p>
     <form method="POST" action="" class="check-code">
         @csrf
@@ -11,12 +11,12 @@
             <input
                     type="text"
                     class="form-control {{ $errors->has('code') || $errors->has('google2fa_secret') ? 'is-invalid' : ''}} "
-                    placeholder="Enter code"
+                    placeholder="{{ trans('admin.ext.2fa.enter_code') }}"
                     name="code"
                     minlength="6"
                     maxlength="6"
                     required>
-            <button class="btn btn-default" type="submit">Check code</button>
+            <button class="btn btn-default" type="submit">{{ trans('admin.ext.2fa.check_code') }}</button>
             @if($errors->has('code'))
                 <div class="invalid-feedback">
                     {{ $errors->first('code') }}
