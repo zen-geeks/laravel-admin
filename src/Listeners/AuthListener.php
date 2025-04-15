@@ -28,7 +28,7 @@ class AuthListener
                     $event->user->failed_auths = 0;
                     $event->user->save();
                 }
-            } elseif ($event instanceof Failed) {
+            } elseif ($event instanceof Failed && $event->user->failed_auths < 65535) {
                 $event->user->failed_auths++;
                 $event->user->save();
             }

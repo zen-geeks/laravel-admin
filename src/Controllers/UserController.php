@@ -75,6 +75,9 @@ class UserController extends AdminController
 
         $grid->export(function ($export) {
             $export->originalValue(['is_blocked', 'is_need_relogin', 'is_google2fa']);
+            $export->column('roles', function ($value) {
+                return $value ? str_replace('&nbsp;', ', ', strip_tags($value)) : '';
+            });
         });
 
         return $grid;

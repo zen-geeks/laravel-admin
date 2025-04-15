@@ -33,7 +33,7 @@ class CreateAdminTables extends Migration
             $table->boolean('is_google2fa')->default(0);
             $table->string('google2fa_secret', 100)->nullable();
             $table->string('google2fa_remember_token', 100)->nullable();
-            $table->smallInteger('failed_auths')->default(0);
+            $table->smallInteger('failed_auths')->unsigned()->default(0);
             $table->timestamps();
         });
 

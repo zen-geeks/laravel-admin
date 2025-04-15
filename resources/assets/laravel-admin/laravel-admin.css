@@ -102,6 +102,9 @@ a.editable-empty {
     }
     .input-group {
         width: 100%;
+        input.is-invalid {
+            border-color: #d9534f;
+        }
         .btn {
             position: absolute;
             z-index: 100;
@@ -110,6 +113,7 @@ a.editable-empty {
         }
         .invalid-feedback {
             margin-top: 45px;
+            color: #d9534f;
         }
     }
 }
