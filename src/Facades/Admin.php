@@ -48,8 +48,5 @@ class Admin extends Facade
         $cache->delete('admin_menu');
         $cache->delete('admin_role_permissions');
         $cache->delete('admin_user_permissions');
-        $cache->delete('admin_user_roles');
-        $cache->delete('admin_user_list');
-        $cache->delete('admin_roles');
     }
 }

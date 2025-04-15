@@ -27,7 +27,7 @@ class Google2FAMiddleware
             return $next($request);
         }
 
-        // принудительная повторная авторизация
+        // force re-login
         if ($user->is_need_relogin) {
             $user->is_need_relogin = 0;
             $user->remember_token = null;
@@ -39,24 +39,24 @@ class Google2FAMiddleware
             return redirect(config('admin.route.prefix'));
         }
 
-        // 2FA не включена
+        // 2FA - disabled
         if (!$user->is_google2fa) {
             return $next($request);
         }
 
-        // 2FA включена - проверки
+        // 2FA - enabled
 
-        // Код не установлен
+        // secret was not defined
         if (empty($user->google2fa_secret)) {
             return redirect()->route('admin.2fa-set');
         }
 
-        // 2FA пройдена
+        // 2FA - passed
         if ($request->session()->has('2fa_admin')) {
             return $next($request);
         }
 
-        // Восстановление авторизации по remember_token, который прошёл 2FA
+        // restore session by remember_token with passed 2FA
         if (!empty($user->remember_token) && $user->remember_token === $user->google2fa_remember_token) {
             $request->session()->put('2fa_admin', 'valid');
             return $next($request);

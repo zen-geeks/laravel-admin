@@ -40,7 +40,7 @@ class AuthListener
         $user->remember_token = null;
         $user->google2fa_remember_token = null;
         if ($change_password)
-            $user->password = Hash::make(Str::random(32)); // меняем пароль на случайный
+            $user->password = Hash::make(Str::random(32));
         $user->save();
 
         Admin::guard()->logout();

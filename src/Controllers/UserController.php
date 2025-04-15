@@ -2,11 +2,12 @@
 
 namespace Encore\Admin\Controllers;
 
+use Encore\Admin\Auth\Database\Role;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Encore\Admin\Services\UserService;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends AdminController
@@ -53,15 +54,18 @@ class UserController extends AdminController
             });
         });
 
-        /** @var UserService $user_service */
-        $user_service = app(UserService::class);
-        $grid->filter(function($filter) use ($user_service) {
-            $filter->column(1/2, function ($filter) use ($user_service) {
+        $grid->filter(function($filter) {
+            $filter->column(1/2, function ($filter) {
                 $filter->like('username', trans('admin.username'));
                 $filter->like('name', trans('admin.name'));
-                $filter->where(function ($query) use ($user_service) {
-                    $query->whereIn('id', array_keys($user_service->getAdminByRole($this->input)));
-                }, trans('admin.roles'))->select(array_column($user_service->getRoles(),'name','slug'));
+                $filter->where(function ($query) {
+                    $user_ids = DB::table(config('admin.database.role_users_table'))
+                        ->where('role_id', $this->input)
+                        ->pluck('user_id')->toArray();
+                    $query->whereIn('id', $user_ids);
+                }, trans('admin.roles'))->select(
+                    Role::pluck('name', 'id')->toArray()
+                );
             });
             $filter->column(1/2, function ($filter) {
                 $filter->bool('is_blocked', true, trans('admin.ext.is_blocked'));

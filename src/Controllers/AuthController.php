@@ -293,7 +293,7 @@ class AuthController extends Controller
                 $user->google2fa_secret = $qr_code['secret'];
                 $user->google2fa_remember_token = $user->remember_token;
                 $user->save();
-                // стираем код и выставляем 2fa проверенной
+
                 $request->session()->remove('2fa_admin_set');
                 $request->session()->put('2fa_admin', 'valid');
 
