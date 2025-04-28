@@ -505,6 +505,9 @@ HTML;
             if (json_last_error() == 0) {
                 $field->border = false;
 
+                array_walk_recursive($content, function (&$value) {
+                    $value = is_string($value) ? e($value) : $value;
+                });
                 return '<pre><code>'.json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE).'</code></pre>';
             }
 
