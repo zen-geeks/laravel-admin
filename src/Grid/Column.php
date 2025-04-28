@@ -440,7 +440,7 @@ class Column
             $json = json_decode($val, true);
             if (!$json || !is_array($json))
                 return e($val);
-            return '<pre>'.e(json_encode($json, JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)).'</pre>';
+            return '<pre>'.e(json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)).'</pre>';
         })->style(implode(';', [
             'max-width: '.$max_width.'px',
             'word-break: break-all',
