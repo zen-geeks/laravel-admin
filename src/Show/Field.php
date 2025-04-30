@@ -505,7 +505,7 @@ HTML;
             if (json_last_error() == 0) {
                 $field->border = false;
 
-                return '<pre><code>'.e(json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)).'</code></pre>';
+                return '<pre><code>'.e(json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)).'</code></pre>';
             }
 
             return $value;
