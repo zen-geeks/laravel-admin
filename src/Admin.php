@@ -25,32 +25,32 @@ class Admin
      *
      * @var string
      */
-    const string VERSION = '1.9.21';
+    const string VERSION = '1.9.22';
 
     /**
      * @var ?Navbar
      */
-    protected ?Navbar $navbar;
+    protected $navbar;
 
     /**
      * @var array
      */
-    protected array $menu = [];
+    protected $menu = [];
 
     /**
      * @var ?string
      */
-    public static ?string $metaTitle;
+    public static $metaTitle;
 
     /**
      * @var ?string
      */
-    public static ?string $favicon;
+    public static $favicon;
 
     /**
      * @var array
      */
-    public static array $extensions = [];
+    public static $extensions = [];
 
     /**
      * @var []Closure
