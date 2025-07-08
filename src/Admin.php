@@ -25,32 +25,32 @@ class Admin
      *
      * @var string
      */
-    const string VERSION = '1.9.20';
+    const string VERSION = '1.9.21';
 
     /**
-     * @var Navbar
+     * @var ?Navbar
      */
-    protected $navbar;
-
-    /**
-     * @var array
-     */
-    protected $menu = [];
-
-    /**
-     * @var string
-     */
-    public static $metaTitle;
-
-    /**
-     * @var string
-     */
-    public static $favicon;
+    protected ?Navbar $navbar;
 
     /**
      * @var array
      */
-    public static $extensions = [];
+    protected array $menu = [];
+
+    /**
+     * @var ?string
+     */
+    public static ?string $metaTitle;
+
+    /**
+     * @var ?string
+     */
+    public static ?string $favicon;
+
+    /**
+     * @var array
+     */
+    public static array $extensions = [];
 
     /**
      * @var []Closure
@@ -218,7 +218,7 @@ class Admin
      */
     public function title()
     {
-        return self::$metaTitle ? self::$metaTitle : config('admin.title');
+        return self::$metaTitle ?: config('admin.title');
     }
 
     /**
