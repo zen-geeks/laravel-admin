@@ -2,6 +2,7 @@
 
 namespace Encore\Admin;
 
+use Closure;
 use Encore\Admin\Show\Divider;
 use Encore\Admin\Show\Field;
 use Encore\Admin\Show\Panel;
@@ -73,7 +74,7 @@ class Show implements Renderable
     public static $extendedFields = [];
 
     /**
-     * @var \Closure
+     * @var Closure
      */
     protected static $initCallback;
 
@@ -91,7 +92,7 @@ class Show implements Renderable
         $this->initPanel();
         $this->initContents();
 
-        if (static::$initCallback instanceof \Closure) {
+        if (static::$initCallback instanceof Closure) {
             call_user_func(static::$initCallback, $this);
         }
     }
@@ -99,9 +100,9 @@ class Show implements Renderable
     /**
      * Initialize with user pre-defined default disables, etc.
      *
-     * @param \Closure $callback
+     * @param null|Closure $callback
      */
-    public static function init(\Closure $callback = null)
+    public static function init(?Closure $callback = null)
     {
         static::$initCallback = $callback;
     }
@@ -195,8 +196,8 @@ class Show implements Renderable
      * Add a relation to show.
      *
      * @param string          $name
-     * @param string|\Closure $label
-     * @param null|\Closure   $builder
+     * @param string|Closure $label
+     * @param null|Closure   $builder
      *
      * @return Relation
      */
@@ -235,7 +236,7 @@ class Show implements Renderable
      * Add a relation panel to show.
      *
      * @param string   $name
-     * @param \Closure $builder
+     * @param Closure $builder
      * @param string   $label
      *
      * @return Relation
@@ -439,11 +440,11 @@ class Show implements Renderable
         ) {
             $this->model->with($method);
 
-            if (count($arguments) == 1 && $arguments[0] instanceof \Closure) {
+            if (count($arguments) == 1 && $arguments[0] instanceof Closure) {
                 return $this->addRelation($method, $arguments[0]);
             }
 
-            if (count($arguments) == 2 && $arguments[1] instanceof \Closure) {
+            if (count($arguments) == 2 && $arguments[1] instanceof Closure) {
                 return $this->addRelation($method, $arguments[1], $arguments[0]);
             }
 

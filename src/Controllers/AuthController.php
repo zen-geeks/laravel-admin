@@ -310,7 +310,7 @@ class AuthController extends Controller
         ]);
     }
 
-    protected function getQRCode(string $login, string $secret_key = null): array
+    protected function getQRCode(string $login, ?string $secret_key = null): array
     {
         $google2fa = new Google2FA();
 

@@ -25,7 +25,7 @@ class Tree implements Renderable
     protected $model;
 
     /**
-     * @var \Closure
+     * @var Closure
      */
     protected $queryCallback;
 
@@ -40,7 +40,7 @@ class Tree implements Renderable
     ];
 
     /**
-     * @var \Closure
+     * @var Closure
      */
     protected $callback;
 
@@ -78,10 +78,8 @@ class Tree implements Renderable
 
     /**
      * Menu constructor.
-     *
-     * @param Model|null $model
      */
-    public function __construct(Model $model = null, \Closure $callback = null)
+    public function __construct(?Model $model = null, ?Closure $callback = null)
     {
         $this->model = $model;
 
@@ -90,7 +88,7 @@ class Tree implements Renderable
 
         $this->setupTools();
 
-        if ($callback instanceof \Closure) {
+        if ($callback instanceof Closure) {
             call_user_func($callback, $this);
         }
 
@@ -125,11 +123,11 @@ class Tree implements Renderable
     /**
      * Set branch callback.
      *
-     * @param \Closure $branchCallback
+     * @param Closure $branchCallback
      *
      * @return $this
      */
-    public function branch(\Closure $branchCallback)
+    public function branch(Closure $branchCallback)
     {
         $this->branchCallback = $branchCallback;
 
@@ -141,7 +139,7 @@ class Tree implements Renderable
      *
      * @return Model
      */
-    public function query(\Closure $callback)
+    public function query(Closure $callback)
     {
         $this->queryCallback = $callback;
 

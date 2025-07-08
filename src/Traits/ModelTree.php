@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Traits;
 
+use Closure;
 use Encore\Admin\Tree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -31,7 +32,7 @@ trait ModelTree
     protected $orderColumn = 'order';
 
     /**
-     * @var \Closure
+     * @var Closure
      */
     protected $queryCallback;
 
@@ -116,11 +117,11 @@ trait ModelTree
     /**
      * Set query callback to model.
      *
-     * @param \Closure|null $query
+     * @param Closure|null $query
      *
      * @return $this
      */
-    public function withQuery(\Closure $query = null)
+    public function withQuery(?Closure $query = null)
     {
         $this->queryCallback = $query;
 
@@ -180,7 +181,7 @@ trait ModelTree
 
         $self = new static();
 
-        if ($this->queryCallback instanceof \Closure) {
+        if ($this->queryCallback instanceof Closure) {
             $self = call_user_func($this->queryCallback, $self);
         }
 
@@ -231,12 +232,12 @@ trait ModelTree
     /**
      * Get options for Select field in form.
      *
-     * @param \Closure|null $closure
+     * @param Closure|null $closure
      * @param string        $rootText
      *
      * @return array
      */
-    public static function selectOptions(\Closure $closure = null, $rootText = 'ROOT')
+    public static function selectOptions(?Closure $closure = null, $rootText = 'ROOT')
     {
         $options = (new static())->withQuery($closure)->buildSelectOptions();
 

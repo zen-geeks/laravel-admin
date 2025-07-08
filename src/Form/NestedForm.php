@@ -162,11 +162,11 @@ class NestedForm
     /**
      * Set Form.
      *
-     * @param Form $form
+     * @param null|Form $form
      *
      * @return $this
      */
-    public function setForm(Form $form = null)
+    public function setForm(?Form $form = null)
     {
         $this->form = $form;
 
@@ -176,11 +176,11 @@ class NestedForm
     /**
      * Set Widget/Form.
      *
-     * @param WidgetForm $form
+     * @param null|WidgetForm $form
      *
      * @return $this
      */
-    public function setWidgetForm(WidgetForm $form = null)
+    public function setWidgetForm(?WidgetForm $form = null)
     {
         $this->form = $form;
 

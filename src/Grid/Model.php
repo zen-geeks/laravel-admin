@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Grid;
 
+use Closure;
 use Encore\Admin\Grid;
 use Encore\Admin\Middleware\Pjax;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
@@ -79,7 +80,7 @@ class Model
     /**
      * Collection callback.
      *
-     * @var \Closure
+     * @var Closure
      */
     protected $collectionCallback;
 
@@ -97,9 +98,9 @@ class Model
      * Create a new grid model instance.
      *
      * @param EloquentModel $model
-     * @param Grid          $grid
+     * @param null|Grid     $grid
      */
-    public function __construct(EloquentModel $model, Grid $grid = null)
+    public function __construct(EloquentModel $model, ?Grid $grid = null)
     {
         $this->model = $model;
 
@@ -275,11 +276,11 @@ class Model
     /**
      * Set collection callback.
      *
-     * @param \Closure $callback
+     * @param null|Closure $callback
      *
      * @return $this
      */
-    public function collection(\Closure $callback = null)
+    public function collection(?Closure $callback = null)
     {
         $this->collectionCallback = $callback;
 

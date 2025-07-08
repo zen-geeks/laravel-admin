@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Form\Field;
 
+use Closure;
 use Encore\Admin\Admin;
 use Encore\Admin\Form\Field;
 
@@ -41,11 +42,11 @@ trait HasValuePicker
     }
 
     /**
-     * @param \Closure|null $callback
+     * @param Closure|null $callback
      *
      * @return $this
      */
-    protected function mountPicker(\Closure $callback = null)
+    protected function mountPicker(?Closure $callback = null)
     {
         $this->picker && $this->picker->mount($this, $callback);
 

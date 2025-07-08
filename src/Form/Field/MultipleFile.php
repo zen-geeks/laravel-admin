@@ -172,11 +172,11 @@ class MultipleFile extends Field
     /**
      * Prepare for each file.
      *
-     * @param UploadedFile $file
+     * @param null|UploadedFile $file
      *
      * @return mixed|string
      */
-    protected function prepareForeach(UploadedFile $file = null)
+    protected function prepareForeach(?UploadedFile $file = null)
     {
         $this->name = $this->getStoreName($file);
 

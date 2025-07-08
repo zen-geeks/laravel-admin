@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Traits;
 
+use Closure;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Tree;
@@ -12,31 +13,31 @@ use Encore\Admin\Tree;
 trait AdminBuilder
 {
     /**
-     * @param \Closure $callback
+     * @param Closure $callback
      *
      * @return Grid
      */
-    public static function grid(\Closure $callback)
+    public static function grid(Closure $callback)
     {
         return new Grid(new static(), $callback);
     }
 
     /**
-     * @param \Closure $callback
+     * @param Closure $callback
      *
      * @return Form
      */
-    public static function form(\Closure $callback)
+    public static function form(Closure $callback)
     {
         return new Form(new static(), $callback);
     }
 
     /**
-     * @param \Closure $callback
+     * @param null|Closure $callback
      *
      * @return Tree
      */
-    public static function tree(\Closure $callback = null)
+    public static function tree(?Closure $callback = null)
     {
         return new Tree(new static(), $callback);
     }

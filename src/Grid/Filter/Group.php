@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Grid\Filter;
 
+use Closure;
 use Encore\Admin\Admin;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -9,7 +10,7 @@ use Illuminate\Support\Collection;
 class Group extends AbstractFilter
 {
     /**
-     * @var \Closure|null
+     * @var Closure|null
      */
     protected $builder;
 
@@ -30,9 +31,9 @@ class Group extends AbstractFilter
      *
      * @param string        $column
      * @param string        $label
-     * @param \Closure|null $builder
+     * @param Closure|null $builder
      */
-    public function __construct($column, $label = '', \Closure $builder = null)
+    public function __construct($column, $label = '', ?Closure $builder = null)
     {
         $this->column = $column;
 
@@ -171,11 +172,11 @@ class Group extends AbstractFilter
      * Specify a where query.
      *
      * @param string   $label
-     * @param \Closure $builder
+     * @param Closure $builder
      *
      * @return Group
      */
-    public function where($label, \Closure $builder)
+    public function where($label, Closure $builder)
     {
         $this->input = $this->value;
 

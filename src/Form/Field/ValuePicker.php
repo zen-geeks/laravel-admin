@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Form\Field;
 
+use Closure;
 use Encore\Admin\Admin;
 use Encore\Admin\Form\Field;
 use Illuminate\Support\Arr;
@@ -70,9 +71,9 @@ class ValuePicker
 
     /**
      * @param Field         $field
-     * @param \Closure|null $callback
+     * @param Closure|null $callback
      */
-    public function mount(Field $field, \Closure $callback = null)
+    public function mount(Field $field, ?Closure $callback = null)
     {
         $this->field = $field;
         $this->modal = sprintf('picker-modal-%s', $field->getElementClassString());
@@ -92,9 +93,9 @@ class ValuePicker
     }
 
     /**
-     * @param \Closure|null $callback
+     * @param Closure|null $callback
      */
-    protected function addPickBtn(\Closure $callback = null)
+    protected function addPickBtn(?Closure $callback = null)
     {
         $text = admin_trans('admin.browse');
 
