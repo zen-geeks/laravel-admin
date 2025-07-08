@@ -25,7 +25,7 @@ class Admin
      *
      * @var string
      */
-    const VERSION = '1.9.18';
+    const string VERSION = '1.9.19';
 
     /**
      * @var Navbar
@@ -106,7 +106,7 @@ class Admin
      *
      * @return \Encore\Admin\Tree
      */
-    public function tree($model, Closure $callable = null)
+    public function tree($model, ?Closure $callable = null)
     {
         return new Tree($this->getModel($model), $callable);
     }
@@ -127,13 +127,13 @@ class Admin
     }
 
     /**
-     * @param Closure $callable
+     * @param Closure|null $callable
      *
      * @return \Encore\Admin\Layout\Content
      *
      * @deprecated since v1.6.1
      */
-    public function content(Closure $callable = null)
+    public function content(?Closure $callable = null)
     {
         return new Content($callable);
     }
@@ -226,7 +226,7 @@ class Admin
      *
      * @return string|void
      */
-    public static function favicon($favicon = null)
+    public static function favicon(?string $favicon = null)
     {
         if (is_null($favicon)) {
             return static::$favicon;
@@ -264,7 +264,7 @@ class Admin
      *
      * @return Navbar
      */
-    public function navbar(Closure $builder = null)
+    public function navbar(?Closure $builder = null)
     {
         if (is_null($builder)) {
             return $this->getNavbar();
