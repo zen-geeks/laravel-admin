@@ -35,41 +35,42 @@ $(document).on('pjax:timeout', function (event) {
 })
 
 $(document).on('submit', 'form[pjax-container]', function (event) {
+    let form = $(this);
+
+    if (form.parent('#filter-box').length === 0) {
+        $.pjax.submit(event, '#pjax-container');
+        return;
+    }
+
+    // removing empty values in grid filters
     event.preventDefault();
 
-    let form = $(this),
-        url = form.attr('action'),
-        data = {},
-        isGridFilter = $(form).parent('#filter-box').length;
+    let url = form.attr('action'),
+        data = {};
 
-    if (isGridFilter) {
-        // removing empty values
-        $(form).serializeArray().forEach(function (item) {
-            if (item.value === '')
-                return;
+    form.serializeArray().forEach(function (item) {
+        if (item.value === '')
+            return;
 
-            if (data[item.name]) {
-                if (Array.isArray(data[item.name])) {
-                    data[item.name].push(item.value);
-                } else {
-                    data[item.name] = [data[item.name], item.value];
-                }
+        if (data[item.name] !== undefined) {
+            if (Array.isArray(data[item.name])) {
+                data[item.name].push(item.value);
             } else {
-                data[item.name] = item.value;
+                data[item.name] = [data[item.name], item.value];
             }
-        });
+        } else {
+            data[item.name] = item.value;
+        }
+    });
 
-        if ($.param(data))
-            url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(data);
+    if ($.param(data))
+        url += (url.indexOf('?') === -1 ? '?' : '&') + $.param(data);
 
-        $.pjax({
-            url: url,
-            container: '#pjax-container',
-            type: ($(form).attr('method') || 'GET').toUpperCase()
-        });
-    } else {
-        $.pjax.submit(event, '#pjax-container');
-    }
+    $.pjax({
+        url: url,
+        container: '#pjax-container',
+        type: (form.attr('method') || 'GET').toUpperCase()
+    });
 });
 
 $(document).on("pjax:popstate", function () {
