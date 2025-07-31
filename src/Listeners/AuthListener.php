@@ -23,7 +23,7 @@ class AuthListener
             if ($event instanceof Authenticated) {
                 if ($event->user->failed_auths >= $auth_limit) {
                     $this->logout($event->user);
-                    abort(403, trans('admin.deny'));
+                    abort(403, trans('admin.ext.deny_failed_auths'));
                 } elseif ($event->user->failed_auths) {
                     $event->user->failed_auths = 0;
                     $event->user->save();

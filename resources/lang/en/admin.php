@@ -113,6 +113,7 @@ return [
         'google2fa_secret'         => '2FA secret',
         'google2fa_remember_token' => '2FA remember token',
         'failed_auths'             => 'Failed auths',
+        'deny_failed_auths'        => 'Exceeded number of password attempts. Account blocked. Contact manager',
         '2fa'                      => [
             'title'                => 'Two-Factor Authentication',
             'title_short'          => '2FA',
