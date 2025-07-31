@@ -31,6 +31,9 @@ class AuthListener
             } elseif ($event instanceof Failed && $event->user->failed_auths < 65535) {
                 $event->user->failed_auths++;
                 $event->user->save();
+                if ($event->user->failed_auths >= $auth_limit) {
+                    abort(403, trans('admin.ext.deny_failed_auths'));
+                }
             }
         }
     }
