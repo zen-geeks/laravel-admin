@@ -11,7 +11,7 @@
         <link rel="icon" href="{{$favicon}}">
     @endif
 
-    <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/laravel-admin/laravel-admin.css?v=597326b3e547ccddc54518f6e00da1ea") }}">
+    <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/laravel-admin/laravel-admin.css") }}">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
