@@ -148,6 +148,7 @@ if (!function_exists('admin_asset')) {
      */
     function admin_asset($path)
     {
+        $path .= (str_contains($path, '?') ? '&' : '?').'v='.\Encore\Admin\Admin::VERSION;
         return (config('admin.https') || config('admin.secure')) ? secure_asset($path) : asset($path);
     }
 }
