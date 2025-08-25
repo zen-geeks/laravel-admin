@@ -51,9 +51,20 @@ class CsvExporter extends AbstractExporter
      */
     protected int $chunk_count = 1000;
 
+    /**
+     * @var int
+     */
+    protected int $csv_chunk_count = 3000;
+
     public function setChunkSize(int $chunk_count): self
     {
         $this->chunk_count = $chunk_count;
+        return $this;
+    }
+
+    public function setCsvChunkSize(int $chunk_count): self
+    {
+        $this->csv_chunk_count = $chunk_count;
         return $this;
     }
 
@@ -188,9 +199,21 @@ class CsvExporter extends AbstractExporter
                 }
 
                 // Write rows
+                $count = 0;
+                $buffer = '';
                 foreach ($current as $index => $record) {
-                    fputcsv($handle, $this->getVisiableFields($record, $original[$index]));
+                    $buffer .= $this->str_putcsv($this->getVisiableFields($record, $original[$index]));
+                    $count++;
+
+                    if ($count % $this->csv_chunk_count === 0) {
+                        fwrite($handle, $buffer);
+                        $buffer = '';
+                    }
                 }
+
+                if ($buffer !== '')
+                    fwrite($handle, $buffer);
+
             }, $this->chunk_count);
             fclose($handle);
         };
@@ -269,5 +292,32 @@ class CsvExporter extends AbstractExporter
         }
 
         return $value;
+    }
+
+    protected function str_putcsv(array $fields, string $separator = ',', string $enclosure = '"', string $escape = "\\", string $eol = "\n"): string
+    {
+        $escape_char = empty($escape) ? null : $escape[0];
+        $csv_fields = [];
+
+        $pattern_chars = preg_quote($separator.$enclosure, '/');
+        if ($escape_char !== null)
+            $pattern_chars .= preg_quote($escape_char, '/');
+        $pattern = '/['.$pattern_chars."\n\r\t ]/";
+
+        foreach ($fields as $field) {
+            $field_str = (string)$field;
+
+            if (preg_match($pattern, $field_str)) {
+                if ($escape_char !== null) {
+                    $field_str = str_replace($escape_char, $escape_char.$escape_char, $field_str);
+                }
+                $field_str = str_replace($enclosure, $enclosure.$enclosure, $field_str);
+                $field_str = $enclosure.$field_str.$enclosure;
+            }
+
+            $csv_fields[] = $field_str;
+        }
+
+        return implode($separator, $csv_fields).$eol;
     }
 }
