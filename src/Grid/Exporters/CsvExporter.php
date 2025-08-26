@@ -56,6 +56,11 @@ class CsvExporter extends AbstractExporter
      */
     protected int $csv_chunk_count = 3000;
 
+    /**
+     * @var bool
+     */
+    protected bool $csv_str_mode = false;
+
     public function setChunkSize(int $chunk_count): self
     {
         $this->chunk_count = $chunk_count;
@@ -65,6 +70,12 @@ class CsvExporter extends AbstractExporter
     public function setCsvChunkSize(int $chunk_count): self
     {
         $this->csv_chunk_count = $chunk_count;
+        return $this;
+    }
+
+    public function useCsvStrMode(): self
+    {
+        $this->csv_str_mode = true;
         return $this;
     }
 
@@ -199,20 +210,26 @@ class CsvExporter extends AbstractExporter
                 }
 
                 // Write rows
-                $count = 0;
-                $buffer = '';
-                foreach ($current as $index => $record) {
-                    $buffer .= $this->str_putcsv($this->getVisiableFields($record, $original[$index]));
-                    $count++;
+                if ($this->csv_str_mode) {
+                    $count = 0;
+                    $buffer = '';
+                    foreach ($current as $index => $record) {
+                        $buffer .= $this->str_putcsv($this->getVisiableFields($record, $original[$index]));
+                        $count++;
 
-                    if ($count % $this->csv_chunk_count === 0) {
+                        if ($count % $this->csv_chunk_count === 0) {
+                            fwrite($handle, $buffer);
+                            $buffer = '';
+                        }
+                    }
+
+                    if ($buffer !== '')
                         fwrite($handle, $buffer);
-                        $buffer = '';
+                } else {
+                    foreach ($current as $index => $record) {
+                        fputcsv($handle, $this->getVisiableFields($record, $original[$index]));
                     }
                 }
-
-                if ($buffer !== '')
-                    fwrite($handle, $buffer);
 
             }, $this->chunk_count);
             fclose($handle);
