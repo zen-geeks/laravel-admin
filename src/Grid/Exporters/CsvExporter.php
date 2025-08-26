@@ -6,6 +6,9 @@ use Encore\Admin\Grid\Column;
 
 class CsvExporter extends AbstractExporter
 {
+    const EXPORT_MODE_CSV = 1;
+    const EXPORT_MODE_CSV_FAST = 2;
+
     /**
      * @var string
      */
@@ -57,9 +60,9 @@ class CsvExporter extends AbstractExporter
     protected int $csv_chunk_count = 3000;
 
     /**
-     * @var bool
+     * @var int
      */
-    protected bool $csv_str_mode = false;
+    protected int $csv_export_mode = self::EXPORT_MODE_CSV;
 
     public function setChunkSize(int $chunk_count): self
     {
@@ -67,15 +70,13 @@ class CsvExporter extends AbstractExporter
         return $this;
     }
 
-    public function setCsvChunkSize(int $chunk_count): self
+    public function setExportMode(int $mode, ?int $chunk_count = null): self
     {
-        $this->csv_chunk_count = $chunk_count;
-        return $this;
-    }
+        $this->csv_export_mode = in_array($mode, [self::EXPORT_MODE_CSV, self::EXPORT_MODE_CSV_FAST], true) ? $mode : self::EXPORT_MODE_CSV;
 
-    public function useCsvStrMode(): self
-    {
-        $this->csv_str_mode = true;
+        if ($chunk_count !== null)
+            $this->csv_chunk_count = $chunk_count;
+
         return $this;
     }
 
@@ -210,7 +211,7 @@ class CsvExporter extends AbstractExporter
                 }
 
                 // Write rows
-                if ($this->csv_str_mode) {
+                if ($this->csv_export_mode === self::EXPORT_MODE_CSV_FAST) {
                     $count = 0;
                     $buffer = '';
                     foreach ($current as $index => $record) {
