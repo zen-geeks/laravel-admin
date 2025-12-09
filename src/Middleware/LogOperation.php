@@ -132,10 +132,6 @@ class LogOperation
                     $model = $this->getModel($request);
                     if (!empty($model))
                         $input['data'] = $model::find($input['_key'])?->toArray();
-
-                    $model_class = str_replace('_', '\\', $request->input('_model'));
-                    if (class_exists($model_class))
-                        $input['data'] = $model_class::find($input['_key'])?->toArray();
                 }
             }
 
