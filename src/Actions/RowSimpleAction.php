@@ -226,7 +226,7 @@ abstract class RowSimpleAction extends RowAction
 
                 var formData = new FormData(form);
                 for (var key in data) {
-                    formData.append(key, data[key]);
+                    formData.append(key, typeof data[key] === 'object' ? JSON.stringify(data[key]) : data[key]);
                 }
 
                 $.ajax({
