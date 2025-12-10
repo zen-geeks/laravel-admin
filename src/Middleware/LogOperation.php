@@ -5,7 +5,9 @@ namespace Encore\Admin\Middleware;
 use Encore\Admin\Auth\Database\OperationLog as OperationLogModel;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
 class LogOperation
 {
@@ -23,7 +25,9 @@ class LogOperation
             $data = $this->getData($request);
             $data = self::cleanData($data);
 
-            if (empty($data))
+            // exclude system fields to ensure the log is not empty
+            $log_data =  Arr::except($data, ['_pjax', '_token', '_method', '_previous_']);
+            if (empty($log_data))
                 return $next($request);
 
             $log = [
@@ -170,19 +174,13 @@ class LogOperation
         if ($row === null)
             return $input;
 
+        $column_types = array_column(Schema::getColumns($model->getTable()), 'type_name', 'name');
+
         $log_data = [];
         foreach ($input as $key => $val) {
-            $val = match ($val) {
-                'on' => 1,
-                'off' => 0,
-                default => $val
-            };
-
             if (isset($row[$key]) && $val != $row[$key]) {
-                $log_data[$key] = [
-                    'old' => $row[$key],
-                    'new' => $val
-                ];
+                $log_data['old'][$key] = self::castByDbType($column_types[$key] ?? null, $row[$key]);
+                $log_data['new'][$key] = self::castByDbType($column_types[$key] ?? null, $val);
             } elseif (!isset($row[$key])) {
                 $log_data[$key] = $val;
             }
@@ -241,5 +239,19 @@ class LogOperation
             return empty($clean) ? null : $clean;
         }
         return $data;
+    }
+
+    private static function castByDbType(?string $type, mixed $value): mixed
+    {
+        if ($value === null || $type === null)
+            return $value;
+
+        return match ($type) {
+            'integer', 'bigint', 'mediumint', 'smallint', 'tinyint', 'bit' => $value === 'on' ? 1 : ($value === 'off' ? 0 : (int)$value),
+            'float', 'double', 'decimal' => (float)$value,
+            'boolean' => (bool)$value,
+            'json' => is_string($value) ? json_decode($value, true) ?? $value : $value,
+            default => (string)$value,
+        };
     }
 }
