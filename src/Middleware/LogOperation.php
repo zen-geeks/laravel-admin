@@ -178,9 +178,15 @@ class LogOperation
 
         $log_data = [];
         foreach ($input as $key => $val) {
-            if (isset($row[$key]) && $val != $row[$key]) {
-                $log_data['old'][$key] = self::castByDbType($column_types[$key] ?? null, $row[$key]);
-                $log_data['new'][$key] = self::castByDbType($column_types[$key] ?? null, $val);
+
+            if (isset($row[$key])) {
+                $val = self::castByDbType($column_types[$key] ?? null, $val);
+                $old_val = self::castByDbType($column_types[$key] ?? null, $row[$key]);
+
+                if ($val !== $old_val) {
+                    $log_data['old'][$key] = $old_val;
+                    $log_data['new'][$key] = $val;
+                }
             } elseif (!isset($row[$key])) {
                 $log_data[$key] = $val;
             }
