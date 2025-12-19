@@ -191,7 +191,15 @@ $('#totop').on('click', function (e) {
 
     $.fn.admin = LA;
     $.admin = LA;
-    $.admin.swal = swal;
+    $.admin.swal = function (options) {
+        if (options && options.type) {
+            if (!options.icon)
+                options.icon = options.type;
+            delete options.type;
+        }
+
+        return window.Swal.fire(options);
+    };
     $.admin.toastr = toastr;
     $.admin.grid = new Grid();
 

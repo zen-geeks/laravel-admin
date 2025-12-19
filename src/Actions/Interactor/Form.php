@@ -553,7 +553,7 @@ SCRIPT;
         ];
 
         $settings = [
-            'type'                => 'question',
+            'icon'                => 'question',
             'showCancelButton'    => true,
             'showLoaderOnConfirm' => true,
             'confirmButtonText'   => $trans['submit'],
@@ -567,24 +567,18 @@ SCRIPT;
         return <<<PROMISE
         var process = $.admin.swal({
             {$settings},
-            preConfirm: function() {
+            preConfirm: () => {
                 {$this->buildGeneralActionPromise()}
 
                 return process;
             }
-        }).then(function(result) {
-
-            if (typeof result.dismiss !== 'undefined') {
+        }).then((result) => {
+            if (result.isDismissed) {
                 return Promise.reject();
             }
 
-            var result = result.value[0];
-
-            if (typeof result.status === "boolean") {
-                var response = result;
-            } else {
-                var response = result.value;
-            }
+            var res = result.value[0];
+            var response = typeof res.status === "boolean" ? res : res.value;
 
             return [response, target];
         });

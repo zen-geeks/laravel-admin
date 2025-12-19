@@ -223,15 +223,15 @@ HTML;
 
 $('.{$class}-delete').unbind('click').click(function() {
 
-    swal({
+    $.admin.swal({
         title: "{$trans['delete_confirm']}",
-        type: "warning",
+        icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "{$trans['confirm']}",
         showLoaderOnConfirm: true,
         cancelButtonText: "{$trans['cancel']}",
-        preConfirm: function() {
+        preConfirm: () => {
             return new Promise(function(resolve) {
                 $.ajax({
                     method: 'post',
@@ -251,11 +251,10 @@ $('.{$class}-delete').unbind('click').click(function() {
     }).then(function(result) {
         var data = result.value;
         if (typeof data === 'object') {
-            if (data.status) {
-                swal(data.message, '', 'success');
-            } else {
-                swal(data.message, '', 'error');
-            }
+            $.admin.swal({
+                title: data.message,
+                icon: data.status ? 'success' : 'error'
+            });
         }
     });
 });

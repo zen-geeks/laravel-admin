@@ -125,3 +125,9 @@ a.editable-empty {
     left: -65px;
     top: 5px;
 }
+
+.swal2-popup {
+    --swal2-confirm-button-background-color: #3c8dbc;
+    --swal2-cancel-button-background-color: #e6e6e6;
+    --swal2-cancel-button-color: #444;
+}

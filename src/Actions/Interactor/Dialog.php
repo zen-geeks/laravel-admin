@@ -117,7 +117,7 @@ class Dialog extends Interactor
         ];
 
         return [
-            'type'                => 'question',
+            'icon'                => 'question',
             'showCancelButton'    => true,
             'showLoaderOnConfirm' => true,
             'confirmButtonText'   => $trans['submit'],
@@ -182,8 +182,8 @@ SCRIPT;
         return <<<PROMISE
         var process = $.admin.swal({
             {$settings},
-            preConfirm: function(input) {
-                return new Promise(function(resolve, reject) {
+            preConfirm: (input) => {
+                return new Promise((resolve, reject) => {
                     Object.assign(data, {
                         _token: $.admin.token,
                         _action: '$calledClass',
@@ -194,25 +194,19 @@ SCRIPT;
                         method: '{$this->action->getMethod()}',
                         url: '$route',
                         data: data,
-                        success: function (data) {
-                            resolve(data);
-                        },
-                        error:function(request){
-                            reject(request);
-                        }
+                        success: (data) => resolve(data),
+                        error: (request) => reject(request)
                     });
                 });
             }
-        }).then(function(result) {
-            if (typeof result.dismiss !== 'undefined') {
+        }).then((result) => {
+            if (result.isDismissed) {
                 return Promise.reject();
             }
             
-            if (typeof result.status === "boolean") {
-                var response = result;
-            } else {
-                var response = result.value;
-            }
+            const response = typeof result.value?.status === 'boolean'
+                ? result.value
+                : result.value?.value ?? result.value;
 
             return [response, target];
         });
@@ -231,19 +225,25 @@ PROMISE;
         return <<<PROMISE
 var process = $.admin.swal({
     {$settings}
-}).then(function (file) {
-    return new Promise(function (resolve) {
-        var data = {
+}).then((result) => {
+    if (result.isDismissed) {
+        return Promise.reject();
+    }
+
+    const file = result.value;
+
+    return new Promise((resolve, reject) => {
+        const data = {
             _token: $.admin.token,
             _action: '$calledClass',
         };
 
-        var formData = new FormData();
-        for ( var key in data ) {
+        const formData = new FormData();
+        for (var key in data) {
             formData.append(key, data[key]);
         }
 
-        formData.append('_input', file.value, file.value.name);
+        formData.append('_input', file, file.name);
 
         $.ajax({
             url: '{$route}',
@@ -252,15 +252,11 @@ var process = $.admin.swal({
             processData: false,
             contentType: false,
             enctype: 'multipart/form-data',
-            success: function (data) {
-                resolve([response, target]);
-            },
-            error:function(request){
-                reject(request);
-            }
+            success: (data) => resolve([data, target]),
+            error: (request) => reject(request)
         });
     });
-})
+});
 PROMISE;
     }
 }

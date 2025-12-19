@@ -290,15 +290,15 @@ $("input{$this->getElementClassSelector()}").on('filebeforedelete', function() {
 
         var remove = resolve;
 
-        swal({
+        $.admin.swal({
             title: "{$text['title']}",
-            type: "warning",
+            icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "{$text['confirm']}",
             showLoaderOnConfirm: true,
             cancelButtonText: "{$text['cancel']}",
-            preConfirm: function() {
+            preConfirm: () => {
                 return new Promise(function(resolve) {
                     resolve(remove());
                 });
