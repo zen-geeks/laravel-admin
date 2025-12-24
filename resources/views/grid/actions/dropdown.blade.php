@@ -23,7 +23,7 @@
         } else {
             t.css('overflow', 'visible');
         }
-    }).on('hidden.bs.dropdown', function() {
+    }).on('d-none.bs.dropdown', function() {
         $(this).css({
             'padding-bottom': '',
             'overflow': ''

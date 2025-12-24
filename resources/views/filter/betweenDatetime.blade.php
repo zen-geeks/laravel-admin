@@ -1,7 +1,7 @@
-<div class="form-group">
+<div class="form-group row">
     <label class="col-2 col-form-label">{{$label}}</label>
-    <div>
-        <div class="input-group input-group-sm">
+    <div class="col-8">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-calendar"></i></span>
             </div>

@@ -243,9 +243,9 @@ class Period extends AbstractFilter
             $script .= <<<EOT
                 $('#{$this->column}_type').on('change', function() {
                     let toggle_id = 'toggle_{$this->column}_'+$(this).val();
-                    $('div[id^="toggle_{$this->column}_"]').addClass('hidden');
+                    $('div[id^="toggle_{$this->column}_"]').addClass('d-none');
                     if ($('#'+toggle_id).length > 0) {
-                        $('#'+toggle_id).removeClass('hidden');
+                        $('#'+toggle_id).removeClass('d-none');
                     }
                 });
 

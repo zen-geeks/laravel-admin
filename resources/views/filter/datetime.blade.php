@@ -1,4 +1,4 @@
-<div class="input-group input-group-sm">
+<div class="input-group">
     @if($group)
         <div class="input-group-append">
             <input type="hidden" name="{{ $id }}_group" class="{{ $group_name }}-operation" value="0"/>

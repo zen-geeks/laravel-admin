@@ -7,17 +7,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{ trans('admin.filter') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">{{ trans('admin.filter') }}</h4>
             </div>
             <form action="{!! $action !!}" method="get" pjax-container>
                 <div class="modal-body">
                     <div class="form">
                         @foreach($filters as $filter)
-                            <div class="form-group">
+                            <div class="form-group row">
                                 {!! $filter->render() !!}
                             </div>
                         @endforeach

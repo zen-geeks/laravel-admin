@@ -63,13 +63,13 @@ trait HasAssets
     public static $baseCss = [
         'vendor/laravel-admin/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.css',
         'vendor/laravel-admin/AdminLTE/plugins/fontawesome-free/css/all.min.css',
-        'vendor/laravel-admin/laravel-admin/laravel-admin.css',
         'vendor/laravel-admin/nprogress/nprogress.css',
         'vendor/laravel-admin/sweetalert2/dist/sweetalert2.css',
         'vendor/laravel-admin/nestable/nestable.css',
         'vendor/laravel-admin/toastr/build/toastr.min.css',
         'vendor/laravel-admin/google-fonts/fonts.css',
         'vendor/laravel-admin/AdminLTE/dist/css/adminlte.min.css',
+        'vendor/laravel-admin/laravel-admin/laravel-admin.css',
     ];
 
     /**

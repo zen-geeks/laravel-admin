@@ -3,9 +3,9 @@
 use \Encore\Admin\Grid\Filter\Period;
 
 ?>
-<div class="form-group">
+<div class="form-group row">
     <label class="col-2 col-form-label">{{$label}}</label>
-    <div>
+    <div class="col-8">
         <div class="row">
 
             <div class="col-4">
@@ -20,11 +20,11 @@ use \Encore\Admin\Grid\Filter\Period;
             </div>
 
             @if (!empty($periods[Period::CUSTOM_DATE]))
-                <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' hidden' }}">
+                <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' d-none' }}">
                     <div class="col-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar-o"></i></span>
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                             </div>
                             <input type="date"
                                    class="form-control"
@@ -46,7 +46,7 @@ use \Encore\Admin\Grid\Filter\Period;
             @endif
 
             @if (!empty($periods[Period::CUSTOM_DATETIME]))
-                <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' hidden' }}">
+                <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' d-none' }}">
                     <div class="col-8">
                         <div class="input-group">
                             <div class="input-group-prepend">

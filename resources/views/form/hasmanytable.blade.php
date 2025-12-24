@@ -15,7 +15,7 @@
                         <th>{{ $header }}</th>
                     @endforeach
 
-                    <th class="hidden"></th>
+                    <th class="d-none"></th>
 
                     @if($options['allowDelete'])
                         <th></th>
@@ -35,10 +35,10 @@
                                 @continue
                             @endif
 
-                            <td>{!! $field->setLabelClass(['hidden'])->setWidth(12, 0)->render() !!}</td>
+                            <td>{!! $field->setLabelClass(['d-none'])->setWidth(12, 0)->render() !!}</td>
                         @endforeach
 
-                        <td class="hidden">{!! $hidden !!}</td>
+                        <td class="d-none">{!! $hidden !!}</td>
 
                         @if($options['allowDelete'])
                             <td class="form-group">
