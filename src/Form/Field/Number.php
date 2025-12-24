@@ -11,6 +11,7 @@ class Number extends Text
     public function render()
     {
         $this->default($this->default);
+        $this->setWidth('auto', 2);
 
         $this->script = <<<EOT
 

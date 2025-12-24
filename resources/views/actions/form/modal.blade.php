@@ -12,7 +12,7 @@
                 @endforeach
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('admin.close') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('admin.close') }}</button>
                 <button type="submit" class="btn btn-primary">{{ __('admin.submit') }}</button>
             </div>
             </form>

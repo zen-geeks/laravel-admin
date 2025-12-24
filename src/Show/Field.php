@@ -202,7 +202,7 @@ class Field implements Renderable
     public function check()
     {
         return $this->unescape()->as(function ($val) {
-            return is_null($val) ? '<i class="fa fa-check text-gray"></i>' : ($val ? '<i class="fa fa-check text-green"></i>' : '<i class="fa fa-close text-red"></i>');
+            return is_null($val) ? '<i class="fas fa-check text-gray"></i>' : ($val ? '<i class="fas fa-check text-green"></i>' : '<i class="fas fa-close text-red"></i>');
         });
     }
 
@@ -397,14 +397,14 @@ class Field implements Renderable
             return <<<HTML
 <ul class="mailbox-attachments clearfix">
     <li style="margin-bottom: 0;">
-      <span class="mailbox-attachment-icon"><i class="fa {$field->getFileIcon($name)}"></i></span>
+      <span class="mailbox-attachment-icon"><i class="fas {$field->getFileIcon($name)}"></i></span>
       <div class="mailbox-attachment-info">
         <div class="mailbox-attachment-name">
-            <i class="fa fa-paperclip"></i> {$name}
+            <i class="fas fa-paperclip"></i> {$name}
             </div>
             <span class="mailbox-attachment-size">
               {$size}&nbsp;
-              <a href="{$url}" class="btn btn-default btn-xs pull-right" target="_blank" $download><i class="fa fa-cloud-download"></i></a>
+              <a href="{$url}" class="btn btn-secondary btn-xs float-right" target="_blank" $download><i class="fas fa-cloud-download"></i></a>
             </span>
       </div>
     </li>
@@ -445,7 +445,10 @@ HTML;
             }
 
             return collect((array) $value)->map(function ($name) use ($style) {
-                return "<span class='label label-{$style}'>$name</span>";
+                if ($style === 'default')
+                    $style = 'primary';
+                
+                return "<span class='badge bg-{$style}'>$name</span>";
             })->implode('&nbsp;');
         });
     }

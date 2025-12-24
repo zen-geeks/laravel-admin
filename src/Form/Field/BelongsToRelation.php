@@ -88,11 +88,11 @@ trait BelongsToRelation
       </div>
       <div class="modal-body">
       <div class="loading text-center">
-        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">{$trans['cancal']}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{$trans['cancal']}</button>
         <button type="button" class="btn btn-primary submit">{$trans['submit']}</button>
       </div>
     </div>
@@ -113,10 +113,10 @@ HTML;
 .belongsto.modal tr {
     cursor: pointer;
 }
-.belongsto.modal .box {
+.belongsto.modal .card {
     border-top: none;
     margin-bottom: 0;
-    box-shadow: none;
+    card-shadow: none;
 }
 
 .belongsto.modal .loading {
@@ -132,7 +132,7 @@ HTML;
     height: 60px !important;
 }
 
-.belongsto.modal .grid-box .box-footer {
+.belongsto.modal .grid-box .card-footer {
     border-top: none !important;
 }
 STYLE;

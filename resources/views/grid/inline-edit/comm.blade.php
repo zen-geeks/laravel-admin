@@ -13,7 +13,7 @@
     >
         <span class="ie-display">{{ $display }}</span>
 
-        <i class="fa fa-edit" style="visibility: hidden;"></i>
+        <i class="fas fa-edit" style="visibility: hidden;"></i>
     </a>
 </span>
 
@@ -26,7 +26,7 @@
             </div>
             <div class="ie-action">
                 <button class="btn btn-primary btn-sm ie-submit">{{ __('admin.submit') }}</button>
-                <button class="btn btn-default btn-sm ie-cancel">{{ __('admin.cancel') }}</button>
+                <button class="btn btn-secondary btn-sm ie-cancel">{{ __('admin.cancel') }}</button>
             </div>
         </div>
     </template>

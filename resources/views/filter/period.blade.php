@@ -4,11 +4,11 @@ use \Encore\Admin\Grid\Filter\Period;
 
 ?>
 <div class="form-group">
-    <label class="col-sm-2 control-label">{{$label}}</label>
-    <div class="col-sm-8">
+    <label class="col-2 col-form-label">{{$label}}</label>
+    <div>
         <div class="row">
 
-            <div class="col-sm-4">
+            <div class="col-4">
                 <select class="form-control" name="{{$name}}[type]" id="{{$name}}_type">
                     <option value="">{{ __('admin.choose') }}</option>
                     @foreach($periods as $period_key => $period_name)
@@ -21,10 +21,10 @@ use \Encore\Admin\Grid\Filter\Period;
 
             @if (!empty($periods[Period::CUSTOM_DATE]))
                 <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' hidden' }}">
-                    <div class="col-sm-8">
+                    <div class="col-8">
                         <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar-o"></i>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar-o"></i></span>
                             </div>
                             <input type="date"
                                    class="form-control"
@@ -32,7 +32,7 @@ use \Encore\Admin\Grid\Filter\Period;
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATE.'.start', \Illuminate\Support\Arr::get($value, 'start')) }}"
                             />
 
-                            <span class="input-group-addon" style="border-left: 0; border-right: 0;">-</span>
+                            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
 
                             <input type="date"
                                    class="form-control"
@@ -47,10 +47,10 @@ use \Encore\Admin\Grid\Filter\Period;
 
             @if (!empty($periods[Period::CUSTOM_DATETIME]))
                 <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' hidden' }}">
-                    <div class="col-sm-8">
+                    <div class="col-8">
                         <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                             </div>
                             <input type="text"
                                    class="form-control"
@@ -61,7 +61,7 @@ use \Encore\Admin\Grid\Filter\Period;
                                    autocomplete="off"
                             />
 
-                            <span class="input-group-addon" style="border-left: 0; border-right: 0;">-</span>
+                            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
 
                             <input type="text"
                                    class="form-control"

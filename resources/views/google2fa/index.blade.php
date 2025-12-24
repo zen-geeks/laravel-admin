@@ -16,7 +16,7 @@
                     minlength="6"
                     maxlength="6"
                     required>
-            <button class="btn btn-default" type="submit">{{ trans('admin.ext.2fa.check_code') }}</button>
+            <button class="btn btn-secondary" type="submit">{{ trans('admin.ext.2fa.check_code') }}</button>
             @if($errors->has('code'))
                 <div class="invalid-feedback">
                     {{ $errors->first('code') }}

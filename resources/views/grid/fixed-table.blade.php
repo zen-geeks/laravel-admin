@@ -1,19 +1,19 @@
-<div class="box">
+<div class="card">
     @if(isset($title))
-    <div class="box-header with-border">
-        <h3 class="box-title"> {{ $title }}</h3>
+    <div class="card-header">
+        <h3 class="card-title"> {{ $title }}</h3>
     </div>
     @endif
 
     @if ( $grid->showTools() || $grid->showExportBtn() || $grid->showCreateBtn() )
-    <div class="box-header with-border">
-        <div class="pull-right">
+    <div class="card-header">
+        <div class="float-right">
             {!! $grid->renderColumnSelector() !!}
             {!! $grid->renderExportButton() !!}
             {!! $grid->renderCreateButton() !!}
         </div>
         @if ( $grid->showTools() )
-        <div class="pull-left">
+        <div class="float-left">
             {!! $grid->renderHeaderTools() !!}
         </div>
         @endif
@@ -24,8 +24,8 @@
 
     {!! $grid->renderHeader() !!}
 
-    <!-- /.box-header -->
-    <div class="box-body table-responsive no-padding">
+    <!-- /.card-header -->
+    <div class="card-body table-responsive no-padding">
         <div class="tables-container">
             <div class="table-wrap table-main">
                 <table class="table grid-table" id="{{ $grid->tableID }}">
@@ -118,10 +118,10 @@
 
     {!! $grid->renderFooter() !!}
 
-    <div class="box-footer clearfix">
+    <div class="card-footer clearfix">
         {!! $grid->paginator() !!}
     </div>
-    <!-- /.box-body -->
+    <!-- /.card-body -->
 </div>
 
 
@@ -156,12 +156,12 @@
 
     .table-fixed-left {
         left:0;
-        box-shadow: 7px 0 5px -5px rgba(0,0,0,.12);
+        card-shadow: 7px 0 5px -5px rgba(0,0,0,.12);
     }
 
     .table-fixed-right {
         right:0;
-        box-shadow: -5px 0 5px -5px rgba(0,0,0,.12);
+        card-shadow: -5px 0 5px -5px rgba(0,0,0,.12);
     }
 </style>
 
@@ -199,40 +199,28 @@
         $('.table-fixed-right tbody tr').eq(index).removeClass('active');
     });
 
-    $('.{{ $rowName }}-checkbox').iCheck({checkboxClass:'icheckbox_minimal-blue'}).on('ifChanged', function () {
+    $('.{{ $rowName }}-checkbox').on('change', function () {
 
         var id = $(this).data('id');
         var index = $(this).closest('tr').index();
 
         if (this.checked) {
-        $.admin.grid.select(id);
+            $.admin.grid.select(id);
             $('.table-main tbody tr').eq(index).css('background-color', '#ffffd5');
             $('.table-fixed-left tbody tr').eq(index).css('background-color', '#ffffd5');
             $('.table-fixed-right tbody tr').eq(index).css('background-color', '#ffffd5');
         } else {
-        $.admin.grid.unselect(id);
+            $.admin.grid.unselect(id);
             $('.table-main tbody tr').eq(index).css('background-color', '');
             $('.table-fixed-left tbody tr').eq(index).css('background-color', '');
             $('.table-fixed-right tbody tr').eq(index).css('background-color', '');
         }
-    }).on('ifClicked', function () {
-
-        var id = $(this).data('id');
-
-        if (this.checked) {
-            $.admin.grid.unselect(id);
-        } else {
-            $.admin.grid.select(id);
-        }
 
         var selected = $.admin.grid.selected().length;
 
-        if (selected > 0) {
-            $('.{{ $allName }}-btn').show();
-        } else {
-            $('.{{ $allName }}-btn').hide();
-        }
-
-        $('.{{ $allName }}-btn .selected').html("{{ trans('admin.grid_items_selected') }}".replace('{n}', selected));
+        $('.{{ $allName }}-btn').toggle(selected > 0);
+        $('.{{ $allName }}-btn .selected')
+            .html("{{ trans('admin.grid_items_selected') }}".replace('{n}', selected));
     });
+
 </script>

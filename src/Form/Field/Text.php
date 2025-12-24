@@ -12,7 +12,7 @@ class Text extends Field
     /**
      * @var string
      */
-    protected $icon = 'fa-pencil';
+    protected $icon = 'fa-pen';
 
     /**
      * @var bool
@@ -43,7 +43,7 @@ class Text extends Field
         $this->initPlainInput();
 
         if (!$this->withoutIcon) {
-            $this->prepend('<i class="fa '.$this->icon.' fa-fw"></i>');
+            $this->prepend('<i class="fas '.$this->icon.' fa-fw"></i>');
         }
         $this->defaultAttribute('type', 'text')
             ->defaultAttribute('id', $this->id)

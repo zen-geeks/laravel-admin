@@ -1,6 +1,6 @@
-<li>
+<li class="nav-item">
     <a href="javascript:void(0);" class="container-refresh">
-        <i class="fa fa-refresh"></i>
+        <i class="fas fa-refresh"></i>
     </a>
 </li>
 <script>

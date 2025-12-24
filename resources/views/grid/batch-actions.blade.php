@@ -1,7 +1,7 @@
 @if(!$holdAll)
 <div class="btn-group {{ $all }}-btn" style="display:none;margin-right: 5px;">
-    <a class="btn btn-sm btn-default hidden-xs"><span class="selected"></span></a>
-    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+    <a class="btn btn-sm btn-secondary d-none d-md-inline"><span class="selected"></span></a>
+    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
     </button>
@@ -9,9 +9,9 @@
     <ul class="dropdown-menu" role="menu">
         @foreach($actions as $action)
             @if($action instanceof \Encore\Admin\Actions\BatchAction)
-                <li>{!! $action->render() !!}</li>
+                <li class="dropdown-item">{!! $action->render() !!}</li>
             @else
-                <li><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li>
+                <li class="dropdown-item"><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li>
             @endif
         @endforeach
     </ul>
@@ -20,33 +20,35 @@
 @endif
 
 <script>
-$('.{{ $all }}').iCheck({checkboxClass:'icheckbox_minimal-blue'});
+    $('.{{ $all }}').on('change', function () {
 
-$('.{{ $all }}').on('ifChanged', function(event) {
-    if (this.checked) {
-        $('.{{ $row }}-checkbox').iCheck('check');
-    } else {
-        $('.{{ $row }}-checkbox').iCheck('uncheck');
-    }
-}).on('ifClicked', function () {
-    if (this.checked) {
-        $.admin.grid.selects = {};
-    } else {
-        $('.{{ $row }}-checkbox').each(function () {
-            var id = $(this).data('id');
-            $.admin.grid.select(id);
-        });
-    }
+        if (this.checked) {
+            $('.{{ $row }}-checkbox')
+                .prop('checked', true)
+                .trigger('change');
+        } else {
+            $('.{{ $row }}-checkbox')
+                .prop('checked', false)
+                .trigger('change');
+        }
 
-    var selected = $.admin.grid.selected().length;
+    }).on('click', function () {
 
-    if (selected > 0) {
-        $('.{{ $all }}-btn').show();
-    } else {
-        $('.{{ $all }}-btn').hide();
-    }
+        if (this.checked) {
+            $.admin.grid.selects = {};
+        } else {
+            $('.{{ $row }}-checkbox').each(function () {
+                var id = $(this).data('id');
+                $.admin.grid.select(id);
+            });
+        }
 
-    $('.{{ $all }}-btn .selected')
-        .html("{{ trans('admin.grid_items_selected') }}".replace('{n}', selected));
-});
+        var selected = $.admin.grid.selected().length;
+
+        $('.{{ $all }}-btn').toggle(selected > 0);
+
+        $('.{{ $all }}-btn .selected')
+            .html("{{ trans('admin.grid_items_selected') }}".replace('{n}', selected));
+    });
 </script>
+

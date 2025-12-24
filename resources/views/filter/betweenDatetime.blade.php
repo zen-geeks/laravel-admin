@@ -1,9 +1,9 @@
 <div class="form-group">
-    <label class="col-sm-2 control-label">{{$label}}</label>
-    <div class="col-sm-8" >
+    <label class="col-2 col-form-label">{{$label}}</label>
+    <div>
         <div class="input-group input-group-sm">
-            <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
             </div>
             <input type="text"
                    class="form-control"
@@ -14,7 +14,7 @@
                    autocomplete="off"
             />
 
-            <span class="input-group-addon" style="border-left: 0; border-right: 0;">-</span>
+            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
 
             <input type="text"
                    class="form-control"
