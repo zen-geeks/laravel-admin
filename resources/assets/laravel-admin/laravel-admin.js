@@ -1,20 +1,3 @@
-$.fn.editable.defaults.params = function (params) {
-    params._token = LA.token;
-    params._editable = 1;
-    params._method = 'PUT';
-    return params;
-};
-
-$.fn.editable.defaults.error = function (data) {
-    var msg = '';
-    if (data.responseJSON.errors) {
-        $.each(data.responseJSON.errors, function (k, v) {
-            msg += v + "\n";
-        });
-    }
-    return msg
-};
-
 toastr.options = {
     closeButton: true,
     progressBar: true,
