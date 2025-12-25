@@ -26,7 +26,7 @@ class LogOperation
             $data = self::cleanData($data);
 
             // exclude system fields to ensure the log is not empty
-            $log_data = is_array($data) ? Arr::except($data, ['_pjax', '_token', '_method', '_previous_']) : $data;
+            $log_data =  Arr::except($data, ['_pjax', '_token', '_method', '_previous_']);
             if (empty($log_data))
                 return $next($request);
 

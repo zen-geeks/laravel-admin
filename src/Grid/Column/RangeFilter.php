@@ -54,6 +54,9 @@ class RangeFilter extends Filter
         $options = [
             'locale'           => config('app.locale'),
             'allowInputToggle' => true,
+            'icons' => [
+                'time' => 'far fa-clock'
+            ],
         ];
 
         if ($this->type == 'date') {

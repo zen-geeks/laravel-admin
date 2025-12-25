@@ -1,0 +1,299 @@
+/* =====================================================
+   AdminLTE 3 – Skin Blue Light (AdminLTE 2 palette)
+   ===================================================== */
+
+/* ---------- HEADER / NAVBAR ---------- */
+
+.skin-blue-light {
+    --primary: #3c8dbc;
+    --info: #3c8dbc;
+
+    --blue: #3c8dbc;
+    --indigo: #3c8dbc;
+
+    --link-color: #3c8dbc;
+    --link-hover-color: #23527c;
+
+    --success: #00a65a;
+    --warning: #f39c12;
+    --danger: #dd4b39;
+    --secondary: #f4f4f4;
+
+    --light: #f9fafc;
+    --dark: #444444;
+
+    --dropdown-link-hover-bg: #e1e3e9;
+    --dropdown-link-hover-color: #333;
+}
+
+.skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.page-link):not(.dropdown-item>a) {
+    color: #3c8dbc;
+}
+
+.skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.dropdown-item>a):not(.page-link):hover,
+.skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.dropdown-item>a):not(.page-link):active {
+    color: #23527c;
+    text-decoration: none;
+}
+
+.skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.dropdown-item>a):not(.page-link):focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+    color: #72afd2;
+}
+
+.skin-blue-light .main-header.navbar {
+    background-color: #3c8dbc;
+}
+
+.skin-blue-light .main-header.navbar .nav-link {
+    color: #ffffff;
+}
+
+.skin-blue-light .main-header.navbar .nav-link:hover,
+.skin-blue-light .main-header.navbar .nav-link:focus,
+.skin-blue-light .main-header.navbar .nav-item.show .nav-link,
+.skin-blue-light .main-header.navbar .nav-link.active {
+    background: rgba(0, 0, 0, 0.1);
+    color: #f6f6f6;
+}
+
+.skin-blue-light .navbar-toggler {
+    color: #ffffff;
+}
+
+.skin-blue-light .navbar-toggler:hover {
+    background-color: #367fa9;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.skin-blue-light .brand-link {
+    background-color: #3c8dbc;
+    color: #ffffff;
+    border-bottom: 0;
+}
+
+.skin-blue-light .brand-link:hover {
+    background-color: #3b8ab8;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.skin-blue-light div.wrapper > .content-wrapper {
+    border-left: 1px solid #d2d6de;
+}
+
+.skin-blue-light .main-sidebar {
+    background-color: #f9fafc;
+}
+
+.skin-blue-light .elevation-4 {
+    box-shadow: none !important;
+}
+
+.skin-blue-light .user-panel,
+.skin-blue-light .user-panel a {
+    color: #444444;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
+
+/* ---------- SIDEBAR MENU ---------- */
+
+.skin-blue-light .nav-sidebar > .nav-item {
+    transition: border-left-color 0.3s ease;
+}
+
+.skin-blue-light .nav-sidebar > .nav-header {
+    color: #848484;
+    background: #f9fafc;
+}
+
+.skin-blue-light .nav-sidebar > .nav-item > .nav-link {
+    color: #444444;
+    font-weight: 600;
+    border-left: 3px solid transparent;
+}
+
+.skin-blue-light .nav-sidebar > .nav-item > .nav-link:hover,
+.skin-blue-light [class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link,
+.skin-blue-light [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link,
+.skin-blue-light [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus
+{
+    background: #f4f4f5;
+    color: #000000;
+}
+
+.skin-blue-light .nav-sidebar > .nav-item.menu-open > .nav-link,
+.skin-blue-light .nav-sidebar > .nav-item > .nav-link.active {
+    background: #f4f4f5;
+    color: #000000;
+    font-weight: 600;
+    border-left-color: #3c8dbc;
+}
+
+
+/* ---------- TREEVIEW ---------- */
+
+.skin-blue-light .nav-treeview {
+    background: #f4f4f5;
+}
+
+.skin-blue-light .nav-treeview > .nav-item > .nav-link {
+    color: #777777;
+}
+
+.skin-blue-light .nav-treeview > .nav-item > .nav-link:hover,
+.skin-blue-light .nav-treeview > .nav-item > .nav-link.active {
+    color: #000000;
+    font-weight: 600;
+}
+
+
+/* ---------- SIDEBAR SEARCH ---------- */
+
+.skin-blue-light .form-control-sidebar,
+.skin-blue-light .btn-sidebar {
+    background-color: #ffffff;
+    border: 1px solid #d2d6de;
+    box-shadow: none;
+    height: 35px;
+}
+
+.skin-blue-light .form-control-sidebar:focus {
+    background-color: #ffffff;
+    color: #666;
+}
+
+.skin-blue-light .btn-sidebar {
+    color: #999;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.skin-blue-light .main-footer {
+    border-top-color: #d2d6de;
+}
+
+
+/* ---------- TOP NAV LAYOUT ---------- */
+
+.skin-blue-light.layout-top-nav .brand-link {
+    background-color: #3c8dbc;
+    color: #ffffff;
+}
+
+.skin-blue-light.layout-top-nav .brand-link:hover {
+    background-color: #3b8ab8;
+}
+
+
+
+.skin-blue-light tr.bg-warning {
+    background-color: rgb(255, 255, 213) !important;
+}
+
+.skin-blue-light .btn-instagram {
+    color: #fff;
+    background-color: #3f729b;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.skin-blue-light .btn-instagram:focus, .skin-blue-light .btn-instagram.focus {
+    color: #fff;
+    background-color: #305777;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.skin-blue-light .dropdown-menu label {
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.skin-blue-light .btn-primary {
+    color: #fff;
+    background-color: #1087dd;
+}
+
+.skin-blue-light .btn-primary:hover {
+    color: #fff;
+    background-color: #2795e9;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.skin-blue-light .dropdown-item:focus,
+.skin-blue-light .dropdown-item:hover,
+.skin-blue-light .dropdown-item:focus a,
+.skin-blue-light .dropdown-item:hover a
+{
+    background-color: #e1e3e9;
+    color: #333;
+}
+
+.skin-blue-light .btn-secondary {
+    background-color: #f4f4f4;
+    color: #444 !important;
+    border-color: #ddd;
+}
+
+.skin-blue-light .btn-secondary.focus,
+.skin-blue-light .btn-secondary:focus,
+.skin-blue-light .btn-secondary:hover
+{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+
+.skin-blue-light .filter-card .form-group input:not([type="checkbox"]):not([type="radio"]),
+.skin-blue-light .filter-card .form-group select,
+.skin-blue-light .filter-card .form-group textarea,
+.skin-blue-light .filter-card .form-group .input-group-text,
+.skin-blue-light .filter-card .form-group .select2 {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.skin-blue-light .filter-card .form-control,
+.skin-blue-light .filter-card .input-group-text
+{
+    height: 30px;
+    padding: 5px 10px;
+}
+
+.skin-blue-light .filter-card .select2-container--default .select2-selection--multiple {
+    min-height: 32px;
+}
+
+.skin-blue-light .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    padding: 1px 10px;
+    color: #fff;
+}
+
+.skin-blue-light .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #3c8dbc;
+    color: white;
+}
+
+.skin-blue-light .content-header>.breadcrumb>li>a {
+    color: #444;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.skin-blue-light .card-info:not(.card-outline)>.card-header {
+    background-color: transparent;
+    color: #444;
+}
+
+.skin-blue-light .form-horizontal .form-check-inline
+{
+    padding-top: 7px;
+}

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-light-primary elevation-4">
 
     <a href="{{ admin_url('/') }}" class="brand-link">
         <img src="{!! config('admin.logo-mini-path', '/vendor/laravel-admin/AdminLTE/dist/img/AdminLTELogo.png') !!}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

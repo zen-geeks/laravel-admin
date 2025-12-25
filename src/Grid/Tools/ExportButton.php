@@ -78,11 +78,11 @@ SCRIPT;
     <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
         <span class="sr-only">Toggle Dropdown</span>
     </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="{$this->grid->getExportUrl('all')}" target="_blank">{$trans['all']}</a>
-        <a class="dropdown-item" href="{$this->grid->getExportUrl('page', $page)}" target="_blank">{$trans['current_page']}</a>
-        <a class="dropdown-item {$this->grid->getExportSelectedName()}" href="{$this->grid->getExportUrl('selected', '__rows__')}" target="_blank">{$trans['selected_rows']}</a>
-    </div>
+    <ul class="dropdown-menu dropdown-menu-right">
+        <li class="dropdown-item"><a href="{$this->grid->getExportUrl('all')}" target="_blank">{$trans['all']}</a></li>
+        <li class="dropdown-item"><a href="{$this->grid->getExportUrl('page', $page)}" target="_blank">{$trans['current_page']}</a></li>
+        <li class="dropdown-item"><a class="{$this->grid->getExportSelectedName()}" href="{$this->grid->getExportUrl('selected', '__rows__')}" target="_blank">{$trans['selected_rows']}</a></li>
+    </ul>
 </div>
 EOT;
     }

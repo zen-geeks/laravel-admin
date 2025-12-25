@@ -16,7 +16,7 @@
     <div class="card-footer">
         <div class="col-md-{{$width['label']}}"></div>
 
-        <div class="col-md-{{$width['field']}}">
+        <div class="col-md-{{$width['field']}} container">
             @if(in_array('reset', $buttons))
             <div class="btn-group float-left">
                 <button type="reset" class="btn btn-warning float-right">{{ trans('admin.reset') }}</button>

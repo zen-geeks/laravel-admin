@@ -17,5 +17,5 @@
     <div class="input-group-prepend">
         <span class="input-group-text"><i class="fas fa-calendar"></i></span>
     </div>
-    <input class="form-control" id="{{$id}}" placeholder="{{$label}}" name="{{$name}}" value="{{ request($name, $value) }}">
+    <input class="form-control datetimepicker-input" id="{{$id}}" placeholder="{{$label}}" name="{{$name}}" value="{{ request($name, $value) }}" data-toggle="datetimepicker" data-target="#{{$id}}">
 </div>

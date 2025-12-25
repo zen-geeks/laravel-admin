@@ -53,23 +53,27 @@ use \Encore\Admin\Grid\Filter\Period;
                                 <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                             </div>
                             <input type="text"
-                                   class="form-control"
+                                   class="form-control datetimepicker-input"
                                    id="{{$name}}_start"
                                    placeholder="{{$label}} start"
                                    name="{{$name}}[{{Period::CUSTOM_DATETIME}}][start]"
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATETIME.'.start', \Illuminate\Support\Arr::get($value, 'start')) }}"
                                    autocomplete="off"
+                                   data-toggle="datetimepicker"
+                                   data-target="#{{$name}}_start"
                             />
 
                             <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
 
                             <input type="text"
-                                   class="form-control"
+                                   class="form-control datetimepicker-input"
                                    id="{{$name}}_end"
                                    placeholder="{{$label}} end"
                                    name="{{$name}}[{{Period::CUSTOM_DATETIME}}][end]"
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATETIME.'.end', \Illuminate\Support\Arr::get($value, 'end')) }}"
                                    autocomplete="off"
+                                   data-toggle="datetimepicker"
+                                   data-target="#{{$name}}_end"
                             />
                         </div>
                     </div>
