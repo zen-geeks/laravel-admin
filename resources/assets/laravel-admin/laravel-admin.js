@@ -91,14 +91,13 @@ $(document).click(function () {
 });
 
 $(function () {
-    $('.sidebar-menu li:not(.treeview) > a').on('click', function () {
-        var $parent = $(this).parent().addClass('active');
-        $parent.siblings('.treeview.active').find('> a').trigger('click');
-        $parent.siblings().removeClass('active').find('li').removeClass('active');
+    $('.nav-sidebar').on('click', '.nav-item:not(.has-treeview) > .nav-link', function () {
+        $('li.nav-item.active').removeClass('active');
+        $(this).parent('li.nav-item').addClass('active');
     });
-    var menu = $('.sidebar-menu li > a[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
-    menu.parents('ul.treeview-menu').addClass('menu-open');
-    menu.parents('li.treeview').addClass('active');
+    var menu = $('.nav-sidebar a.nav-link[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
+    menu.parents('.has-treeview').addClass('menu-open');
+    menu.parent('li.nav-item').addClass('active');
 
     $('[data-toggle="popover"]').popover();
 

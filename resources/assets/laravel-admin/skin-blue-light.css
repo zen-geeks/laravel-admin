@@ -306,3 +306,12 @@
 {
     padding-top: 7px;
 }
+
+.skin-blue-light .nav-treeview>.nav-item.active > .nav-link {
+    font-weight: 600;
+}
+
+.skin-blue-light .nav-treeview>.nav-item.active > .nav-link,
+.skin-blue-light .nav-treeview>.nav-item > .nav-link:hover {
+    color: #000;
+}
