@@ -200,3 +200,7 @@ body {
 .no-margin {
     margin: 0 !important;
 }
+
+.kv-options-table td.form-group {
+    white-space: nowrap;
+}

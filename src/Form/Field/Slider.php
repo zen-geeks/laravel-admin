@@ -7,9 +7,11 @@ use Encore\Admin\Form\Field;
 class Slider extends Field
 {
     protected static $css = [
+        '/vendor/laravel-admin/AdminLTE/plugins/ion-rangeslider/css/ion.rangeSlider.min.css',
     ];
 
     protected static $js = [
+        '/vendor/laravel-admin/AdminLTE/plugins/ion-rangeslider/js/ion.rangeSlider.min.js',
     ];
 
     protected $options = [
