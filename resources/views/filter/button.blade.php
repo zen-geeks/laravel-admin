@@ -1,4 +1,4 @@
-<div class="btn-group float-right" style="margin-right: 5px">
+<div class="btn-group" style="margin-right: 5px">
     <button class="btn btn-primary btn-sm btn-dropbox {{ $btn_class }} {{ $expand ? 'active' : '' }}" title="{{ trans('admin.filter') }}">
         <input type="checkbox" class="d-none "><i class="fas fa-filter"></i><span class="d-none d-md-inline">&nbsp;&nbsp;{{ trans('admin.filter') }}</span>
     </button>

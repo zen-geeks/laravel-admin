@@ -452,7 +452,7 @@
     font-size: inherit;
 }
 
-.skin-blue-light .form-control,
+.skin-blue-light .form-control:not(textarea),
 .skin-blue-light .select2-container {
     height: 35px;
 }
@@ -634,4 +634,45 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 
 .skin-blue-light.sidebar-mini.sidebar-collapse aside.elevation-4 {
     box-shadow: 0 50px 10px rgba(0, 0, 0, .22) !important;
+}
+
+.skin-blue-light .badge {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.skin-blue-light .bg-default {
+    background-color: #d2d6de;
+    color: #444
+}
+
+.checkbox, .radio {
+    position: relative;
+    display: block;
+}
+
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400 !important;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    position: absolute;
+    margin: 4px 0 0 -20px;
+    line-height: normal;
+    padding: 0;
 }

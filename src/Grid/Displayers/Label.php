@@ -26,9 +26,6 @@ class Label extends AbstractDisplayer
                 }
             }
 
-            if ($style === 'default')
-                $style = 'primary';
-            
             return "<span class='badge bg-{$style}'>$item</span>";
         })->implode('&nbsp;');
     }
