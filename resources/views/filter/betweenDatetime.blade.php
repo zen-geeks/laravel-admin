@@ -1,9 +1,9 @@
 <div class="form-group row">
-    <label class="col-2 col-form-label">{{$label}}</label>
-    <div class="col-8">
+    <label class="col-12 col-md-2 col-form-label">{{$label}}</label>
+    <div class="col-12 col-md-8">
         <div class="input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                <span class="input-group-text"><i class="far fa-calendar"></i></span>
             </div>
             <input type="text"
                    class="form-control datetimepicker-input"

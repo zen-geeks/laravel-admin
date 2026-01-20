@@ -9,6 +9,6 @@
         </h4>
         <p><a style="cursor: pointer;" onclick="$('#laravel-admin-exception-trace').toggleClass('d-none');$('i', this).toggleClass('fa-angle-double-down fa-angle-double-up');"><i class="fas fa-angle-double-down"></i>&nbsp;&nbsp;{!! $error->first('message') !!}</a></p>
 
-        <p class="hidden" id="laravel-admin-exception-trace"><br>{!! nl2br($error->first('trace')) !!}</p>
+        <p class="d-none" id="laravel-admin-exception-trace"><br>{!! nl2br($error->first('trace')) !!}</p>
     </div>
 @endif

@@ -4,11 +4,11 @@ use \Encore\Admin\Grid\Filter\Period;
 
 ?>
 <div class="form-group row">
-    <label class="col-2 col-form-label">{{$label}}</label>
-    <div class="col-8">
+    <label class="col-12 col-md-2 col-form-label">{{$label}}</label>
+    <div class="col-12 col-md-8">
         <div class="row">
 
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <select class="form-control" name="{{$name}}[type]" id="{{$name}}_type">
                     <option value="">{{ __('admin.choose') }}</option>
                     @foreach($periods as $period_key => $period_name)
@@ -21,10 +21,10 @@ use \Encore\Admin\Grid\Filter\Period;
 
             @if (!empty($periods[Period::CUSTOM_DATE]))
                 <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' d-none' }}">
-                    <div class="col-8">
+                    <div class="col-12 col-md-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <span class="input-group-text"><i class="far fa-calendar"></i></span>
                             </div>
                             <input type="date"
                                    class="form-control"
@@ -47,10 +47,10 @@ use \Encore\Admin\Grid\Filter\Period;
 
             @if (!empty($periods[Period::CUSTOM_DATETIME]))
                 <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' d-none' }}">
-                    <div class="col-8">
+                    <div class="col-12 col-md-8">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             </div>
                             <input type="text"
                                    class="form-control datetimepicker-input"

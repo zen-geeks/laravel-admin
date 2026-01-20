@@ -65,7 +65,7 @@ class Html extends Field
         $viewClass = $this->getViewElementClasses();
 
         return <<<EOT
-<div class="{$viewClass['form-group']} 234">
+<div class="{$viewClass['form-group']}">
     <label  class="{$viewClass['label']} col-form-label">{$this->label}</label>
     <div class="{$viewClass['field']}">
         {$this->html}

@@ -54,7 +54,7 @@
 
 .column-selector .dropdown-menu label {
     width: 100%;
-    padding: 3px;
+    padding: 0 0 3px 14px;
 }
 </style>
 

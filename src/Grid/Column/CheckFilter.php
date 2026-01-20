@@ -75,7 +75,7 @@ SCRIPT;
 
             return <<<HTML
 <li class="checkbox icheck" style="margin: 0;">
-    <label style="width: 100%;padding: 3px;">
+    <label style="width: 100%;">
         <input type="checkbox" class="{$this->class['item']}" name="{$this->getColumnName()}[]" value="{$key}" {$checked}/>&nbsp;&nbsp;&nbsp;{$label}
     </label>
 </li>
@@ -98,7 +98,7 @@ HTML;
         <li>
             <ul style='padding: 0;'>
             <li class="checkbox icheck" style="margin: 0;">
-                <label style="width: 100%;padding: 3px;">
+                <label style="width: 100%;">
                     <input type="checkbox" class="{$this->class['all']}" {$allCheck}/>&nbsp;&nbsp;&nbsp;{$this->trans('all')}
                 </label>
             </li>

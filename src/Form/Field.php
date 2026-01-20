@@ -1210,8 +1210,8 @@ class Field implements Renderable
     {
         if ($this->horizontal) {
             return [
-                'label'      => "col-{$this->width['label']} {$this->getLabelClass()}",
-                'field'      => "col-{$this->width['field']}",
+                'label'      => "col-12 col-md-{$this->width['label']} {$this->getLabelClass()}",
+                'field'      => "col-12 col-md-{$this->width['field']}",
                 'form-group' => $this->getGroupClass(true),
             ];
         }

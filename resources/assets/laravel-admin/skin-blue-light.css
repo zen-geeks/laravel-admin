@@ -329,11 +329,6 @@
 
 /* ---------- BUTTONS ---------- */
 
-.skin-blue-light .btn-group,
-.skin-blue-light .btn {
-    font-size: 12px;
-}
-
 .skin-blue-light .btn-primary {
     color: #fff;
     background-color: #3c8dbc;
@@ -416,6 +411,11 @@
     color: #fff;
     background-color: #305777;
     border-color: rgba(0, 0, 0, 0.2);
+}
+
+.skin-blue-light .btn-group,
+.skin-blue-light .btn {
+    font-size: 12px;
 }
 
 /* ---------- DROPDOWNS ---------- */
@@ -583,6 +583,10 @@
     border-color: #ddd;
 }
 
+.skin-blue-light .text-yellow {
+    color: #f39c12 !important;
+}
+
 /* ---------- SIDEBAR WIDTH / OFFSETS ---------- */
 
 body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .main-sidebar {
@@ -661,7 +665,7 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 
 .checkbox label, .radio label {
     min-height: 20px;
-    padding-left: 20px;
+    padding-left: 10px;
     margin-bottom: 0;
     font-weight: 400 !important;
     cursor: pointer;
@@ -672,7 +676,26 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     position: absolute;
-    margin: 4px 0 0 -20px;
+    margin: 4px 0 0 -10px;
     line-height: normal;
     padding: 0;
 }
+
+.skin-blue-light .input-group .input-group-text {
+    border-color: #d2d6de;
+    background-color: #fff;
+}
+
+.skin-blue-light .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.skin-blue-light .table-bordered>thead>tr>th,
+.skin-blue-light .table-bordered>tbody>tr>th,
+.skin-blue-light .table-bordered>tfoot>tr>th,
+.skin-blue-light .table-bordered>thead>tr>td,
+.skin-blue-light .table-bordered>tbody>tr>td,
+.skin-blue-light .table-bordered>tfoot>tr>td {
+    border: 1px solid #f4f4f4;
+}
+

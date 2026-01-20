@@ -113,7 +113,7 @@ class Column implements Buildable
     {
         // get class name using width array
         $classnName = collect($this->width)->map(function ($value, $key) {
-            return "col-$key-$value";
+            return "col-12 col-$key-$value";
         })->implode(' ');
 
         echo "<div class=\"{$classnName}\">";
