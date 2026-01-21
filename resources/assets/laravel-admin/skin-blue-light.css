@@ -457,7 +457,10 @@
     font-size: inherit;
 }
 
-.skin-blue-light .form-control:not(textarea),
+.skin-blue-light .form-control:not(textarea) {
+    height: 35px;
+}
+
 .skin-blue-light .select2-container {
     min-height: 35px;
 }
