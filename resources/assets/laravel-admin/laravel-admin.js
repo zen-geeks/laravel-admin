@@ -220,4 +220,15 @@ $('#totop').on('click', function (e) {
         return $.when.apply($, _arr);
     }
 
+    function initTooltips() {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    $(function () {
+        initTooltips();
+    });
+
+    $(document).on('pjax:end', function () {
+        initTooltips();
+    });
 })(jQuery);

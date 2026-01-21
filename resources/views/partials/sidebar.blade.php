@@ -44,7 +44,7 @@
         @endif
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                 @each('admin::partials.menu', Admin::menu(), 'item')
             </ul>
         </nav>

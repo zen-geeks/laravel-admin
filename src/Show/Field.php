@@ -202,7 +202,7 @@ class Field implements Renderable
     public function check()
     {
         return $this->unescape()->as(function ($val) {
-            return is_null($val) ? '<i class="fas fa-check text-gray"></i>' : ($val ? '<i class="fas fa-check text-green"></i>' : '<i class="fas fa-close text-red"></i>');
+            return is_null($val) ? '<i class="fas fa-check text-gray"></i>' : ($val ? '<i class="fas fa-check text-green"></i>' : '<i class="fas fa-times text-red"></i>');
         });
     }
 
