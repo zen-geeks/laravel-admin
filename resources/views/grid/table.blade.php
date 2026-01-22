@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card card-default">
     @if(isset($title))
         <div class="card-header">
             <h3 class="card-title">{{ $title }}</h3>

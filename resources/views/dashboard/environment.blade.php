@@ -1,5 +1,5 @@
 <div class="card card-default">
-    <div class="card-header">
+    <div class="card-header with-border">
         <h3 class="card-title">Environment</h3>
 
         <div class="card-tools float-right">

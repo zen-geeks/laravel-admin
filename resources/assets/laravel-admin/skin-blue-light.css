@@ -28,6 +28,10 @@
 
 /* ---------- BASE / LINKS / LAYOUT ---------- */
 
+.skin-blue-light h4 {
+    font-size: 18px;
+}
+
 .skin-blue-light section.content {
     padding: 7.5px;
 }
@@ -135,8 +139,7 @@
 .skin-blue-light .table > tbody > tr > th,
 .skin-blue-light .table > tfoot > tr > td,
 .skin-blue-light .table > tfoot > tr > th,
-.skin-blue-light .table > thead > tr > td,
-.skin-blue-light .table > thead > tr > th {
+.skin-blue-light .table > thead > tr > td {
     padding: 8px;
     line-height: 1.42857143;
     border-top: 1px solid #f4f4f4;
@@ -144,6 +147,8 @@
 
 .skin-blue-light .table > thead > tr > th {
     border-bottom: 2px solid #f4f4f4;
+    padding: 8px;
+    line-height: 1.42857143;
 }
 
 .skin-blue-light .card-body.p-0 .table tbody > tr > td:first-of-type,
@@ -152,7 +157,7 @@
 .skin-blue-light .card-body.p-0 .table tfoot > tr > th:first-of-type,
 .skin-blue-light .card-body.p-0 .table thead > tr > td:first-of-type,
 .skin-blue-light .card-body.p-0 .table thead > tr > th:first-of-type {
-    padding-left: 10px;
+    padding: 8px;
 }
 
 .skin-blue-light tr.bg-warning {
@@ -164,6 +169,7 @@
 
 .skin-blue-light div.wrapper > .content-wrapper {
     border-left: 1px solid #d2d6de;
+    background-color: #ecf0f5;
 }
 
 .skin-blue-light .main-sidebar {
@@ -283,7 +289,7 @@
     background-color: #ffffff;
     border: 1px solid #d2d6de;
     box-shadow: none;
-    height: 35px;
+    /*height: 35px;*/
 }
 
 .skin-blue-light .form-control-sidebar:focus {
@@ -458,11 +464,11 @@
 }
 
 .skin-blue-light .form-control:not(textarea) {
-    height: 35px;
+    height: 34px;
 }
 
 .skin-blue-light .select2-container {
-    min-height: 35px;
+    /*min-height: 35px;*/
 }
 
 .skin-blue-light .input-group-prepend .fa-fw {
@@ -520,6 +526,13 @@
 .skin-blue-light .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: #3c8dbc;
     color: white;
+}
+
+.skin-blue-light .select2-container--default .select2-selection--single, .skin-blue-light .select2-selection .select2-selection--single {
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    padding: 6px 12px;
+    height: 34px;
 }
 
 /* ---------- CARDS ---------- */
@@ -804,7 +817,104 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     margin-right: 3px;
     margin-top: -3px;
 }
-.skin-blue-light .form-check {
-    padding-left: 0;
-    margin-left: -5px;
+
+
+.skin-blue-light .content-header h1>small {
+    font-size: 15px;
+    display: inline-block;
+    padding-left: 4px;
+    font-weight: 300;
+}
+
+.skin-blue-light .card {
+    word-wrap: normal;
+}
+
+.skin-blue-light .card-body {
+    padding: 10px;
+}
+
+.skin-blue-light .card.card-default {
+    border-top: 3px solid #d2d6de;
+}
+
+.skin-blue-light .main-header .user-image{
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
+.skin-blue-light .container-refresh {
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.skin-blue-light .card-header {
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.skin-blue-light .card-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    margin-right: 0;
+}
+
+.skin-blue-light .box-header {
+    color: #444;
+}
+
+.skin-blue-light .card.card-info {
+    border-top: 3px solid #00c0ef;
+}
+
+.skin-blue-light .card.card-solid.card-default {
+    border: none;
+}
+
+.skin-blue-light .card-header .card-title {
+    line-height: 1;
+}
+
+.skin-blue-light .card-header.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.skin-blue-light .form-group {
+    margin-bottom: 15px;
+    padding-right: 30px;
+}
+
+.skin-blue-light label.col-form-label {
+    padding-top: 7px;
+    padding-bottom: 0;
+    margin-right: 15px;
+}
+
+.skin-blue-light th .dropdown-toggle::after {
+    content: none;
+}
+
+.skin-blue-light .swal2-icon {
+    margin: 0 auto;
+}
+
+.skin-blue-light .swal2-title {
+    font-size: 1.875em;
+}
+
+.skin-blue-light .card.filter-card {
+    box-shadow: none;
+}
+
+.skin-blue-light .card.filter-card .card-body.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.skin-blue-light .card.filter-card .card-footer {
+    background-color: transparent;
 }

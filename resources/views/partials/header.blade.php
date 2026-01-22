@@ -18,7 +18,7 @@
 
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ Admin::user()->avatar }}" class="user-image img-circle elevation-2" alt="User Image">
+                <img src="{{ Admin::user()->avatar }}" class="user-image img-circle" alt="User Image">
                 <span class="d-none d-md-inline">{{ Admin::user()->name }}</span>
             </a>
 
@@ -31,8 +31,12 @@
                     </p>
                 </li>
                 <li class="user-footer">
-                    <a href="{{ admin_url('auth/setting') }}" class="btn btn-default btn-flat">{{ trans('admin.setting') }}</a>
-                    <a href="{{ admin_url('auth/logout') }}" class="btn btn-default btn-flat float-right">{{ trans('admin.logout') }}</a>
+                    <div class="pull-left">
+                        <a href="{{ admin_url('auth/setting') }}" class="btn btn-default btn-flat">{{ trans('admin.setting') }}</a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="{{ admin_url('auth/logout') }}" class="btn btn-default btn-flat float-right">{{ trans('admin.logout') }}</a>
+                    </div>
                 </li>
             </ul>
         </li>

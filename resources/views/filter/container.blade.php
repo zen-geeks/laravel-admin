@@ -1,7 +1,7 @@
-<div class="card card-info {{ $expand ? '' : 'd-none' }} filter-card" id="{{ $filterID }}">
+<div class="card {{ $expand ? '' : 'd-none' }} filter-card" id="{{ $filterID }}">
     <form action="{!! $action !!}" class="form-horizontal" pjax-container method="get">
 
-        <div class="card-body">
+        <div class="card-body with-border">
             <div class="row">
                 @foreach($layout->columns() as $column)
                     <div class="col-md-{{ $column->width() }}">
