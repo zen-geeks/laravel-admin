@@ -4,7 +4,7 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-12 col-lg-4">
                     <h1 class="m-0">
                         {!! $header ?: trans('admin.title') !!}
                         @if($description)
@@ -13,9 +13,9 @@
                     </h1>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-md-12 col-lg-8 breadcrumb-container">
                     @if ($breadcrumb)
-                        <ol class="breadcrumb float-sm-right">
+                        <ol class="breadcrumb float-lg-right">
                             <li class="breadcrumb-item">
                                 <a href="{{ admin_url('/') }}">
                                     <i class="fas fa-home"></i> {{ __('Home') }}
@@ -49,7 +49,7 @@
                             @endforeach
                         </ol>
                     @elseif(config('admin.enable_default_breadcrumb'))
-                        <ol class="breadcrumb float-sm-right">
+                        <ol class="breadcrumb float-lg-right">
                             <li class="breadcrumb-item">
                                 <a href="{{ admin_url('/') }}">
                                     <i class="fas fa-home"></i> {{ __('Home') }}

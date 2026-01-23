@@ -922,3 +922,21 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 .skin-blue-light .card.filter-card .card-footer {
     background-color: transparent;
 }
+
+@media (max-width: 991px) {
+    .skin-blue-light .content-header ol.breadcrumb {
+        position: relative;
+        margin-top: 5px;
+        top: 0;
+        right: 0;
+        float: none;
+        background: #d2d6de;
+        padding-left: 10px;
+        margin-right: -7px;
+        margin-bottom: 7px;
+    }
+
+    .skin-blue-light .breadcrumb-item + .breadcrumb-item::before {
+        color: #97a0b3;
+    }
+}
