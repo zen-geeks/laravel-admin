@@ -913,6 +913,8 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 
 .skin-blue-light .card.filter-card {
     box-shadow: none;
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 0;
 }
 
 .skin-blue-light .card.filter-card .card-body.with-border {
@@ -939,4 +941,10 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     .skin-blue-light .breadcrumb-item + .breadcrumb-item::before {
         color: #97a0b3;
     }
+}
+
+.skin-blue-light .sidebar-form .btn {
+    border-left: none;
+    background-color: #ffffff;
+    border-color: #d2d6de;
 }

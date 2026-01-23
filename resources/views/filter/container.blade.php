@@ -17,7 +17,7 @@
 
         <div class="card-footer">
             <div class="row">
-                <div class="col-lg-{{ $layout->columns()->first()->width() }} container">
+                <div class="col-lg-10 container">
                     <div class="d-flex">
                         <div class="btn-group mr-2">
                             <button class="btn btn-info btn-sm submit">

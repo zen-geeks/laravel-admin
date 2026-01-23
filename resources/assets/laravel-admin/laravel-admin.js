@@ -231,4 +231,8 @@ $('#totop').on('click', function (e) {
     $(document).on('pjax:end', function () {
         initTooltips();
     });
+
+    $('[data-widget="sidebar-search"]').SidebarSearch({
+        highlightClass: 'text-primary'
+    });
 })(jQuery);
