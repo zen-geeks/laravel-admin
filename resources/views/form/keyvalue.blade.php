@@ -21,7 +21,7 @@
                 <tr>
                     <td>
                         <div class="form-group {{ $errors->has($keysErrorKey) ? 'has-error' : '' }}">
-                            <div class="col-12">
+                            <div class="col-md-12">
                                 <input name="{{ $name }}[keys][]" value="{{ old("{$column}.keys.{$k}", $k) }}" class="form-control" required/>
 
                                 @if($errors->has($keysErrorKey))
@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <div class="form-group {{ $errors->has($valsErrorKey) ? 'has-error' : '' }}">
-                            <div class="col-12">
+                            <div class="col-md-12">
                                 <input name="{{ $name }}[values][]" value="{{ old("{$column}.values.{$k}", $v) }}" class="form-control" />
                                 @if($errors->has($valsErrorKey))
                                     @foreach($errors->get($valsErrorKey) as $message)
@@ -72,14 +72,14 @@
         <tr>
             <td>
                 <div class="form-group  ">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <input name="{{ $name }}[keys][]" class="form-control" required/>
                     </div>
                 </div>
             </td>
             <td>
                 <div class="form-group  ">
-                    <div class="col-12">
+                    <div class="col-md-12">
                         <input name="{{ $name }}[values][]" class="form-control" />
                     </div>
                 </div>

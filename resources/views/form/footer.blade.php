@@ -2,10 +2,10 @@
 
     {{ csrf_field() }}
 
-    <div class="col-md-{{$width['label']}}">
+    <div class="col-lg-{{$width['label']}}">
     </div>
 
-    <div class="col-md-{{$width['field']}} container">
+    <div class="col-lg-{{$width['field']}} container">
 
         @if(in_array('submit', $buttons))
         <div class="btn-group float-right">

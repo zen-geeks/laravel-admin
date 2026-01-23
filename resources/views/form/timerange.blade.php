@@ -7,14 +7,14 @@
         @include('admin::form.error')
 
         <div class="row" style="width: 370px">
-            <div class="col-lg-6">
+            <div class="col-xl-6">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar"></i></span></div>
                     <input type="text" name="{{$name['start']}}" value="{{ old($column['start'], $value['start'] ?? null) }}" class="form-control {{$class['start']}}" autocomplete="off" style="width: 150px" {!! $attributes !!} />
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-xl-6">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar"></i></span></div>
                     <input type="text" name="{{$name['end']}}" value="{{ old($column['end'], $value['end'] ?? null) }}" class="form-control {{$class['end']}}" autocomplete="off" style="width: 150px" {!! $attributes !!} />

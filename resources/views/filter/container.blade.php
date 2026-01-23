@@ -4,7 +4,7 @@
         <div class="card-body with-border">
             <div class="row">
                 @foreach($layout->columns() as $column)
-                    <div class="col-md-{{ $column->width() }}">
+                    <div class="col-lg-{{ $column->width() }}">
                         <div class="fields-group">
                             @foreach($column->filters() as $filter)
                                 {!! $filter->render() !!}
@@ -17,7 +17,7 @@
 
         <div class="card-footer">
             <div class="row">
-                <div class="col-md-10 container">
+                <div class="col-lg-{{ $layout->columns()->first()->width() }} container">
                     <div class="d-flex">
                         <div class="btn-group mr-2">
                             <button class="btn btn-info btn-sm submit">

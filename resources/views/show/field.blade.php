@@ -1,6 +1,6 @@
 <div class="form-group row">
-    <label class="col-{{$width['label']}} col-form-label">{{ $label }}</label>
-    <div class="col-{{$width['field']}}">
+    <label class="col-md-{{$width['label']}} col-form-label">{{ $label }}</label>
+    <div class="col-md-{{$width['field']}}">
         @if($wrapped)
         <div class="card card-solid card-default no-margin card-show">
             <!-- /.card-header -->

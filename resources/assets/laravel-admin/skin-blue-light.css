@@ -735,6 +735,10 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     justify-content: normal;
 }
 
+.skin-blue-light.login-page .form-group {
+    padding-right: 0;
+}
+
 .skin-blue-light .login-logo a, .skin-blue-light .register-logo a {
     color: #444 !important;
 }
@@ -830,7 +834,7 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     word-wrap: normal;
 }
 
-.skin-blue-light .card-body {
+.skin-blue-light:not(.login-page) .card-body {
     padding: 10px;
 }
 

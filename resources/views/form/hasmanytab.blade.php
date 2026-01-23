@@ -14,8 +14,8 @@
 </style>
 <div id="has-many-{{$column}}" class="nav-tabs-custom has-many-{{$column}}">
     <div class="row header">
-        <div class="col-md-2 {{$viewClass['label']}}"><h4 class="float-right">{{ $label }}</h4></div>
-        <div class="col-md-8 {{$viewClass['field']}}">
+        <div class="col-lg-2 {{$viewClass['label']}}"><h4 class="float-right">{{ $label }}</h4></div>
+        <div class="col-lg-8 {{$viewClass['field']}}">
             <button type="button" class="btn btn-secondary btn-sm add"><i class="fas fa-plus-circle" style="font-size: large;"></i></button>
         </div>
     </div>
