@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card card-default">
 
     <div class="card-header">
 

@@ -17,20 +17,25 @@
 
         <div class="card-footer">
             <div class="row">
-                <div class="col-lg-10 container">
-                    <div class="d-flex">
-                        <div class="btn-group mr-2">
-                            <button class="btn btn-info btn-sm submit">
-                                <i class="fas fa-search"></i>&nbsp;{{ trans('admin.search') }}
-                            </button>
-                        </div>
-                        <div class="btn-group">
-                            <a href="{!! $action !!}" class="btn btn-secondary btn-sm">
-                                <i class="fas fa-undo"></i>&nbsp;{{ trans('admin.reset') }}
-                            </a>
+                @foreach($layout->columns() as $column)
+                    <div class="col-lg-{{ $column->width() }}">
+                        <div class="col-lg-10 offset-lg-2">
+                            <div class="d-flex">
+                                <div class="btn-group mr-2">
+                                    <button class="btn btn-info btn-sm submit">
+                                        <i class="fas fa-search"></i>&nbsp;{{ trans('admin.search') }}
+                                    </button>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="{!! $action !!}" class="btn btn-secondary btn-sm">
+                                        <i class="fas fa-undo"></i>&nbsp;{{ trans('admin.reset') }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @break
+                @endforeach
             </div>
         </div>
 

@@ -428,7 +428,7 @@
 /* ---------- DROPDOWNS ---------- */
 
 .skin-blue-light .dropdown-menu {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .skin-blue-light .dropdown-menu label {
@@ -842,6 +842,20 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     border-top: 3px solid #d2d6de;
 }
 
+.skin-blue-light .card.card-success {
+    border-top: 3px solid #00a65a;
+}
+
+.skin-blue-light .card.card-success .card-header {
+    background-color: transparent;
+    color: #444;
+}
+
+.skin-blue-light .card.card-success .card-footer {
+    background-color: transparent;
+    border-top: 1px solid #f4f4f4;
+}
+
 .skin-blue-light .main-header .user-image{
     float: left;
     width: 25px;
@@ -877,7 +891,8 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 }
 
 .skin-blue-light .card.card-solid.card-default {
-    border: none;
+    border: 1px solid #d2d6de;
+    box-shadow: none;
 }
 
 .skin-blue-light .card-header .card-title {
@@ -897,6 +912,10 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     padding-top: 7px;
     padding-bottom: 0;
     margin-right: 15px;
+}
+
+.skin-blue-light .modal-content label.col-form-label {
+    margin-right: initial;
 }
 
 .skin-blue-light th .dropdown-toggle::after {
@@ -947,4 +966,54 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     border-left: none;
     background-color: #ffffff;
     border-color: #d2d6de;
+}
+
+.skin-blue-light .form-group.has-error .form-control {
+    border-color: #dd4b39;
+    box-shadow: none;
+}
+
+.skin-blue-light .has-error .checkbox,
+.skin-blue-light .has-error .checkbox-inline,
+.skin-blue-light .has-error .control-label,
+.skin-blue-light .has-error .help-block,
+.skin-blue-light .has-error .radio,
+.skin-blue-light .has-error .radio-inline,
+.skin-blue-light .has-error.checkbox label,
+.skin-blue-light .has-error.checkbox-inline label,
+.skin-blue-light .has-error.radio label,
+.skin-blue-light .has-error.radio-inline label {
+    color: #dd4b39;
+}
+
+.skin-blue-light .form-group.has-error .input-group {
+    border-color: #dd4b39;
+    box-shadow: none;
+}
+
+.skin-blue-light .form-group.has-error .input-group-prepend .input-group-text,
+.skin-blue-light .form-group.has-error .input-group-append .input-group-text {
+    border-color: #dd4b39;
+    color: #dd4b39;
+}
+
+.skin-blue-light .iconpicker-container {
+    width: auto;
+    display: inline-flex;
+}
+
+.skin-blue-light .iconpicker .iconpicker-item {
+    color: #333333 !important;
+}
+
+.skin-blue-light .iconpicker .iconpicker-item.iconpicker-selected {
+    color: #fff !important;
+    background-color: #286090 !important;
+}
+
+.skin-blue-light .help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #737373;
 }
