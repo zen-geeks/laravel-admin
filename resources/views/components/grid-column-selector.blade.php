@@ -1,10 +1,10 @@
-<div class="dropdown pull-right column-selector">
+<div class="dropdown float-right column-selector">
     <button type="button" class="btn btn-sm btn-instagram dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-table"></i>
+        <i class="fas fa-table"></i>
         &nbsp;
         <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li>
             <ul>
                 @foreach($columns as $key => $label)
@@ -24,9 +24,9 @@
                 @endforeach
             </ul>
         </li>
-        <li class="divider"></li>
+        <li class="dropdown-divider"></li>
         <li class="text-right">
-            <button class="btn btn-sm btn-default column-select-all">{{ __('admin.all') }}</button>&nbsp;&nbsp;
+            <button class="btn btn-sm btn-secondary column-select-all">{{ __('admin.all') }}</button>&nbsp;&nbsp;
             <button class="btn btn-sm btn-primary column-select-submit">{{ __('admin.submit') }}</button>
         </li>
     </ul>
@@ -54,7 +54,6 @@
 
 .column-selector .dropdown-menu label {
     width: 100%;
-    padding: 3px;
 }
 </style>
 
@@ -84,11 +83,10 @@ $('.column-select-submit').on('click', function () {
 });
 
 $('.column-select-all').on('click', function () {
-    $('.column-select-item').iCheck('check');
+    $('.column-select-item')
+        .prop('checked', true)
+        .trigger('change');
     return false;
 });
 
-$('.column-select-item').iCheck({
-    checkboxClass:'icheckbox_minimal-blue'
-});
 </script>

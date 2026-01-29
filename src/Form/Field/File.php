@@ -17,7 +17,7 @@ class File extends Field
      * @var array
      */
     protected static $css = [
-        '/vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css?v=4.5.2',
+        '/vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css',
     ];
 
     /**
@@ -26,8 +26,11 @@ class File extends Field
      * @var array
      */
     protected static $js = [
-        '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
-        '/vendor/laravel-admin/bootstrap-fileinput/js/fileinput.min.js?v=4.5.2',
+        '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/filetype.min.js',
+        '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/piexif.min.js',
+        '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/buffer.min.js',
+        '/vendor/laravel-admin/bootstrap-fileinput/js/fileinput.min.js',
+        '/vendor/laravel-admin/bootstrap-fileinput/themes/fa5/theme.js',
     ];
 
     /**
@@ -208,15 +211,15 @@ $("input{$this->getElementClassSelector()}").on('filebeforedelete', function() {
 
         var remove = resolve;
 
-        swal({
+        $.admin.swal({
             title: "{$text['title']}",
-            type: "warning",
+            icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "{$text['confirm']}",
             showLoaderOnConfirm: true,
             cancelButtonText: "{$text['cancel']}",
-            preConfirm: function() {
+            preConfirm: () => {
                 return new Promise(function(resolve) {
                     resolve(remove());
                 });
@@ -239,7 +242,7 @@ EOT;
             return $this->renderFilePicker();
         }
 
-        $this->options(['overwriteInitial' => true, 'msgPlaceholder' => trans('admin.choose_file')]);
+        $this->options(['overwriteInitial' => true, 'msgPlaceholder' => trans('admin.choose_file'), 'theme' => 'fa5']);
 
         $this->setupDefaultOptions();
 

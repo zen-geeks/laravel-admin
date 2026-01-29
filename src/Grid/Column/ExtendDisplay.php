@@ -94,7 +94,7 @@ trait ExtendDisplay
 
             $url = request()->fullUrlWithQuery($query);
 
-            return "<a href=\"{$url}\"><i class=\"fa fa-search\"></i></a>";
+            return "<a href=\"{$url}\"><i class=\"fas fa-search\"></i></a>";
         }, '&nbsp;&nbsp;');
 
         return $this;
@@ -234,7 +234,7 @@ trait ExtendDisplay
             $values = (array) $values;
 
             if (in_array($value, $values)) {
-                return '<i class="fa fa-refresh fa-spin text-primary"></i>';
+                return '<i class="fas fa-refresh fa-spin text-primary"></i>';
             }
 
             return Arr::get($others, $value, $value);
@@ -260,7 +260,7 @@ trait ExtendDisplay
                 $fa = $default;
             }
 
-            return "<i class=\"fa fa-{$fa}\"></i>";
+            return "<i class=\"fas fa-{$fa}\"></i>";
         });
     }
 
@@ -295,7 +295,7 @@ trait ExtendDisplay
         return $this->display(function ($value) use ($map, $default) {
             $bool = empty($map) ? boolval($value) : Arr::get($map, $value, $default);
 
-            return $bool ? '<i class="fa fa-check text-green"></i>' : '<i class="fa fa-close text-red"></i>';
+            return $bool ? '<i class="fas fa-check text-green"></i>' : '<i class="fas fa-times text-red"></i>';
         });
     }
 

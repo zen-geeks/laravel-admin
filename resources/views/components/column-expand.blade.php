@@ -1,7 +1,7 @@
 <div>
     <span class="{{ $elementClass }}" data-inserted="0" data-key="{{ $key }}" data-name="{{ $name }}"
           data-toggle="collapse" data-target="#grid-collapse-{{ $name }}">
-        <a href="javascript:void(0)"><i class="fa fa-angle-double-down"></i>&nbsp;&nbsp;{{ $value }}</a>
+        <a href="javascript:void(0)"><i class="fas fa-angle-double-down"></i>&nbsp;&nbsp;{{ $value }}</a>
     </span>
     <template class="grid-expand-{{ $name }}">
         <tr style='background-color: #ecf0f5;'>
@@ -12,7 +12,7 @@
                             {!! $html !!}
                         @else
                             <div class="loading text-center" style="padding: 20px 0px;">
-                                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                                <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
                             </div>
                         @endif
                     </div>
@@ -55,7 +55,7 @@
         // load($(this).attr('href'), $(this).parent('.collapse'));
         e.preventDefault();
         return false;
-    }).on('pjax:submit', '.collapse .box-header form', function (e) {
+    }).on('pjax:submit', '.collapse .card-header form', function (e) {
         // load($(this).attr('action')+'&'+$(this).serialize(), $(this).parent('.collapse'));
         return false;
     });
@@ -86,7 +86,7 @@
 
 @if($loadGrid)
 <style>
-    .collapse .grid-box .box-header:first-child {
+    .collapse .grid-card .card-header:first-child {
         display: none;
     }
 </style>

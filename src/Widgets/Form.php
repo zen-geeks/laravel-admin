@@ -522,7 +522,7 @@ class Form implements Renderable
         ];
 
         $settings = [
-            'type'                => 'question',
+            'icon'                => 'question',
             'showCancelButton'    => true,
             'confirmButtonText'   => $trans['submit'],
             'cancelButtonText'    => $trans['cancel'],
@@ -537,8 +537,8 @@ class Form implements Renderable
 $('form#{$id}').off('submit').on('submit', function (e) {
     e.preventDefault();
     var form = this;
-    $.admin.swal($settings).then(function (result) {
-        if (result.value == true) {
+    $.admin.swal($settings).then((result) => {
+        if (result.isConfirmed) {
             form.submit();
         }
     });

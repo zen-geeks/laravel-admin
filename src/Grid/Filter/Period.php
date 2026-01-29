@@ -243,9 +243,9 @@ class Period extends AbstractFilter
             $script .= <<<EOT
                 $('#{$this->column}_type').on('change', function() {
                     let toggle_id = 'toggle_{$this->column}_'+$(this).val();
-                    $('div[id^="toggle_{$this->column}_"]').addClass('hidden');
+                    $('div[id^="toggle_{$this->column}_"]').addClass('d-none');
                     if ($('#'+toggle_id).length > 0) {
-                        $('#'+toggle_id).removeClass('hidden');
+                        $('#'+toggle_id).removeClass('d-none');
                     }
                 });
 
@@ -253,13 +253,13 @@ class Period extends AbstractFilter
 
             if ($has_custom_datetime) {
                 $script .= <<<EOT
-                $('#{$this->column}_start').datetimepicker({"format":"YYYY-MM-DD HH:mm:ss","locale":"en"});
-                $('#{$this->column}_end').datetimepicker({"format":"YYYY-MM-DD HH:mm:ss","locale":"en","useCurrent":false});
-                $("#{$this->column}_start").on("dp.change", function (e) {
-                    $('#{$this->column}_end').data("DateTimePicker").minDate(e.date);
+                $('#{$this->column}_start').datetimepicker({"format":"YYYY-MM-DD HH:mm:ss","locale":"en", "icons": { "time": 'far fa-clock' }});
+                $('#{$this->column}_end').datetimepicker({"format":"YYYY-MM-DD HH:mm:ss","locale":"en","useCurrent":false, "icons": { "time": 'far fa-clock' }});
+                $("#{$this->column}_start").on("change.datetimepicker", function (e) {
+                    $('#{$this->column}_end').datetimepicker('minDate', e.date);
                 });
-                $("#{$this->column}_end").on("dp.change", function (e) {
-                    $('#{$this->column}_start').data("DateTimePicker").maxDate(e.date);
+                $("#{$this->column}_end").on("change.datetimepicker", function (e) {
+                    $('#{$this->column}_start').datetimepicker('maxDate', e.date);
                 });
             EOT;
             }

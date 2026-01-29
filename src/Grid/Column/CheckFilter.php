@@ -50,17 +50,11 @@ class CheckFilter extends Filter
     protected function addScript()
     {
         $script = <<<SCRIPT
-$('.{$this->class['all']}').on('ifChanged', function () {
-    if (this.checked) {
-        $('.{$this->class['item']}').iCheck('check');
-    } else {
-        $('.{$this->class['item']}').iCheck('uncheck');
-    }
+$('.{$this->class['all']}').on('change', function () {
+    $('.{$this->class['item']}')
+        .prop('checked', this.checked)
+        .trigger('change');
     return false;
-});
-
-$('.{$this->class['item']},.{$this->class['all']}').iCheck({
-    checkboxClass:'icheckbox_minimal-blue'
 });
 SCRIPT;
 
@@ -81,7 +75,7 @@ SCRIPT;
 
             return <<<HTML
 <li class="checkbox icheck" style="margin: 0;">
-    <label style="width: 100%;padding: 3px;">
+    <label style="width: 100%;">
         <input type="checkbox" class="{$this->class['item']}" name="{$this->getColumnName()}[]" value="{$key}" {$checked}/>&nbsp;&nbsp;&nbsp;{$label}
     </label>
 </li>
@@ -97,25 +91,25 @@ HTML;
 <span class="dropdown">
 <form action="{$this->getFormAction()}" pjax-container style="display: inline-block;">
     <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-toggle="dropdown">
-        <i class="fa fa-filter"></i>
+        <i class="fas fa-filter"></i>
     </a>
     <ul class="dropdown-menu" role="menu" style="padding: 10px;box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);left: -70px;border-radius: 0;">
 
         <li>
             <ul style='padding: 0;'>
             <li class="checkbox icheck" style="margin: 0;">
-                <label style="width: 100%;padding: 3px;">
+                <label style="width: 100%;">
                     <input type="checkbox" class="{$this->class['all']}" {$allCheck}/>&nbsp;&nbsp;&nbsp;{$this->trans('all')}
                 </label>
             </li>
-                <li class="divider"></li>
+                <li class="dropdown-divider"></li>
                 {$lists}
             </ul>
         </li>
-        <li class="divider"></li>
+        <li class="dropdown-divider"></li>
         <li class="text-right">
-            <button class="btn btn-sm btn-flat btn-primary pull-left" data-loading-text="{$this->trans('search')}..."><i class="fa fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
-            <span><a href="{$this->getFormAction()}" class="btn btn-sm btn-flat btn-default"><i class="fa fa-undo"></i></a></span>
+            <button class="btn btn-sm btn-flat btn-primary float-left" data-loading-text="{$this->trans('search')}..."><i class="fas fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
+            <span><a href="{$this->getFormAction()}" class="btn btn-sm btn-flat btn-secondary"><i class="fas fa-undo"></i></a></span>
         </li>
     </ul>
 </form>

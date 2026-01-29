@@ -34,13 +34,13 @@ class Column implements Buildable
         }
 
         ///// set width.
-        // if null, or $this->width is empty array, set as "md" => "12"
+        // if null, or $this->width is empty array, set as "lg" => "12"
         if (is_null($width) || (is_array($width) && count($width) === 0)) {
-            $this->width['md'] = 12;
+            $this->width['lg'] = 12;
         }
-        // $this->width is number(old version), set as "md" => $width
+        // $this->width is number(old version), set as "lg" => $width
         elseif (is_numeric($width)) {
-            $this->width['md'] = $width;
+            $this->width['lg'] = $width;
         } else {
             $this->width = $width;
         }
@@ -113,7 +113,7 @@ class Column implements Buildable
     {
         // get class name using width array
         $classnName = collect($this->width)->map(function ($value, $key) {
-            return "col-$key-$value";
+            return "col-12 col-$key-$value";
         })->implode(' ');
 
         echo "<div class=\"{$classnName}\">";

@@ -21,7 +21,7 @@ class BelongsTo extends Select
 
     // open modal
     grid.find('.select-relation').click(function (e) {
-        $('#{$this->modalID}').modal('show');
+        modal.modal('show');
         e.preventDefault();
     });
 
@@ -32,22 +32,17 @@ class BelongsTo extends Select
         $("{$this->getElementClassSelector()}").val(null);
 
         var empty = $('.belongsto-{$this->column()}').find('template.empty').html();
-
         table.find('tbody').append(empty);
     });
 
     var load = function (url) {
         $.get(url, function (data) {
             modal.find('.modal-body').html(data);
-            modal.find('.select').iCheck({
-                radioClass:'iradio_minimal-blue',
-                checkboxClass:'icheckbox_minimal-blue'
-            });
-            modal.find('.box-header:first').hide();
+            modal.find('.card-header:first').hide();
 
-            modal.find('input.select').each(function (index, el) {
-                if ($(el).val() == selected) {
-                    $(el).iCheck('toggle');
+            modal.find('input.select').each(function () {
+                if ($(this).val() == selected) {
+                    this.checked = true;
                 }
             });
         });
@@ -71,25 +66,37 @@ class BelongsTo extends Select
         callback();
     };
 
-    modal.on('show.bs.modal', function (e) {
-        load("{$this->getLoadUrl()}");
-    }).on('click', '.page-item a, .filter-box a', function (e) {
-        load($(this).attr('href'));
-        e.preventDefault();
-    }).on('click', 'tr', function (e) {
-        $(this).find('input.select').iCheck('toggle');
-        e.preventDefault();
-    }).on('submit', '.box-header form', function (e) {
-        load($(this).attr('action')+'&'+$(this).serialize());
-        return false;
-    }).on('ifChecked', 'input.select', function (e) {
-        row = $(e.target).parents('tr');
-        selected = $(this).val();
-    }).find('.modal-footer .submit').click(function () {
-        update(function () {
-            modal.modal('toggle');
+    modal
+        .on('show.bs.modal', function () {
+            load("{$this->getLoadUrl()}");
+        })
+        .on('click', '.page-item a, .filter-box a', function (e) {
+            load($(this).attr('href'));
+            e.preventDefault();
+        })
+        .on('click', 'tr', function (e) {
+            var input = $(this).find('input.select')[0];
+            if (input) {
+                input.checked = true;
+                $(input).trigger('change');
+            }
+            e.preventDefault();
+        })
+        .on('submit', '.card-header form', function (e) {
+            load($(this).attr('action') + '&' + $(this).serialize());
+            return false;
+        })
+        .on('change', 'input.select', function () {
+            row = $(this).parents('tr');
+            selected = $(this).val();
+        })
+        .find('.modal-footer .submit')
+        .click(function () {
+            update(function () {
+                modal.modal('toggle');
+            });
         });
-    });
+
 })();
 SCRIPT;
 

@@ -54,6 +54,9 @@ class RangeFilter extends Filter
         $options = [
             'locale'           => config('app.locale'),
             'allowInputToggle' => true,
+            'icons' => [
+                'time' => 'far fa-clock'
+            ],
         ];
 
         if ($this->type == 'date') {
@@ -95,7 +98,7 @@ SCRIPT;
 <span class="dropdown">
 <form action="{$this->getFormAction()}" pjax-container style="display: inline-block;">
     <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-toggle="dropdown">
-        <i class="fa fa-filter"></i>
+        <i class="fas fa-filter"></i>
     </a>
     <ul class="dropdown-menu" role="menu" style="padding: 10px;box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);left: -70px;border-radius: 0;">
         <li>
@@ -105,10 +108,10 @@ SCRIPT;
         <li>
             <input type="text" class="form-control input-sm {$this->class['start']}" name="{$this->getColumnName()}[end]"  value="{$value['end']}" autocomplete="off"/>
         </li>
-        <li class="divider"></li>
+        <li class="dropdown-divider"></li>
         <li class="text-right">
-            <button class="btn btn-sm btn-primary btn-flat column-filter-submit pull-left" data-loading-text="{$this->trans('search')}..."><i class="fa fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
-            <span><a href="{$this->getFormAction()}" class="btn btn-sm btn-default btn-flat column-filter-all"><i class="fa fa-undo"></i></a></span>
+            <button class="btn btn-sm btn-primary btn-flat column-filter-submit float-left" data-loading-text="{$this->trans('search')}..."><i class="fas fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
+            <span><a href="{$this->getFormAction()}" class="btn btn-sm btn-secondary btn-flat column-filter-all"><i class="fas fa-undo"></i></a></span>
         </li>
     </ul>
     </form>

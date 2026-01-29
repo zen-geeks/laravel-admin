@@ -4,18 +4,18 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="border-radius: 5px;">
                 <div class="modal-header">
+                    <h4 class="modal-title">{{ admin_trans('admin.choose') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title">{{ admin_trans('admin.choose') }}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="loading text-center">
-                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                        <i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ admin_trans('admin.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ admin_trans('admin.cancel') }}</button>
                     <button type="button" class="btn btn-primary submit">{{ admin_trans('admin.submit') }}</button>
                 </div>
             </div>
@@ -25,73 +25,76 @@
 
 <script>
 
-var pickInput = $("{{ $selector }}");
-var separator = '{{ $separator }}';
-var modal = $('#{{ $modal }}');
-var value;
-var refresh = function () {};
+    var pickInput = $("{{ $selector }}");
+    var separator = '{{ $separator }}';
+    var modal = $('#{{ $modal }}');
+    var value;
+    var refresh = function () {};
 
-modal.on('show.bs.modal', function (e) {
-    load("{!! $url !!}");
-}).on('click', '.page-item a, .filter-box a', function (e) {
-    load($(this).attr('href'));
-    e.preventDefault();
-}).on('click', 'tr', function (e) {
-    $(this).find('input.select').iCheck('toggle');
-    e.preventDefault();
-}).on('submit', '.box-header form', function (e) {
-    load($(this).attr('action')+'&'+$(this).serialize());
-    return false;
-})
+    modal.on('show.bs.modal', function () {
+        load("{!! $url !!}");
+    }).on('click', '.page-item a, .filter-card a', function (e) {
+        load($(this).attr('href'));
+        e.preventDefault();
+    }).on('click', 'tr', function (e) {
+        var input = $(this).find('input.select')[0];
+        if (input) {
+            input.checked = !input.checked;
+            $(input).trigger('change');
+        }
+        e.preventDefault();
+    }).on('submit', '.card-header form', function (e) {
+        load($(this).attr('action') + '&' + $(this).serialize());
+        return false;
+    });
 
-@if($multiple)
+
+    @if($multiple)
 
     var updateValue = function () {
         value = pickInput.val().split(separator).filter(function (val) {
-            return val != '';
+            return val !== '';
         });
     };
 
     var load = function (url) {
         $.get(url, function (data) {
             modal.find('.modal-body').html(data);
-            modal.find('input.select').iCheck({
-                radioClass:'iradio_minimal-blue',
-                checkboxClass:'icheckbox_minimal-blue'
-            });
-            modal.find('.box-header:first').hide();
+            modal.find('.card-header:first').hide();
 
-            modal.find('input.select').each(function (index, el) {
-                if ($.inArray($(el).val().toString(), value) >=0 ) {
-                    $(el).iCheck('toggle');
+            modal.find('input.select').each(function () {
+                if ($.inArray($(this).val().toString(), value) >= 0) {
+                    this.checked = true;
                 }
             });
         });
     };
 
-    modal.on('ifChecked', 'input.select', function (e) {
-        if ($(this).val().length == 0) {
-            return;
-        }
+    modal
+        .on('change', 'input.select', function () {
+            var val = $(this).val();
 
-        if (value.indexOf($(this).val()) < 0) {
-            value.push($(this).val());
-        }
-    }).on('ifUnchecked', 'input.select', function (e) {
-        var val = $(this).val();
-        var index = value.indexOf(val);
-        if (index !== -1) {
-            value.splice(index, 1);
-        }
-    }).find('.modal-footer .submit').click(function () {
-        pickInput.val(value.join(separator));
-        modal.modal('toggle');
+            if (!val.length) return;
 
-        refresh();
-    });
+            if (this.checked) {
+                if (value.indexOf(val) < 0) {
+                    value.push(val);
+                }
+            } else {
+                var index = value.indexOf(val);
+                if (index !== -1) {
+                    value.splice(index, 1);
+                }
+            }
+        })
+        .find('.modal-footer .submit')
+        .click(function () {
+            pickInput.val(value.join(separator));
+            modal.modal('toggle');
+            refresh();
+        });
 
-@else
-
+    @else
     var updateValue = function () {
         value = pickInput.val();
     };
@@ -99,32 +102,30 @@ modal.on('show.bs.modal', function (e) {
     var load = function (url) {
         $.get(url, function (data) {
             modal.find('.modal-body').html(data);
-            modal.find('input.select').iCheck({
-                radioClass:'iradio_minimal-blue',
-                checkboxClass:'icheckbox_minimal-blue'
-            });
-            modal.find('.box-header:first').hide();
+            modal.find('.card-header:first').hide();
 
-            modal.find('input.select').each(function (index, el) {
-                if ($(el).val() == value) {
-                    $(el).iCheck('toggle');
+            modal.find('input.select').each(function () {
+                if ($(this).val() == value) {
+                    this.checked = true;
                 }
             });
         });
     };
 
-    modal.on('ifChecked', 'input.select', function (e) {
-        value = $(this).val();
-    }).find('.modal-footer .submit').click(function () {
-        pickInput.val(value);
-        modal.modal('toggle');
+    modal
+        .on('change', 'input.select', function () {
+            value = $(this).val();
+        })
+        .find('.modal-footer .submit')
+        .click(function () {
+            pickInput.val(value);
+            modal.modal('toggle');
+            refresh();
+        });
 
-        refresh();
-    });
+    @endif
 
-@endif
-
-updateValue();
+    updateValue();
 
 $('.picker-file-preview').on('click', 'a.remove', function () {
     var preview = $(this).parents('.file-preview-frame');
@@ -186,10 +187,10 @@ refresh = function () {
         cursor: pointer;
     }
 
-    .picker.modal .box {
+    .picker.modal .card {
         border-top: none;
         margin-bottom: 0;
-        box-shadow: none;
+        card-shadow: none;
     }
 
     @if($is_file)
@@ -205,7 +206,7 @@ refresh = function () {
     .picker-file-preview .file-preview-frame {
         margin: 8px;
         border: 1px solid rgba(0, 0, 0, .2);
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+        card-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
         padding: 6px;
         float: left;
         text-align: center;

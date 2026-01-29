@@ -111,6 +111,7 @@ class Between extends AbstractFilter
     {
         $options['format'] = Arr::get($options, 'format', 'YYYY-MM-DD HH:mm:ss');
         $options['locale'] = Arr::get($options, 'locale', config('app.locale'));
+        $options['icons'] = ['time' => 'far fa-clock'];
 
         $startOptions = json_encode($options);
         $endOptions = json_encode($options + ['useCurrent' => false]);
@@ -118,11 +119,11 @@ class Between extends AbstractFilter
         $script = <<<EOT
             $('#{$this->id['start']}').datetimepicker($startOptions);
             $('#{$this->id['end']}').datetimepicker($endOptions);
-            $("#{$this->id['start']}").on("dp.change", function (e) {
-                $('#{$this->id['end']}').data("DateTimePicker").minDate(e.date);
+            $("#{$this->id['start']}").on("change.datetimepicker", function (e) {
+                $('#{$this->id['end']}').datetimepicker('minDate', e.date);
             });
-            $("#{$this->id['end']}").on("dp.change", function (e) {
-                $('#{$this->id['start']}').data("DateTimePicker").maxDate(e.date);
+            $("#{$this->id['end']}").on("change.datetimepicker", function (e) {
+                $('#{$this->id['start']}').datetimepicker('maxDate', e.date);
             });
 EOT;
 

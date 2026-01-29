@@ -36,6 +36,8 @@ return [
     */
     'logo-mini' => '<b>La</b>',
 
+    'logo-mini-path' => '/vendor/laravel-admin/AdminLTE/dist/img/AdminLTELogo.png',
+
     /*
     |--------------------------------------------------------------------------
     | Laravel-admin bootstrap setting

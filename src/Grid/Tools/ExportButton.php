@@ -31,13 +31,13 @@ class ExportButton extends AbstractTool
 
 $('.{$this->grid->getExportSelectedName()}').click(function (e) {
     e.preventDefault();
-    
+
     var rows = $.admin.grid.selected().join();
 
     if (!rows) {
         return false;
     }
-    
+
     var href = $(this).attr('href').replace('__rows__', rows);
     location.href = href;
 });
@@ -70,19 +70,21 @@ SCRIPT;
         $page = request('page', 1);
 
         return <<<EOT
-
-<div class="btn-group pull-right" style="margin-right: 10px">
-    <a href="{$this->grid->getExportUrl('all')}" target="_blank" class="btn btn-sm btn-twitter" title="{$trans['export']}"><i class="fa fa-download"></i><span class="hidden-xs"> {$trans['export']}</span></a>
-    <button type="button" class="btn btn-sm btn-twitter dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
+<div class="btn-group float-right mr-2">
+    <a href="{$this->grid->getExportUrl('all')}" target="_blank" class="btn btn-sm btn-primary" title="{$trans['export']}">
+        <i class="fas fa-download"></i>
+        <span class="d-none d-md-inline"> {$trans['export']}</span>
+    </a>
+    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
         <span class="sr-only">Toggle Dropdown</span>
     </button>
-    <ul class="dropdown-menu" role="menu">
-        <li><a href="{$this->grid->getExportUrl('all')}" target="_blank">{$trans['all']}</a></li>
-        <li><a href="{$this->grid->getExportUrl('page', $page)}" target="_blank">{$trans['current_page']}</a></li>
-        <li><a href="{$this->grid->getExportUrl('selected', '__rows__')}" target="_blank" class='{$this->grid->getExportSelectedName()}'>{$trans['selected_rows']}</a></li>
+    <ul class="dropdown-menu dropdown-menu-right">
+        <li class="dropdown-item"><a href="{$this->grid->getExportUrl('all')}" target="_blank">{$trans['all']}</a></li>
+        <li class="dropdown-item"><a href="{$this->grid->getExportUrl('page', $page)}" target="_blank">{$trans['current_page']}</a></li>
+        <li class="dropdown-item"><a class="{$this->grid->getExportSelectedName()}" href="{$this->grid->getExportUrl('selected', '__rows__')}" target="_blank">{$trans['selected_rows']}</a></li>
     </ul>
 </div>
 EOT;
     }
+
 }

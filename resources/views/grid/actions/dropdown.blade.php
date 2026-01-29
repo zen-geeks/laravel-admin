@@ -1,10 +1,10 @@
 <div class="grid-dropdown-actions dropdown">
-    <a href="#" style="padding: 0 10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+    <a href="#" style="padding: 0 10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></a>
     <ul class="dropdown-menu actions-dropdown-menu">
-@foreach($default as $action)<li>{!! $action->render() !!}</li>@endforeach
+@foreach($default as $action)<li class="dropdown-item">{!! $action->render() !!}</li>@endforeach
 @if(!empty($custom))
-    @if(!empty($default))<li class="divider"></li>@endif
-    @foreach($custom as $action)<li>{!! $action->render() !!}</li>@endforeach
+    @if(!empty($default))<li class="dropdown-divider"></li>@endif
+    @foreach($custom as $action)<li class="dropdown-item">{!! $action->render() !!}</li>@endforeach
 @endif
     </ul>
 </div>
@@ -23,7 +23,7 @@
         } else {
             t.css('overflow', 'visible');
         }
-    }).on('hidden.bs.dropdown', function() {
+    }).on('d-none.bs.dropdown', function() {
         $(this).css({
             'padding-bottom': '',
             'overflow': ''

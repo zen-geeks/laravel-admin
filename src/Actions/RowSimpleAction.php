@@ -122,7 +122,7 @@ abstract class RowSimpleAction extends RowAction
                     Object.assign(data, {$parameters});
                     {$this->actionScript()}
                     var swalOptions = $.extend({$this->getDefaultSettings()}, {
-                        preConfirm: function(input) {
+                        preConfirm: (input) => {
                             return new Promise(function(resolve, reject) {
                                 Object.assign(data, {
                                     _token: $.admin.token,
@@ -145,12 +145,14 @@ abstract class RowSimpleAction extends RowAction
                         }
                     }, settings);
 
-                    var process = $.admin.swal(swalOptions).then(function(result) {
-                        if (typeof result.dismiss !== 'undefined') {
+                    var process = $.admin.swal(swalOptions).then((result) => {
+                        if (result.isDismissed) {
                             return Promise.reject();
                         }
 
-                        var response = typeof result.status === "boolean" ? result : result.value;;
+                        var response = typeof result.value?.status === "boolean"
+                            ? result.value
+                            : result.value?.value ?? result.value;
 
                         return [response, target];
                     });
@@ -254,16 +256,19 @@ SCRIPT;
             $action_script = <<<PROMISE
             var settings = JSON.parse(target.attr('data-settings') ?? {});
             var swalOptions = $.extend({$this->getDefaultSettings()}, settings, {
-                preConfirm: function() {
+                preConfirm: () => {
                     {$action_script}
                     return process;
                 }
             });
-            var process = $.admin.swal(swalOptions).then(function(result) {
-                if (typeof result.dismiss !== 'undefined')
+            var process = $.admin.swal(swalOptions).then((result) => {
+                if (result.isDismissed) {
                     return Promise.reject();
-                var result = result.value[0];
-                var response = typeof result.status === "boolean" ? result : result.value;
+                }
+            
+                var res = result.value[0];
+                var response = typeof res.status === "boolean" ? res : res.value;
+            
                 return [response, target];
             });
 PROMISE;
@@ -343,7 +348,7 @@ PROMISE;
     private function getDefaultSettings(): string
     {
         return json_encode([
-            'type'                => 'question',
+            'icon'                => 'question',
             'showCancelButton'    => true,
             'showLoaderOnConfirm' => true,
             'confirmButtonText'   => trans('admin.submit'),

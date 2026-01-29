@@ -7,12 +7,12 @@ use Encore\Admin\Form\Field;
 class DateRange extends Field
 {
     protected static $css = [
-        '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        '/vendor/laravel-admin/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
     ];
 
     protected static $js = [
-        '/vendor/laravel-admin/moment/min/moment-with-locales.min.js',
-        '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        '/vendor/laravel-admin/AdminLTE/plugins/moment/moment.min.js',
+        '/vendor/laravel-admin/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
     ];
 
     protected $format = 'YYYY-MM-DD';
@@ -51,6 +51,7 @@ class DateRange extends Field
     public function render()
     {
         $this->options['locale'] = array_key_exists('locale', $this->options) ? $this->options['locale'] : config('app.locale');
+        $this->options['icons'] = ['time' => 'far fa-clock'];
 
         $startOptions = json_encode($this->options);
         $endOptions = json_encode($this->options + ['useCurrent' => false]);
@@ -60,11 +61,11 @@ class DateRange extends Field
         $this->script = <<<EOT
             $('{$class['start']}').datetimepicker($startOptions);
             $('{$class['end']}').datetimepicker($endOptions);
-            $("{$class['start']}").on("dp.change", function (e) {
-                $('{$class['end']}').data("DateTimePicker").minDate(e.date);
+            $("{$class['start']}").on("change.datetimepicker", function (e) {
+                $('{$class['end']}').datetimepicker('minDate', e.date);
             });
-            $("{$class['end']}").on("dp.change", function (e) {
-                $('{$class['start']}').data("DateTimePicker").maxDate(e.date);
+            $("{$class['end']}").on("change.datetimepicker", function (e) {
+                $('{$class['start']}').datetimepicker('maxDate', e.date);
             });
 EOT;
 

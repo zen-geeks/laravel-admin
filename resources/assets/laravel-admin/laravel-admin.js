@@ -1,20 +1,3 @@
-$.fn.editable.defaults.params = function (params) {
-    params._token = LA.token;
-    params._editable = 1;
-    params._method = 'PUT';
-    return params;
-};
-
-$.fn.editable.defaults.error = function (data) {
-    var msg = '';
-    if (data.responseJSON.errors) {
-        $.each(data.responseJSON.errors, function (k, v) {
-            msg += v + "\n";
-        });
-    }
-    return msg
-};
-
 toastr.options = {
     closeButton: true,
     progressBar: true,
@@ -108,14 +91,13 @@ $(document).click(function () {
 });
 
 $(function () {
-    $('.sidebar-menu li:not(.treeview) > a').on('click', function () {
-        var $parent = $(this).parent().addClass('active');
-        $parent.siblings('.treeview.active').find('> a').trigger('click');
-        $parent.siblings().removeClass('active').find('li').removeClass('active');
+    $('.nav-sidebar').on('click', '.nav-item:not(.has-treeview) > .nav-link', function () {
+        $('li.nav-item.active').removeClass('active');
+        $(this).parent('li.nav-item').addClass('active');
     });
-    var menu = $('.sidebar-menu li > a[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
-    menu.parents('ul.treeview-menu').addClass('menu-open');
-    menu.parents('li.treeview').addClass('active');
+    var menu = $('.nav-sidebar a.nav-link[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
+    menu.parents('.has-treeview').addClass('menu-open');
+    menu.parent('li.nav-item').addClass('active');
 
     $('[data-toggle="popover"]').popover();
 
@@ -191,7 +173,15 @@ $('#totop').on('click', function (e) {
 
     $.fn.admin = LA;
     $.admin = LA;
-    $.admin.swal = swal;
+    $.admin.swal = function (options) {
+        if (options && options.type) {
+            if (!options.icon)
+                options.icon = options.type;
+            delete options.type;
+        }
+
+        return window.Swal.fire(options);
+    };
     $.admin.toastr = toastr;
     $.admin.grid = new Grid();
 
@@ -230,4 +220,19 @@ $('#totop').on('click', function (e) {
         return $.when.apply($, _arr);
     }
 
+    function initTooltips() {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
+    $(function () {
+        initTooltips();
+    });
+
+    $(document).on('pjax:end', function () {
+        initTooltips();
+    });
+
+    $('[data-widget="sidebar-search"]').SidebarSearch({
+        highlightClass: 'text-primary'
+    });
 })(jQuery);

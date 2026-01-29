@@ -37,7 +37,7 @@ SCRIPT;
         $this->addScript();
 
         return <<<HTML
-<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="{$content}"><i class="fa fa-copy"></i></a>&nbsp;{$this->getValue()}
+<a href="javascript:void(0);" class="grid-column-copyable text-muted" data-content="{$content}"><i class="far fa-copy"></i></a>&nbsp;{$this->getValue()}
 HTML;
     }
 }

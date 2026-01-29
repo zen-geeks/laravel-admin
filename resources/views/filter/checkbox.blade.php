@@ -1,9 +1,9 @@
-<div class="input-group input-group-sm">
+<div class="input-group">
     @foreach($options as $option => $label)
-        {!! $inline ? '<span class="icheck">' : '<div class="checkbox icheck">' !!}
-            <label @if($inline)class="checkbox-inline"@endif>
-                <input type="checkbox" class="{{$id}}" name="{{$name}}[]" value="{{$option}}" class="minimal" {{ in_array((string)$option, request($name, is_null($value) ? [] : $value)) ? 'checked' : '' }} />&nbsp;{{$label}}&nbsp;&nbsp;
+        <div class="form-check {!! $inline ? 'form-check-inline' : ''  !!}">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input {{$id}}" name="{{$name}}[]" value="{{$option}}" {{ in_array((string)$option, request($name, is_null($value) ? [] : $value)) ? 'checked' : '' }} />{{$label}}
             </label>
-        {!! $inline ? '</span>' :  '</div>' !!}
+        </div>
     @endforeach
 </div>

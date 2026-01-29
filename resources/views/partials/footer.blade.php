@@ -2,7 +2,7 @@
 @php($show_footer = config('admin.show_footer'))
 <footer class="main-footer">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
+    <div class="float-right d-none d-md-block">
         @if(config('admin.show_environment'))
             @if($show_footer)
                 <strong>Env</strong>&nbsp;&nbsp;

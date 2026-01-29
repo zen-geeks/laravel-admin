@@ -12,7 +12,7 @@
     @endif
 
     <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/laravel-admin/laravel-admin.css") }}">
-    <!-- Bootstrap 3.3.5 -->
+    <!-- Bootstrap 3.4.1 -->
     <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/font-awesome/css/font-awesome.min.css") }}">
@@ -25,9 +25,9 @@
 <div class="auth-2fa">
     @yield('content')
 </div>
-<!-- jQuery 2.1.4 -->
-<script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js")}}"></script>
-<!-- Bootstrap 3.3.5 -->
+<!-- jQuery 2.2.4 -->
+<script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.2.4.min.js")}}"></script>
+<!-- Bootstrap 3.4.1 -->
 <script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js")}}"></script>
 @section('scripts')
 @show
