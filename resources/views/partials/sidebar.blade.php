@@ -23,7 +23,7 @@
 
         @if(config('admin.enable_menu_search'))
             <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
+                <div class="input-group" data-widget="sidebar-search" data-highlight-class="text-primary">
                     <input class="form-control form-control-sidebar autocomplete" type="search" placeholder="Search..." autocomplete="off">
                     <div class="input-group-append">
                         <button class="btn btn-sidebar">

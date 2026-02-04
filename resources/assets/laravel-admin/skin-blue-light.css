@@ -903,9 +903,12 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
     border-bottom: 1px solid #f4f4f4;
 }
 
+.skin-blue-light .form-horizontal .form-group {
+    padding-right: 30px;
+}
+
 .skin-blue-light .form-group {
     margin-bottom: 15px;
-    padding-right: 30px;
 }
 
 .skin-blue-light label.col-form-label {
