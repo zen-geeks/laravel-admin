@@ -659,6 +659,9 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
         margin-right: -15px;
         font-size: 18px;
     }
+    .skin-blue-light .form-horizontal .form-group {
+        padding-right: 30px;
+    }
 }
 
 .skin-blue-light.sidebar-mini.sidebar-collapse aside.elevation-4 {
@@ -901,10 +904,6 @@ body:not(.layout-fixed):not(.sidebar-collapse).skin-blue-light .content-wrapper 
 
 .skin-blue-light .card-header.with-border {
     border-bottom: 1px solid #f4f4f4;
-}
-
-.skin-blue-light .form-horizontal .form-group {
-    padding-right: 30px;
 }
 
 .skin-blue-light .form-group {
