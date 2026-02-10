@@ -231,4 +231,25 @@ $('#totop').on('click', function (e) {
     $(document).on('pjax:end', function () {
         initTooltips();
     });
+
+    $(document).on('click', '.column-selector .dropdown-menu', function (e) {
+        e.stopPropagation();
+    });
+
+    // select2 search autofocus fix for jQuery 3.6
+    $(document).on('select2:open', function (e) {
+        const s2 = $(e.target).data('select2');
+        if (!s2) return;
+
+        const $dropdownField = s2.$dropdown && s2.$dropdown.find('.select2-search__field');
+        if ($dropdownField && $dropdownField.length) {
+            $dropdownField[0].focus();
+            return;
+        }
+
+        const $inlineField = s2.$selection && s2.$selection.find('.select2-search__field');
+        if ($inlineField && $inlineField.length) {
+            $inlineField[0].focus();
+        }
+    });
 })(jQuery);
