@@ -37,7 +37,9 @@ trait HasAssets
     /**
      * @var array
      */
-    public static $headerJs = [];
+    public static $headerJs = [
+        'vendor/laravel-admin/laravel-admin/admin-bootstrap.js',
+    ];
 
     /**
      * @var string
