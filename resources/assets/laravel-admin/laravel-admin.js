@@ -252,4 +252,16 @@ $('#totop').on('click', function (e) {
             $inlineField[0].focus();
         }
     });
+
+    // select2 fix for BS3 modal https://select2.org/dropdown#dropdown-placement
+    $(document).on('shown.bs.modal', '.modal', function(e) {
+        $(this).find('select').each(function() {
+            let dropdownParent = $(document.body);
+            if ($(this).parents('.modal.show').length !== 0)
+                dropdownParent = $(this).parents('.modal.show');
+            $(this).select2({
+                dropdownParent: dropdownParent
+            });
+        });
+    });
 })(jQuery);

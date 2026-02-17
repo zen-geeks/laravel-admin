@@ -415,17 +415,19 @@ EOT;
     public function render()
     {
         $configs = array_merge([
+            'value'       =>  implode(',', (array) $this->value()),
             'allowClear'  => true,
-            'placeholder' => [
-                'id'   => '',
-                'text' => $this->label,
-            ],
+            'placeholder' => $this->label,
         ], $this->config);
 
-        $configs = json_encode($configs);
+        $attributes = [];
+        foreach ($configs as $key => $value) {
+            $attributes['data-'.Str::kebab($key)] = $value;
+        }
+        $this->attribute($attributes);
 
         if (empty($this->script)) {
-            $this->script = "$(\"{$this->getElementClassSelector()}\").select2($configs);";
+            $this->script = "$(\"{$this->getElementClassSelector()}\").select2();";
         }
 
         if ($this->options instanceof \Closure) {
@@ -444,8 +446,6 @@ EOT;
         ]);
 
         $this->addCascadeScript();
-
-        $this->attribute('data-value', implode(',', (array) $this->value()));
 
         return parent::render();
     }
