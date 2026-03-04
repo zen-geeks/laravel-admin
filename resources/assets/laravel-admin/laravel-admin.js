@@ -175,12 +175,20 @@ $('#totop').on('click', function (e) {
     $.admin = LA;
     $.admin.swal = function (options) {
         if (options && options.type) {
-            if (!options.icon)
-                options.icon = options.type;
+            options.icon = options.icon || options.type;
             delete options.type;
         }
 
-        return window.Swal.fire(options);
+        const $modal = $('.modal.show').last();
+        const modal = $modal.data('bs.modal');
+
+        if (modal)
+            $(document).off('focusin.bs.modal');
+
+        return Swal.fire(options).finally(function () {
+            if (modal && typeof modal._enforceFocus === 'function')
+                modal._enforceFocus();
+        });
     };
     $.admin.toastr = toastr;
     $.admin.grid = new Grid();

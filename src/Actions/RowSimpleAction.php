@@ -259,8 +259,7 @@ SCRIPT;
                 preConfirm: () => {
                     {$action_script}
                     return process;
-                },
-                target: document.getElementById(modal.attr('id'))
+                }
             });
             var process = $.admin.swal(swalOptions).then((result) => {
                 if (result.isDismissed) {
