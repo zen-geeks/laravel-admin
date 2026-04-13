@@ -39,7 +39,7 @@ DummyGrid
      * @param mixed $id
      * @return Show
      */
-    protected function detail($id): Show
+    protected function detail(mixed $id): Show
     {
         $show = new Show(DummyModel::findOrFail($id));
 

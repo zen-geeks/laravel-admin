@@ -257,7 +257,7 @@ class LogOperation
             'float', 'double', 'decimal' => (float)$value,
             'boolean' => (bool)$value,
             'json' => is_string($value) ? json_decode($value, true) ?? $value : $value,
-            default => (string)$value,
+            default => is_array($value) ? implode(',', $value) : (string)$value,
         };
     }
 }
