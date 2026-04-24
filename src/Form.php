@@ -248,12 +248,13 @@ class Form implements Renderable
      */
     public function destroy($id)
     {
+        $controller = admin_controller();
         try {
             if (($ret = $this->callDeleting($id)) instanceof Response) {
                 return $ret;
             }
 
-            collect(explode(',', $id))->filter()->each(function ($id) {
+            collect(explode(',', $id))->filter()->each(function ($id) use ($controller) {
                 $builder = $this->model()->newQuery();
 
                 if ($this->isSoftDeletes) {
@@ -261,6 +262,13 @@ class Form implements Renderable
                 }
 
                 $model = $builder->with($this->getRelations())->findOrFail($id);
+
+                if ($controller && method_exists($controller, 'validateDelete')) {
+                    $validation = $controller->validateDelete($model);
+                    if (!$validation['success']) {
+                        throw new \Exception($validation['error'] ?? trans('admin.delete_failed'));
+                    }
+                }
 
                 if ($this->isSoftDeletes && $model->trashed()) {
                     $this->deleteFiles($model, true);

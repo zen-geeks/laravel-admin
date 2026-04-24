@@ -328,3 +328,34 @@ if (!function_exists('admin_get_route')) {
         return config('admin.route.prefix').'.'.$name;
     }
 }
+
+if (!function_exists('admin_controller')) {
+    function admin_controller(): ?object
+    {
+        static $activeController = null;
+        if ($activeController)
+            return $activeController;
+
+        $class = \request()->route()?->getControllerClass();
+        if ($class && $class !== \Encore\Admin\Controllers\HandleController::class) {
+            return $activeController = app($class);
+        }
+
+        $referer = \request()->headers->get('referer');
+        if (!$referer)
+            return null;
+
+        $path = parse_url($referer, PHP_URL_PATH);
+        if (!$path || !str_starts_with($path, '/admin'))
+            return null;
+
+        try {
+            $class = \Illuminate\Support\Facades\Route::getRoutes()
+                ->match(\Illuminate\Http\Request::create($path, 'GET'))
+                ?->getControllerClass();
+            return $activeController = ($class ? app($class) : null);
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
+}
