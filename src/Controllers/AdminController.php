@@ -3,6 +3,7 @@
 namespace Encore\Admin\Controllers;
 
 use Encore\Admin\Layout\Content;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
@@ -98,5 +99,19 @@ class AdminController extends Controller
             ->title($this->title())
             ->description($this->description['create'] ?? trans('admin.create'))
             ->body($this->form());
+    }
+
+    /**
+     * Validates whether the content can be deleted.
+     *
+     * @param Model $model
+     *
+     * @return array{success: bool, error?: string} A result array containing:
+     * - success (bool): True if deletion is allowed, false otherwise.
+     * - error (string): An optional error message.
+     */
+    public function validateDelete(Model $model): array
+    {
+        return ['success' => true];
     }
 }

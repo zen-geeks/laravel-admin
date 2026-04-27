@@ -29,7 +29,15 @@ class Delete extends RowAction
             'succeeded' => trans('admin.delete_succeeded'),
         ];
 
+        $controller = admin_controller();
         try {
+            if ($controller && method_exists($controller, 'validateDelete')) {
+                $validation = $controller->validateDelete($model);
+                if (!$validation['success']) {
+                    throw new \Exception($validation['error'] ?? null);
+                }
+            }
+
             DB::transaction(function () use ($model) {
                 $model->delete();
             });
