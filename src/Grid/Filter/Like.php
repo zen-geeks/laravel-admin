@@ -6,25 +6,10 @@ use Illuminate\Support\Arr;
 
 class Like extends AbstractFilter
 {
-    /**
-     * @var string
-     */
-    protected $exprFormat = '%{value}%';
-
-    /**
-     * @var string
-     */
-    protected $operator = 'like';
-
-    /**
-     * @var string
-     */
-    public $separator = '||';
-
-    /**
-     * @var bool
-     */
-    public $multiple = false;
+    protected string $exprFormat = '%{value}%';
+    protected string $operator = 'like';
+    public string $separator = '||';
+    public bool $multiple = false;
 
     /**
      * Get condition of this filter.
@@ -64,17 +49,11 @@ class Like extends AbstractFilter
         }
     }
 
-    public function separator(string $separator): static
+    public function multiple(?string $separator = null): static
     {
-        if ($separator !== '')
+        if ($separator && $separator !== '')
             $this->separator = $separator;
-
-        return $this;
-    }
-
-    public function multiple(bool $multiple = true): static
-    {
-        $this->multiple = $multiple;
+        $this->multiple = true;
         return $this;
     }
 }
