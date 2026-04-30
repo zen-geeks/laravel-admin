@@ -26,7 +26,7 @@ class Like extends AbstractFilter
             $value = array_filter($value);
         }
 
-        if (is_null($value) || empty($value)) {
+        if (empty($value)) {
             return;
         }
 
@@ -51,7 +51,7 @@ class Like extends AbstractFilter
 
     public function multiple(?string $separator = null): static
     {
-        if ($separator && $separator !== '')
+        if ($separator)
             $this->separator = $separator;
         $this->multiple = true;
         return $this;
