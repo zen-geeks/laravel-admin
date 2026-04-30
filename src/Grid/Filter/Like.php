@@ -22,11 +22,7 @@ class Like extends AbstractFilter
     {
         $value = Arr::get($inputs, $this->column);
 
-        if (is_array($value)) {
-            $value = array_filter($value);
-        }
-
-        if (empty($value)) {
+        if (is_array($value) || empty($value)) {
             return;
         }
 
