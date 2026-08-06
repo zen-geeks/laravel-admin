@@ -1,7 +1,7 @@
 @extends('admin::index', ['header' => strip_tags($header)])
 
 @section('content')
-    <div class="content-header">
+    <div class="app-content-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 col-lg-4">
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <section class="content">
+    <section class="app-content">
         <div class="container-fluid">
 
             @include('admin::partials.alerts')

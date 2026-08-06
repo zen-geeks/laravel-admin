@@ -28,7 +28,7 @@
         </div>
 
         @if($useCreate)
-        <div class="btn-group float-right">
+        <div class="btn-group float-end">
             <a class="btn btn-success btn-sm" href="{{ url($path) }}/create"><i class="fas fa-save"></i><span class="d-none d-md-inline">&nbsp;{{ trans('admin.new') }}</span></a>
         </div>
         @endif

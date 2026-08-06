@@ -2,7 +2,7 @@
     <div class="card-header with-border">
         <h3 class="card-title">Environment</h3>
 
-        <div class="card-tools float-right">
+        <div class="card-tools float-end">
             <button type="button" class="btn btn-card-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
             </button>
             <button type="button" class="btn btn-card-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>

@@ -179,7 +179,7 @@ class Tools implements Renderable
         $text = trans('admin.list');
 
         return <<<EOT
-<div class="btn-group float-right" style="margin-right: 5px">
+<div class="btn-group float-end" style="margin-right: 5px">
     <a href="{$this->getListPath()}" class="btn btn-sm btn-secondary" title="$text"><i class="fas fa-list"></i><span class="d-none d-md-inline">&nbsp;$text</span></a>
 </div>
 EOT;
@@ -195,7 +195,7 @@ EOT;
         $view = trans('admin.view');
 
         return <<<HTML
-<div class="btn-group float-right" style="margin-right: 5px">
+<div class="btn-group float-end" style="margin-right: 5px">
     <a href="{$this->getViewPath()}" class="btn btn-sm btn-primary" title="{$view}">
         <i class="fas fa-eye"></i><span class="d-none d-md-inline"> {$view}</span>
     </a>
@@ -264,7 +264,7 @@ SCRIPT;
         Admin::script($script);
 
         return <<<HTML
-<div class="btn-group float-right" style="margin-right: 5px">
+<div class="btn-group float-end" style="margin-right: 5px">
     <a href="javascript:void(0);" class="btn btn-sm btn-danger {$class}-delete" title="{$trans['delete']}">
         <i class="fas fa-trash"></i><span class="d-none d-md-inline">  {$trans['delete']}</span>
     </a>

@@ -7,13 +7,13 @@
 
     @if ($grid->showTools() || $grid->showExportBtn() || $grid->showCreateBtn())
         <div class="card-header">
-            <div class="float-right">
+            <div class="float-end">
                 {!! $grid->renderColumnSelector() !!}
                 {!! $grid->renderExportButton() !!}
                 {!! $grid->renderCreateButton() !!}
             </div>
             @if ($grid->showTools())
-                <div class="float-left">
+                <div class="float-start">
                     {!! $grid->renderHeaderTools() !!}
                 </div>
             @endif

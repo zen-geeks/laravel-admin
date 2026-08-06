@@ -59,8 +59,8 @@ use \Encore\Admin\Grid\Filter\Period;
                                    name="{{$name}}[{{Period::CUSTOM_DATETIME}}][start]"
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATETIME.'.start', \Illuminate\Support\Arr::get($value, 'start')) }}"
                                    autocomplete="off"
-                                   data-toggle="datetimepicker"
-                                   data-target="#{{$name}}_start"
+                                   data-bs-toggle="datetimepicker"
+                                   data-bs-target="#{{$name}}_start"
                             />
 
                             <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
@@ -72,8 +72,8 @@ use \Encore\Admin\Grid\Filter\Period;
                                    name="{{$name}}[{{Period::CUSTOM_DATETIME}}][end]"
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATETIME.'.end', \Illuminate\Support\Arr::get($value, 'end')) }}"
                                    autocomplete="off"
-                                   data-toggle="datetimepicker"
-                                   data-target="#{{$name}}_end"
+                                   data-bs-toggle="datetimepicker"
+                                   data-bs-target="#{{$name}}_end"
                             />
                         </div>
                     </div>

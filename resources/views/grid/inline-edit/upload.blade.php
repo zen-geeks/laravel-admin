@@ -1,4 +1,4 @@
-<a href='javascript:void(0);' class='text-muted inline-upload-trigger' data-target="{{ $target }}">
+<a href='javascript:void(0);' class='text-muted inline-upload-trigger' data-bs-target="{{ $target }}">
     <i class="fas fa-upload"></i>&nbsp;{!! $value !!}
 </a>
 <div class="hide">

@@ -2,7 +2,7 @@
     @if($group)
     <div class="input-group-append">
         <input type="hidden" name="{{ $id }}_group" class="{{ $group_name }}-operation" value="0"/>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="min-width: 32px;">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" style="min-width: 32px;">
             <span class="{{ $group_name }}-label">{{ $default['label'] }}</span>
             &nbsp;&nbsp;
             <span class="fas fa-caret-down"></span>

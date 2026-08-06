@@ -21,7 +21,7 @@
                     <div class="col-lg-{{ $column->width() }}">
                         <div class="col-lg-10 offset-lg-2">
                             <div class="d-flex">
-                                <div class="btn-group mr-2">
+                                <div class="btn-group me-2">
                                     <button class="btn btn-info btn-sm submit">
                                         <i class="fas fa-search"></i>&nbsp;{{ trans('admin.search') }}
                                     </button>

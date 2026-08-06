@@ -1,8 +1,8 @@
 <!-- Main Footer -->
 @php($show_footer = config('admin.show_footer'))
-<footer class="main-footer">
+<footer class="app-footer">
     <!-- To the right -->
-    <div class="float-right d-none d-md-block">
+    <div class="float-end d-none d-md-block">
         @if(config('admin.show_environment'))
             @if($show_footer)
                 <strong>Env</strong>&nbsp;&nbsp;

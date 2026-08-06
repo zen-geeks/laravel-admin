@@ -12,7 +12,7 @@
     <div class="card-header">
         <h3 class="card-title">Available extensions</h3>
 
-        <div class="card-tools float-right">
+        <div class="card-tools float-end">
             <button type="button" class="btn btn-card-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
             </button>
             <button type="button" class="btn btn-card-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
@@ -32,7 +32,7 @@
                         {{ $extension['name'] }}
                     </a>
                     @if($extension['installed'])
-                        <span class="float-right installed"><i class="fas fa-check"></i></span>
+                        <span class="float-end installed"><i class="fas fa-check"></i></span>
                     @endif
                 </div>
             </li>

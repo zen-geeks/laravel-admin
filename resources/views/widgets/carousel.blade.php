@@ -2,7 +2,7 @@
     <ol class="carousel-indicators">
 
         @foreach($items as $key => $item)
-        <li data-target="#{!! $id !!}" data-slide-to="{{$key}}" class="{{ $key == 0 ? 'active' : '' }}"></li>
+        <li data-bs-target="#{!! $id !!}" data-slide-to="{{$key}}" class="{{ $key == 0 ? 'active' : '' }}"></li>
         @endforeach
 
     </ol>

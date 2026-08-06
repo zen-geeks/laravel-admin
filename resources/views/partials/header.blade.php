@@ -1,8 +1,8 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="app-header navbar navbar-expand navbar-white navbar-light">
 
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#">
+            <a class="nav-link" data-lte-toggle="sidebar" href="#">
                 <i class="fas fa-bars"></i>
             </a>
         </li>
@@ -12,12 +12,12 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ms-auto">
 
         {!! Admin::getNavbar()->render() !!}
 
         <li class="nav-item dropdown user-menu">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img src="{{ Admin::user()->avatar }}" class="user-image img-circle" alt="User Image">
                 <span class="d-none d-md-inline">{{ Admin::user()->name }}</span>
             </a>
@@ -35,7 +35,7 @@
                         <a href="{{ admin_url('auth/setting') }}" class="btn btn-default btn-flat">{{ trans('admin.setting') }}</a>
                     </div>
                     <div class="pull-right">
-                        <a href="{{ admin_url('auth/logout') }}" class="btn btn-default btn-flat float-right">{{ trans('admin.logout') }}</a>
+                        <a href="{{ admin_url('auth/logout') }}" class="btn btn-default btn-flat float-end">{{ trans('admin.logout') }}</a>
                     </div>
                 </li>
             </ul>

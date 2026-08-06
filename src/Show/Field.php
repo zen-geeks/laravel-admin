@@ -404,7 +404,7 @@ class Field implements Renderable
             </div>
             <span class="mailbox-attachment-size">
               {$size}&nbsp;
-              <a href="{$url}" class="btn btn-secondary btn-xs float-right" target="_blank" $download><i class="fas fa-cloud-download"></i></a>
+              <a href="{$url}" class="btn btn-secondary btn-xs float-end" target="_blank" $download><i class="fas fa-cloud-download"></i></a>
             </span>
       </div>
     </li>

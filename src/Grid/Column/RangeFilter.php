@@ -97,7 +97,7 @@ SCRIPT;
         return <<<EOT
 <span class="dropdown">
 <form action="{$this->getFormAction()}" pjax-container style="display: inline-block;">
-    <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-toggle="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-bs-toggle="dropdown">
         <i class="fas fa-filter"></i>
     </a>
     <ul class="dropdown-menu" role="menu" style="padding: 10px;box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);left: -70px;border-radius: 0;">
@@ -109,8 +109,8 @@ SCRIPT;
             <input type="text" class="form-control input-sm {$this->class['start']}" name="{$this->getColumnName()}[end]"  value="{$value['end']}" autocomplete="off"/>
         </li>
         <li class="dropdown-divider"></li>
-        <li class="text-right">
-            <button class="btn btn-sm btn-primary btn-flat column-filter-submit float-left" data-loading-text="{$this->trans('search')}..."><i class="fas fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
+        <li class="text-end">
+            <button class="btn btn-sm btn-primary btn-flat column-filter-submit float-start" data-loading-text="{$this->trans('search')}..."><i class="fas fa-search"></i>&nbsp;&nbsp;{$this->trans('search')}</button>
             <span><a href="{$this->getFormAction()}" class="btn btn-sm btn-secondary btn-flat column-filter-all"><i class="fas fa-undo"></i></a></span>
         </li>
     </ul>

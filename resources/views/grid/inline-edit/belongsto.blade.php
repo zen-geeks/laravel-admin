@@ -1,4 +1,4 @@
-<span class="grid-selector" data-toggle="modal" data-target="#{{ $modal }}" key="{{ $key }}" data-val="{{ $original }}">
+<span class="grid-selector" data-bs-toggle="modal" data-bs-target="#{{ $modal }}" key="{{ $key }}" data-val="{{ $original }}">
    <a href="javascript:void(0)" class="text-muted">
        <i class="fas fa-check-square-o"></i>&nbsp;&nbsp;
        <span class="text">{{ $value }}</span>
@@ -26,7 +26,7 @@
             <div class="modal-content" style="border-radius: 5px;">
                 <div class="modal-header">
                     <h4 class="modal-title">{{ admin_trans('admin.choose') }}</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ admin_trans('admin.cancel') }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ admin_trans('admin.cancel') }}</button>
                     <button type="button" class="btn btn-primary submit">{{ admin_trans('admin.submit') }}</button>
                 </div>
             </div>
