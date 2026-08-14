@@ -91,11 +91,11 @@ $(document).click(function () {
 });
 
 $(function () {
-    $('.nav-sidebar').on('click', '.nav-item:not(.has-treeview) > .nav-link', function () {
+    $('.sidebar-menu').on('click', '.nav-item:not(.has-treeview) > .nav-link', function () {
         $('li.nav-item.active').removeClass('active');
         $(this).parent('li.nav-item').addClass('active');
     });
-    var menu = $('.nav-sidebar a.nav-link[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
+    var menu = $('.sidebar-menu a.nav-link[href$="' + (location.pathname + location.search + location.hash) + '"]').parent().addClass('active');
     menu.parents('.has-treeview').addClass('menu-open');
     menu.parent('li.nav-item').addClass('active');
 

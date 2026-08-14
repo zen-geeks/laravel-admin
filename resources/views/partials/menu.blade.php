@@ -21,12 +21,12 @@
                 @if (Lang::has($titleTranslation = 'admin.menu_titles.'.trim(str_replace(' ', '_', strtolower($item['title'])))))
                     <p>
                         {{ __($titleTranslation) }}
-                        <i class="right fas fa-angle-left"></i>
+                        <i class="nav-arrow fas fa-angle-right"></i>
                     </p>
                 @else
                     <p>
                         {{ admin_trans($item['title']) }}
-                        <i class="right fas fa-angle-left"></i>
+                        <i class="nav-arrow fas fa-angle-right"></i>
                     </p>
                 @endif
             </a>

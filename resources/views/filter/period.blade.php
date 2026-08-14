@@ -9,7 +9,7 @@ use \Encore\Admin\Grid\Filter\Period;
         <div class="row">
 
             <div class="col-12 col-md-4">
-                <select class="form-control" name="{{$name}}[type]" id="{{$name}}_type">
+                <select class="form-select" name="{{$name}}[type]" id="{{$name}}_type">
                     <option value="">{{ __('admin.choose') }}</option>
                     @foreach($periods as $period_key => $period_name)
                         <option value="{{ $period_key }}" {{ $period_key === $period_type ? 'selected' : '' }}>
@@ -23,16 +23,14 @@ use \Encore\Admin\Grid\Filter\Period;
                 <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' d-none' }}">
                     <div class="col-12 col-md-8">
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="far fa-calendar"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="far fa-calendar"></i></span>
                             <input type="date"
                                    class="form-control"
                                    name="{{$name}}[{{Period::CUSTOM_DATE}}][start]"
                                    value="{{ request()->input($column.'.'.Period::CUSTOM_DATE.'.start', \Illuminate\Support\Arr::get($value, 'start')) }}"
                             />
 
-                            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
+                            <span class="input-group-text">-</span>
 
                             <input type="date"
                                    class="form-control"
@@ -49,9 +47,7 @@ use \Encore\Admin\Grid\Filter\Period;
                 <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' d-none' }}">
                     <div class="col-12 col-md-8">
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                             <input type="text"
                                    class="form-control datetimepicker-input"
                                    id="{{$name}}_start"
@@ -63,7 +59,7 @@ use \Encore\Admin\Grid\Filter\Period;
                                    data-bs-target="#{{$name}}_start"
                             />
 
-                            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
+                            <span class="input-group-text">-</span>
 
                             <input type="text"
                                    class="form-control datetimepicker-input"

@@ -1,5 +1,5 @@
 <div class="dropdown float-end column-selector">
-    <button type="button" class="btn btn-sm btn-instagram dropdown-toggle" data-bs-toggle="dropdown">
+    <button type="button" class="btn btn-sm btn-instagram dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">
         <i class="fas fa-table"></i>
         &nbsp;
         <span class="caret"></span>
@@ -42,6 +42,7 @@
     height: auto;
     max-height: 500px;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .column-selector .dropdown-menu ul {

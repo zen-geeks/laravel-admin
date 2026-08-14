@@ -10,7 +10,7 @@
 
             <input {!! $attributes !!} />
 
-            <div class="input-group-prepend clearfix" style="padding: 1px;"><span class="input-group-text"><img id="{{$column}}-captcha" src="{{ captcha_src() }}" style="height:30px;cursor: pointer;"  title="Click to refresh"/></span></div>
+            <span class="input-group-text"><img id="{{$column}}-captcha" src="{{ captcha_src() }}" style="height:30px;cursor: pointer;"  title="Click to refresh"/></span>
 
         </div>
 

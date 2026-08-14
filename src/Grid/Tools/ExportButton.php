@@ -70,7 +70,7 @@ SCRIPT;
         $page = request('page', 1);
 
         return <<<EOT
-<div class="btn-group float-end mr-2">
+<div class="btn-group float-end me-2">
     <a href="{$this->grid->getExportUrl('all')}" target="_blank" class="btn btn-sm btn-primary" title="{$trans['export']}">
         <i class="fas fa-download"></i>
         <span class="d-none d-md-inline"> {$trans['export']}</span>

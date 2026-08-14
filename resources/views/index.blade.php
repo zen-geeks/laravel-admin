@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ config('app.locale') }}" data-lte-color-mode="off">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,6 +16,7 @@
     {!! Admin::css() !!}
 
     <script src="{{ Admin::jQuery() }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     {!! Admin::headerJs() !!}
     <!--[if lt IE 9]>
@@ -25,7 +26,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini skin-blue-light">
+<body class="hold-transition skin-blue-light sidebar-expand-lg sidebar-mini bg-body-tertiary">
 
 @if($alert = config('admin.top_alert'))
     <div style="text-align: center;padding: 5px;font-size: 12px;background-color: #ffffd5;color: #ff0000;">
