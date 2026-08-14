@@ -62,6 +62,7 @@
 
 .skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.page-link):not(.dropdown-item > a):not(.breadcrumb-item > a) {
     color: #3c8dbc;
+    text-decoration: none;
 }
 
 .skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.dropdown-item > a):not(.page-link):not(.breadcrumb-item > a):hover,
@@ -864,8 +865,8 @@
 }
 
 .skin-blue-light .form-check input[type="checkbox"] {
-    margin-right: 3px;
-    margin-top: -3px;
+    margin-right: 5px;
+    margin-top: 2px;
 }
 
 
@@ -878,6 +879,7 @@
 
 .skin-blue-light .card {
     word-wrap: normal;
+    margin-bottom: 1rem;
 }
 
 .skin-blue-light:not(.login-page) .card-body {
