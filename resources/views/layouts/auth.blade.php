@@ -21,7 +21,7 @@
     @section('styles')
     @show
 </head>
-<body>
+<body data-bs-theme="light">
 <div class="auth-2fa">
     @yield('content')
 </div>

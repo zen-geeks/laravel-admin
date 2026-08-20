@@ -1071,3 +1071,16 @@
 .skin-blue-light .app-header > .container-fluid {
     padding-left: 0;
 }
+
+.skin-blue-light .login-box input.form-control {
+    border-right: 0;
+    box-shadow: none;
+}
+
+.skin-blue-light .form-group.has-error .input-group-text {
+    border-color: #dd4b39 !important;
+}
+
+.skin-blue-light .login-box .input-group:focus-within .input-group-text {
+    border-color: rgb(52.5490196078%, 71.568627451%, 99.6078431373%);
+}
