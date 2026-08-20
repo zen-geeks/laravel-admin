@@ -10,8 +10,8 @@
                    name="{{$name['start']}}"
                    value="{{ request()->input("{$column}.start", \Illuminate\Support\Arr::get($value, 'start')) }}"
                    autocomplete="off"
-                   data-bs-toggle="datetimepicker"
-                   data-bs-target="#{{$id['start']}}"
+                   data-toggle="datetimepicker"
+                   data-target="#{{$id['start']}}"
             />
 
             <span class="input-group-text">-</span>
@@ -23,8 +23,8 @@
                    name="{{$name['end']}}"
                    value="{{ request()->input("{$column}.end", \Illuminate\Support\Arr::get($value, 'end')) }}"
                    autocomplete="off"
-                   data-bs-toggle="datetimepicker"
-                   data-bs-target="#{{$id['end']}}"
+                   data-toggle="datetimepicker"
+                   data-target="#{{$id['end']}}"
             />
         </div>
     </div>

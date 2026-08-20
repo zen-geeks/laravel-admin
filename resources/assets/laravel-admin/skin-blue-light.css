@@ -36,10 +36,16 @@
     --bs-danger-bg-subtle: #dc3545;
     --bs-border-radius: .25rem;
     --lte-sidebar-hover-bg: transparent;
+    --lte-sidebar-width: 230px;
 }
 
 .skin-blue-light .card-info {
     --lte-card-variant-bg: transparent;
+}
+
+.table {
+    --bs-table-striped-bg: #f9f9f9;
+    --bs-border-width: 0;
 }
 
 /* ---------- BASE / LINKS / LAYOUT ---------- */
@@ -57,7 +63,7 @@
 }
 
 .skin-blue-light section.app-content {
-    padding: 7.5px;
+    padding: 7.5px 0 0 0;
 }
 
 .skin-blue-light a:not(.btn):not(.nav-link):not(.dropdown-item):not(.brand-link):not(.page-link):not(.dropdown-item > a):not(.breadcrumb-item > a) {
@@ -144,7 +150,7 @@
 }
 
 .skin-blue-light .app-content-header {
-    padding: 15px 15px 0 7.5px;
+    padding: 15px 15px 0 0;
 }
 
 .skin-blue-light .app-content-header h1 {
@@ -505,7 +511,8 @@
     font-size: inherit;
 }
 
-.skin-blue-light .form-control:not(textarea) {
+.skin-blue-light .form-control:not(textarea),
+.skin-blue-light .form-select {
     height: 34px;
 }
 
@@ -538,6 +545,7 @@
 }
 
 .skin-blue-light .filter-card .form-control,
+.skin-blue-light .filter-card .form-select,
 .skin-blue-light .filter-card .input-group-text {
     height: 32px;
     padding: 5px 10px;
@@ -702,9 +710,6 @@
         margin-left: -15px;
         margin-right: -15px;
         font-size: 18px;
-    }
-    .skin-blue-light .form-horizontal .form-group {
-        padding-right: 30px;
     }
 }
 
@@ -888,6 +893,7 @@
 
 .skin-blue-light .card.card-default {
     border-top: 3px solid #d2d6de;
+    margin-bottom: 0;
 }
 
 .skin-blue-light .card.card-success {
@@ -1018,7 +1024,8 @@
     border-color: #d2d6de;
 }
 
-.skin-blue-light .form-group.has-error .form-control {
+.skin-blue-light .form-group.has-error .form-control,
+.skin-blue-light .form-group.has-error .form-select {
     border-color: #dd4b39;
     box-shadow: none;
 }
@@ -1083,4 +1090,8 @@
 
 .skin-blue-light .login-box .input-group:focus-within .input-group-text {
     border-color: rgb(52.5490196078%, 71.568627451%, 99.6078431373%);
+}
+
+.skin-blue-light .select2-container--default .select2-search--inline .select2-search__field {
+    margin: 8px 0 0 6px;
 }

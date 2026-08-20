@@ -13,5 +13,5 @@
         </ul>
     @endif
     <span class="input-group-text"><i class="far fa-calendar"></i></span>
-    <input class="form-control datetimepicker-input" id="{{$id}}" placeholder="{{$label}}" name="{{$name}}" value="{{ request($name, $value) }}" data-bs-toggle="datetimepicker" data-bs-target="#{{$id}}">
+    <input class="form-control datetimepicker-input" id="{{$id}}" placeholder="{{$label}}" name="{{$name}}" value="{{ request($name, $value) }}" data-toggle="datetimepicker" data-target="#{{$id}}">
 </div>
