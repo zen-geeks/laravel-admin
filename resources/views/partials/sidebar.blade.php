@@ -46,7 +46,7 @@
 
         <div class="sidebar-wrapper">
             <nav class="mt-2">
-                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="false" id="navigation">
+                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" data-accordion="true" id="navigation">
                     @each('admin::partials.menu', Admin::menu(), 'item')
                 </ul>
             </nav>

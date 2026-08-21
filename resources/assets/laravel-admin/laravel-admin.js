@@ -229,7 +229,7 @@ $('#totop').on('click', function (e) {
     }
 
     function initTooltips() {
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
     }
 
     $(function () {

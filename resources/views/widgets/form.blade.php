@@ -13,10 +13,8 @@
 
     <!-- /.card-body -->
     @if(count($buttons) > 0)
-    <div class="card-footer">
-        <div class="col-lg-{{$width['label']}}"></div>
-
-        <div class="col-lg-{{$width['field']}} container">
+    <div class="card-footer row">
+        <div class="col-lg-{{$width['field']}} col-md-{{$width['field']}}  container">
             @if(in_array('reset', $buttons))
             <div class="btn-group float-start">
                 <button type="reset" class="btn btn-warning float-end">{{ trans('admin.reset') }}</button>

@@ -29,10 +29,9 @@ class Help implements Renderable
     public function render()
     {
         $data = [
-            'toggle'    => 'tooltip',
-            'placement' => 'right',
-            'html'      => 'true',
-            'title'     => $this->message,
+            'bs-toggle'    => 'tooltip',
+            'bs-placement' => 'right',
+            'bs-html'      => 'true',
         ];
 
         $data = collect($data)->map(function ($val, $key) {
@@ -40,7 +39,7 @@ class Help implements Renderable
         })->implode(' ');
 
         return <<<HELP
-<a href="javascript:void(0);" class="grid-column-help" {$data}>
+<a href="javascript:void(0);" class="grid-column-help" {$data} title="{$this->message}">
     <i class="fas fa-question-circle"></i>
 </a>
 HELP;

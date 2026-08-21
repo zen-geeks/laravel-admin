@@ -1,11 +1,8 @@
-<div class="card-footer">
+<div class="card-footer row">
 
     {{ csrf_field() }}
 
-    <div class="col-lg-{{$width['label']}}">
-    </div>
-
-    <div class="col-lg-{{$width['field']}} container">
+    <div class="col-lg-{{$width['field']}} col-md-{{$width['field']}} container">
 
         @if(in_array('submit', $buttons))
         <div class="btn-group float-end">
