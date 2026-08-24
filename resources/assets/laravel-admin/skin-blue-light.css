@@ -1128,3 +1128,11 @@
 .skin-blue-light .form-check-input:not(:checked) {
     border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
+
+.skin-blue-light .btn-close {
+    --bs-btn-close-focus-shadow: none;
+}
+
+.skin-blue-light .btn-close {
+    background-size: 0.8em auto;
+}

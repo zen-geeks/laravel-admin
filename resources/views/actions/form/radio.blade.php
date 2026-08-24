@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label>{{ $label }}</label>
+    <label class="form-label">{{ $label }}</label>
     <div>
     @foreach($options as $option => $label)
         <span class="icheck">
