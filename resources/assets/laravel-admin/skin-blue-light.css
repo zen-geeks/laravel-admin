@@ -1020,6 +1020,10 @@
     border-top: 0;
 }
 
+.skin-blue-light .card.card-info .card-footer {
+    border-top: none;
+}
+
 @media (max-width: 991px) {
     .skin-blue-light .app-content-header ol.breadcrumb {
         position: relative;
