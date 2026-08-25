@@ -54,4 +54,33 @@ The `ExampleController.php` file is a controller example.
 
 ### Static assets
 
-The front-end static files are in the `/public/packages/admin` directory.
+The front-end static files are in the `/public/vendor/laravel-admin` directory.
+
+After updating the package or making changes to the front-end assets, publish the assets with:
+
+```bash
+php artisan admin:publish
+```
+
+The published assets include an `admin-minify.js` script that can be used to combine the JavaScript and CSS files into single bundles.
+
+To generate the bundles, run:
+
+```bash
+node public/vendor/laravel-admin/admin-minify.js
+```
+
+This generates the following files:
+
+```text
+public/vendor/laravel-admin/
+├── app.min.js
+└── app.min.css
+```
+
+If `app.min.js` and `app.min.css` are present, laravel-admin will use these bundled files instead of the default JavaScript and CSS files. If the bundled files are not present, laravel-admin will fall back to the default assets.
+
+The bundled files reduce the number of HTTP requests required to load the admin panel.
+
+Run `admin-minify.js` after each `admin:publish` to regenerate the bundles.
+
