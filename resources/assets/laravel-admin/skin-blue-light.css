@@ -37,6 +37,7 @@
     --bs-border-radius: .25rem;
     --lte-sidebar-hover-bg: transparent;
     --lte-sidebar-width: 230px;
+    --bs-body-bg-rgb: 249 250 252;
 }
 
 .skin-blue-light .card-info {
@@ -237,10 +238,6 @@
 .skin-blue-light div.app-wrapper > .app-main {
     border-left: 1px solid #d2d6de;
     background-color: #ecf0f5;
-}
-
-.skin-blue-light .app-sidebar {
-    background-color: #f9fafc;
 }
 
 .skin-blue-light .elevation-4 {
@@ -578,6 +575,7 @@
 .skin-blue-light .filter-card .select2-container--default .select2-selection--single {
     height: 32px;
     padding-top: 4px;
+    border-radius: 4px;
 }
 
 .skin-blue-light .filter-card .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -1009,6 +1007,7 @@
     border-radius: 0;
     border-left: 0;
     border-right: 0;
+    border-top: 0;
 }
 
 .skin-blue-light .card.filter-card .card-body.with-border {
@@ -1135,4 +1134,9 @@
 
 .skin-blue-light .btn-close {
     background-size: 0.8em auto;
+}
+
+.skin-blue-light hr {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    opacity: 1;
 }
