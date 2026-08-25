@@ -49,7 +49,11 @@ class RoleController extends AdminController
 
             $filter->column(1/2, function ($filter) use ($permissionModel) {
                 $filter->like('name', trans('admin.name'));
-                $filter->in('permissions', trans('admin.permission'))->multipleSelect($permissionModel::all()->pluck('name', 'id'));
+                $filter->where(function ($query) {
+                    $query->whereHas('permissions', function ($query) {
+                        $query->whereIn('id', $this->input);
+                    });
+                }, trans('admin.permission'))->multipleSelect($permissionModel::all()->pluck('name', 'id'));
             });
 
         });
