@@ -25,6 +25,7 @@ class RoleController extends AdminController
     protected function grid()
     {
         $roleModel = config('admin.database.roles_model');
+        $permissionModel = config('admin.database.permissions_model');
 
         $grid = new Grid(new $roleModel());
 
@@ -36,8 +37,22 @@ class RoleController extends AdminController
             return str_replace('&nbsp;', '<br>', $raw);
         });
 
-        $grid->column('created_at', trans('admin.created_at'));
-        $grid->column('updated_at', trans('admin.updated_at'));
+        $grid->column('created_at', trans('admin.created_at'))->sortable();
+        $grid->column('updated_at', trans('admin.updated_at'))->sortable();
+
+        $grid->setDefaultSort('updated_at', 'desc');
+
+        $grid->filter(function($filter) use ($permissionModel) {
+            $filter->column(1/2, function ($filter) {
+                $filter->like('slug', trans('admin.slug'));
+            });
+
+            $filter->column(1/2, function ($filter) use ($permissionModel) {
+                $filter->like('name', trans('admin.name'));
+                $filter->in('permissions', trans('admin.permission'))->multipleSelect($permissionModel::all()->pluck('name', 'id'));
+            });
+
+        });
 
         $grid->actions(function (Grid\Displayers\Actions $actions) {
             if ($actions->row->slug == 'administrator') {
