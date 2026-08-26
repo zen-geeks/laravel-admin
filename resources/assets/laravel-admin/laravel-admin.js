@@ -273,3 +273,12 @@ $('#totop').on('click', function (e) {
         });
     });
 })(jQuery);
+
+bootstrap.Dropdown.Default.boundary = 'viewport';
+
+bootstrap.Dropdown.Default.popperConfig = function (defaultPopperConfig) {
+    return {
+        ...defaultPopperConfig,
+        strategy: 'fixed',
+    };
+};
