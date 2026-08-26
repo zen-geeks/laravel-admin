@@ -116,6 +116,9 @@ a.editable-empty {
             color: #d9534f;
         }
     }
+    .form-control, .form-select {
+        font-size: 1rem;
+    }
 }
 
 .actions-dropdown-menu {

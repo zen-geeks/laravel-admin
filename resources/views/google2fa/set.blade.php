@@ -2,15 +2,15 @@
 
 @section('content')
     <p>
-        <h2>{{ trans('admin.ext.2fa.title') }}</h2>
-        <span>{!! trans('admin.ext.2fa.description_set') !!}</span>
+    <h2>{{ trans('admin.ext.2fa.title') }}</h2>
+    <span>{!! trans('admin.ext.2fa.description_set') !!}</span>
     </p>
     @if($qr_code_image)
         <img src="data:image/svg+xml;base64, {{ $qr_code_image}}" />
     @endif
 
     <div class="form-group">
-        <label for="secret-key">{{ trans('admin.ext.2fa.secret_key') }}</label>
+        <label for="secret-key" class="form-label">{{ trans('admin.ext.2fa.secret_key') }}</label>
         <input type="text" class="form-control" id="secret_key" name="secret_key" readonly value="{{ $secret_key  }}">
     </div>
 
