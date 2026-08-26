@@ -80,6 +80,8 @@ trait HasAssets
      * @var array
      */
     public static $baseJs = [
+        'vendor/laravel-admin/AdminLTE/plugins/popper/popper.min.js',
+        'vendor/laravel-admin/AdminLTE/plugins/bootstrap5/bootstrap.min.js',
         'vendor/laravel-admin/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js',
         'vendor/laravel-admin/AdminLTE/dist/js/adminlte.min.js',
         'vendor/laravel-admin/jquery-pjax/jquery.pjax.js',
