@@ -4,6 +4,8 @@ const path = require('path');
 const dir = __dirname;
 
 const jsFiles = [
+    "AdminLTE/plugins/popper/popper.min.js",
+    "AdminLTE/plugins/bootstrap5/bootstrap.min.js",
     "AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js",
     "AdminLTE/dist/js/adminlte.min.js",
     "jquery-pjax/jquery.pjax.js",
