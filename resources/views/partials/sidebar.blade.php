@@ -1,7 +1,7 @@
 <aside class="app-sidebar bg-body elevation-4 shadow" data-bs-theme="light">
 
     <div class="sidebar-brand">
-        <a href="{{ admin_url('/') }}" class="brand-link">
+        <a href="{{ admin_url('/', absolute: false) }}" class="brand-link">
             <span class="logo-mini">{!! config('admin.logo-mini', config('admin.name')) !!}</span>
             {{--        <img src="{!! config('admin.logo-mini-path', '/vendor/laravel-admin/AdminLTE/dist/img/AdminLTELogo.png') !!}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">--}}
             <span class="brand-text fw-light">
@@ -32,7 +32,7 @@
                     </button>
                 </div>
 
-<ul class="dropdown-menu" role="menu" style="min-width:210px;max-height:300px;overflow:auto;">@foreach(Admin::menuLinks() as $link)<li><a href="{{ admin_url($link['uri']) }}"><i class="fas {{ $link['icon'] }}"></i>{{ admin_trans($link['title']) }}</a></li>@endforeach</ul>
+<ul class="dropdown-menu" role="menu" style="min-width:210px;max-height:300px;overflow:auto;">@foreach(Admin::menuLinks() as $link)<li><a href="{{ admin_url($link['uri'], absolute: false) }}"><i class="fas {{ $link['icon'] }}"></i>{{ admin_trans($link['title']) }}</a></li>@endforeach</ul>
             </div>
         @endif
 

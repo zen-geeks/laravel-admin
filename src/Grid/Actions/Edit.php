@@ -19,6 +19,6 @@ class Edit extends RowAction
      */
     public function href()
     {
-        return "{$this->getResource()}/{$this->getKey()}/edit";
+        return admin_url("{$this->getResource()}/{$this->getKey()}/edit", absolute: false);
     }
 }

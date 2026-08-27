@@ -27,15 +27,29 @@ if (!function_exists('admin_url')) {
      *
      * @return string
      */
-    function admin_url($path = '', $parameters = [], $secure = null)
+    function admin_url($path = '', $parameters = [], $secure = null, $absolute = true)
     {
         if (\Illuminate\Support\Facades\URL::isValidUrl($path)) {
-            return $path;
+            if ($absolute)
+                return $path;
+
+            $url = parse_url($path);
+
+            return ($url['path'] ?? '/').(isset($url['query']) ? '?'.$url['query'] : '').(isset($url['fragment']) ? '#'.$url['fragment'] : '');
+        }
+
+        $basePath = admin_base_path($path);
+        if (!$absolute) {
+            $url = $basePath;
+            if (!empty($parameters))
+                $url .= '?' . http_build_query($parameters);
+
+            return $url;
         }
 
         $secure = $secure ?: (config('admin.https') || config('admin.secure'));
 
-        return url(admin_base_path($path), $parameters, $secure);
+        return url($basePath, $parameters, $secure);
     }
 }
 

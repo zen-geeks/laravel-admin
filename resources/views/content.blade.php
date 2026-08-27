@@ -18,7 +18,7 @@
                         @if ($breadcrumb)
                             <ol class="breadcrumb float-lg-end">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ admin_url('/') }}">
+                                    <a href="{{ admin_url('/', absolute: false) }}">
                                         <i class="fas fa-home"></i> {{ __('Home') }}
                                     </a>
                                 </li>
@@ -33,7 +33,7 @@
                                     @else
                                         <li class="breadcrumb-item">
                                             @if (\Illuminate\Support\Arr::has($item, 'url'))
-                                                <a href="{{ admin_url(\Illuminate\Support\Arr::get($item, 'url')) }}">
+                                                <a href="{{ admin_url(\Illuminate\Support\Arr::get($item, 'url'), absolute: false) }}">
                                                     @if (\Illuminate\Support\Arr::has($item, 'icon'))
                                                         <i class="fas fa-{{ $item['icon'] }}"></i>
                                                     @endif
@@ -52,7 +52,7 @@
                         @elseif(config('admin.enable_default_breadcrumb'))
                             <ol class="breadcrumb float-lg-end">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ admin_url('/') }}">
+                                    <a href="{{ admin_url('/', absolute: false) }}">
                                         <i class="fas fa-home"></i> {{ __('Home') }}
                                     </a>
                                 </li>
