@@ -3,7 +3,7 @@
     <div class="panel card card-primary" style="margin-bottom: 0px">
         <div class="card-header">
             <h4 class="card-title">
-                <a data-toggle="collapse" data-parent="#{{$id}}" href="#collapse{{ $key }}">
+                <a data-bs-toggle="collapse" data-bs-parent="#{{$id}}" href="#collapse{{ $key }}">
                     {{ $item['title'] }}
                 </a>
             </h4>

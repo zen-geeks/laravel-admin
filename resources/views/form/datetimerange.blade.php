@@ -12,7 +12,7 @@
                 @endif
 
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar"></i></span></div>
+                    <span class="input-group-text"><i class="far fa-calendar"></i></span>
                     <input type="text"
                            name="{{$name['start']}}"
                            value="{{ old($column['start'], $value['start'] ?? null) }}"
@@ -34,7 +34,7 @@
                 @endif
 
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar"></i></span></div>
+                    <span class="input-group-text"><i class="far fa-calendar"></i></span>
                     <input type="text"
                            name="{{$name['end']}}"
                            value="{{ old($column['end'], $value['end'] ?? null) }}"

@@ -1,7 +1,7 @@
 @if($errors->hasBag('exception') && config('app.debug') == true)
     <?php $error = $errors->getBag('exception');?>
     <div class="alert alert-warning alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <h4>
             <i class="icon fas fa-warning"></i>
             <i style="border-bottom: 1px dotted #fff;cursor: pointer;" title="{{ $error->first('type') }}" ondblclick="var f=this.innerHTML;this.innerHTML=this.title;this.title=f;">{{ class_basename($error->first('type')) }}</i>

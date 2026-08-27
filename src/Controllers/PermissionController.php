@@ -56,8 +56,22 @@ class PermissionController extends AdminController
             })->implode('');
         });
 
-        $grid->column('created_at', trans('admin.created_at'));
-        $grid->column('updated_at', trans('admin.updated_at'));
+        $grid->column('created_at', trans('admin.created_at'))->sortable();
+        $grid->column('updated_at', trans('admin.updated_at'))->sortable();
+
+        $grid->setDefaultSort('updated_at', 'desc');
+
+        $grid->filter(function($filter) use ($permissionModel) {
+            $filter->column(1/2, function ($filter) {
+                $filter->like('slug', trans('admin.slug'));
+            });
+
+            $filter->column(1/2, function ($filter) use ($permissionModel) {
+                $filter->like('name', trans('admin.name'));
+                $filter->like('http_path', trans('admin.route'));
+            });
+
+        });
 
         $grid->tools(function (Grid\Tools $tools) {
             $tools->batch(function (Grid\Tools\BatchActions $actions) {

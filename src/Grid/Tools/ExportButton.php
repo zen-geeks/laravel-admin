@@ -70,12 +70,12 @@ SCRIPT;
         $page = request('page', 1);
 
         return <<<EOT
-<div class="btn-group float-right mr-2">
+<div class="btn-group float-end me-2">
     <a href="{$this->grid->getExportUrl('all')}" target="_blank" class="btn btn-sm btn-primary" title="{$trans['export']}">
         <i class="fas fa-download"></i>
         <span class="d-none d-md-inline"> {$trans['export']}</span>
     </a>
-    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+    <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">

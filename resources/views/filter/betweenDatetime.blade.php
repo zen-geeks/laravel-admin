@@ -2,9 +2,7 @@
     <label class="col-12 col-md-2 col-form-label">{{$label}}</label>
     <div class="col-12 col-md-8">
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="far fa-calendar"></i></span>
-            </div>
+            <span class="input-group-text"><i class="far fa-calendar"></i></span>
             <input type="text"
                    class="form-control datetimepicker-input"
                    id="{{$id['start']}}"
@@ -16,7 +14,7 @@
                    data-target="#{{$id['start']}}"
             />
 
-            <div class="input-group-prepend" style="border-left: 0; border-right: 0;"><span class="input-group-text">-</span></div>
+            <span class="input-group-text">-</span>
 
             <input type="text"
                    class="form-control datetimepicker-input"

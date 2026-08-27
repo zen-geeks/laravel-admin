@@ -36,7 +36,7 @@ class CreateButton extends AbstractTool
 
         return <<<EOT
 
-<div class="btn-group float-right grid-create-btn" style="margin-right: 10px">
+<div class="btn-group float-end grid-create-btn" style="margin-right: 10px">
     <a href="{$this->grid->getCreateUrl()}" class="btn btn-sm btn-success" title="{$new}">
         <i class="fas fa-plus"></i><span class="d-none d-md-inline">&nbsp;&nbsp;{$new}</span>
     </a>

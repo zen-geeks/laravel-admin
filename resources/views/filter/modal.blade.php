@@ -1,5 +1,5 @@
-<div class="btn-group float-right" style="margin-right: 10px">
-    <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $modalID }}"><i class="fas fa-filter"></i>&nbsp;&nbsp;{{ trans('admin.filter') }}</a>
+<div class="btn-group float-end" style="margin-right: 10px">
+    <a href="" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#{{ $modalID }}"><i class="fas fa-filter"></i>&nbsp;&nbsp;{{ trans('admin.filter') }}</a>
     <a href="{!! $action !!}" class="btn btn-sm btn-facebook"><i class="fas fa-undo"></i>&nbsp;&nbsp;{{ trans('admin.reset') }}</a>
 </div>
 
@@ -8,10 +8,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">{{ trans('admin.filter') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{!! $action !!}" method="get" pjax-container>
                 <div class="modal-body">
@@ -25,7 +22,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary submit">{{ trans('admin.submit') }}</button>
-                    <button type="reset" class="btn btn-warning float-left">{{ trans('admin.reset') }}</button>
+                    <button type="reset" class="btn btn-warning float-start">{{ trans('admin.reset') }}</button>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 <li class="dd-item" data-id="{{ $branch[$keyName] }}">
     <div class="dd-handle">
         {!! $branchCallback($branch) !!}
-        <span class="float-right dd-nodrag">
+        <span class="float-end dd-nodrag">
             <a href="{{ url("$path/$branch[$keyName]/edit") }}"><i class="fas fa-edit"></i></a>
             <a href="javascript:void(0);" data-id="{{ $branch[$keyName] }}" class="tree_branch_delete"><i class="fas fa-trash"></i></a>
         </span>

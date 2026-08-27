@@ -5,7 +5,7 @@
 
 
     @if($scopes->isNotEmpty())
-    <button type="button" class="btn btn-sm btn-dropbox dropdown-toggle btn-primary" data-toggle="dropdown">
+    <button type="button" class="btn btn-sm btn-dropbox dropdown-toggle btn-primary" data-bs-toggle="dropdown">
 
         <span>{{ $label }}</span>
         <span class="caret"></span>

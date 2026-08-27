@@ -80,6 +80,8 @@ trait HasAssets
      * @var array
      */
     public static $baseJs = [
+        'vendor/laravel-admin/AdminLTE/plugins/popper/popper.min.js',
+        'vendor/laravel-admin/AdminLTE/plugins/bootstrap5/bootstrap.min.js',
         'vendor/laravel-admin/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js',
         'vendor/laravel-admin/AdminLTE/dist/js/adminlte.min.js',
         'vendor/laravel-admin/jquery-pjax/jquery.pjax.js',
@@ -116,8 +118,10 @@ trait HasAssets
             return self::$css = array_merge(self::$css, (array) $css);
         }
 
-        if (!$css = static::getMinifiedCss()) {
-            $css = array_merge(static::$css, static::baseCss());
+        if (!$css = static::getBundledCss()) {
+            if (!$css = static::getMinifiedCss()) {
+                $css = array_merge(static::$css, static::baseCss());
+            }
         }
 
         $css = array_filter(array_unique($css));
@@ -162,8 +166,10 @@ trait HasAssets
             return self::$js = array_merge(self::$js, (array) $js);
         }
 
-        if (!$js = static::getMinifiedJs()) {
-            $js = array_merge(static::baseJs(), static::$js);
+        if (!$js = static::getBundledJs()) {
+            if (!$js = static::getMinifiedJs()) {
+                $js = array_merge(static::baseJs(), static::$js);
+            }
         }
 
         $js = array_filter(array_unique($js));
@@ -399,5 +405,27 @@ trait HasAssets
         }
 
         return trim($render);
+    }
+
+    protected static function getBundledCss(): ?array
+    {
+        $path = public_path('vendor/laravel-admin/app.min.css');
+
+        if (!file_exists($path)) {
+            return null;
+        }
+
+        return ['/vendor/laravel-admin/app.min.css'];
+    }
+
+    protected static function getBundledJs(): ?array
+    {
+        $path = public_path('vendor/laravel-admin/app.min.js');
+
+        if (!file_exists($path)) {
+            return null;
+        }
+
+        return ['/vendor/laravel-admin/app.min.js'];
     }
 }

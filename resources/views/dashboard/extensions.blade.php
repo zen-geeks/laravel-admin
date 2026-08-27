@@ -12,10 +12,14 @@
     <div class="card-header">
         <h3 class="card-title">Available extensions</h3>
 
-        <div class="card-tools float-right">
-            <button type="button" class="btn btn-card-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" aria-label="Collapse card" title="Collapse">
+                <i data-lte-icon="expand" class="fa fa-plus"></i>
+                <i data-lte-icon="collapse" class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-card-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+            <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" aria-label="Remove card" title="Remove">
+                <i class="fa fa-times"></i>
+            </button>
         </div>
     </div>
     <!-- /.card-header -->
@@ -32,7 +36,7 @@
                         {{ $extension['name'] }}
                     </a>
                     @if($extension['installed'])
-                        <span class="float-right installed"><i class="fas fa-check"></i></span>
+                        <span class="float-end installed"><i class="fas fa-check"></i></span>
                     @endif
                 </div>
             </li>

@@ -2,7 +2,7 @@
 <div class="btn-group {{ $all }}-btn" style="display:none;margin-right: 5px;">
     <a class="btn btn-sm btn-secondary d-none d-md-inline"><span class="selected"></span></a>
     @if(!$actions->isEmpty())
-        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
         </button>

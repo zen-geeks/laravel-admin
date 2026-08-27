@@ -1,11 +1,11 @@
 @extends('admin::index', ['header' => strip_tags($header)])
 
 @section('content')
-    <div class="content-header">
+    <div class="app-content-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 col-lg-4">
-                    <h1 class="m-0">
+                    <h1 class="mb-0">
                         {!! $header ?: trans('admin.title') !!}
                         @if($description)
                             <small class="text-muted">{{ $description }}</small>
@@ -14,60 +14,62 @@
                 </div>
 
                 <div class="col-md-12 col-lg-8 breadcrumb-container">
-                    @if ($breadcrumb)
-                        <ol class="breadcrumb float-lg-right">
-                            <li class="breadcrumb-item">
-                                <a href="{{ admin_url('/') }}">
-                                    <i class="fas fa-home"></i> {{ __('Home') }}
-                                </a>
-                            </li>
-                            @foreach($breadcrumb as $item)
-                                @if($loop->last)
-                                    <li class="breadcrumb-item active">
-                                        @if (\Illuminate\Support\Arr::has($item, 'icon'))
-                                            <i class="fas fa-{{ $item['icon'] }}"></i>
-                                        @endif
-                                        {{ $item['text'] }}
-                                    </li>
-                                @else
-                                    <li class="breadcrumb-item">
-                                        @if (\Illuminate\Support\Arr::has($item, 'url'))
-                                            <a href="{{ admin_url(\Illuminate\Support\Arr::get($item, 'url')) }}">
-                                                @if (\Illuminate\Support\Arr::has($item, 'icon'))
-                                                    <i class="fas fa-{{ $item['icon'] }}"></i>
-                                                @endif
-                                                {{ $item['text'] }}
-                                            </a>
-                                        @else
+                    <nav aria-label="breadcrumb">
+                        @if ($breadcrumb)
+                            <ol class="breadcrumb float-lg-end">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ admin_url('/') }}">
+                                        <i class="fas fa-home"></i> {{ __('Home') }}
+                                    </a>
+                                </li>
+                                @foreach($breadcrumb as $item)
+                                    @if($loop->last)
+                                        <li class="breadcrumb-item active">
                                             @if (\Illuminate\Support\Arr::has($item, 'icon'))
                                                 <i class="fas fa-{{ $item['icon'] }}"></i>
                                             @endif
                                             {{ $item['text'] }}
-                                        @endif
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ol>
-                    @elseif(config('admin.enable_default_breadcrumb'))
-                        <ol class="breadcrumb float-lg-right">
-                            <li class="breadcrumb-item">
-                                <a href="{{ admin_url('/') }}">
-                                    <i class="fas fa-home"></i> {{ __('Home') }}
-                                </a>
-                            </li>
-                            @for($i = 2; $i <= count(Request::segments()); $i++)
+                                        </li>
+                                    @else
+                                        <li class="breadcrumb-item">
+                                            @if (\Illuminate\Support\Arr::has($item, 'url'))
+                                                <a href="{{ admin_url(\Illuminate\Support\Arr::get($item, 'url')) }}">
+                                                    @if (\Illuminate\Support\Arr::has($item, 'icon'))
+                                                        <i class="fas fa-{{ $item['icon'] }}"></i>
+                                                    @endif
+                                                    {{ $item['text'] }}
+                                                </a>
+                                            @else
+                                                @if (\Illuminate\Support\Arr::has($item, 'icon'))
+                                                    <i class="fas fa-{{ $item['icon'] }}"></i>
+                                                @endif
+                                                {{ $item['text'] }}
+                                            @endif
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ol>
+                        @elseif(config('admin.enable_default_breadcrumb'))
+                            <ol class="breadcrumb float-lg-end">
                                 <li class="breadcrumb-item">
-                                    {{ ucfirst(Request::segment($i)) }}
+                                    <a href="{{ admin_url('/') }}">
+                                        <i class="fas fa-home"></i> {{ __('Home') }}
+                                    </a>
                                 </li>
-                            @endfor
-                        </ol>
-                    @endif
+                                @for($i = 2; $i <= count(Request::segments()); $i++)
+                                    <li class="breadcrumb-item">
+                                        {{ ucfirst(Request::segment($i)) }}
+                                    </li>
+                                @endfor
+                            </ol>
+                        @endif
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="content">
+    <section class="app-content">
         <div class="container-fluid">
 
             @include('admin::partials.alerts')

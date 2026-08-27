@@ -9,19 +9,17 @@
         <div class="input-group">
 
             @if ($prepend)
-                <div class="input-group-prepend"><span class="input-group-text">{!! $prepend !!}</span></div>
+                <span class="input-group-text">{!! $prepend !!}</span>
             @endif
 
             <input {!! $attributes !!} />
 
             @if ($append)
-                    <div class="input-group-prepend clearfix"><span class="input-group-text">{!! $append !!}</span></div>
+                    <span class="input-group-text">{!! $append !!}</span>
             @endif
 
             @isset($btn)
-                <span class="input-group-append">
-                  {!! $btn !!}
-                </span>
+                {!! $btn !!}
             @endisset
 
         </div>

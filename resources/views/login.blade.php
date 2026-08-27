@@ -24,7 +24,7 @@
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page skin-blue-light" @if(config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif>
+<body class="hold-transition login-page skin-blue-light" data-bs-theme="light" @if(config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif>
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ admin_url('/') }}"><b>{{config('admin.name')}}</b></a>
@@ -45,10 +45,8 @@
 
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="{{ trans('admin.username') }}" name="username" value="{{ old('username') }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
@@ -63,10 +61,8 @@
 
                     <div class="input-group mb-3">
                         <input type="password" class="form-control" placeholder="{{ trans('admin.password') }}" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
                         </div>
                     </div>
                 </div>
@@ -85,7 +81,7 @@
                     <!-- /.col -->
                     <div class="col-12 col-md-4">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('admin.login') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat" style="width: 100%;">{{ trans('admin.login') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -98,7 +94,7 @@
 <!-- /.login-box -->
 
 <script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/jquery/jquery.min.js")}}"></script>
-<script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/js/adminlte.min.js")}}"></script>
 
 </body>

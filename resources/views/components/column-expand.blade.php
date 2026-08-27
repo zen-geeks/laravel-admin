@@ -1,6 +1,6 @@
 <div>
     <span class="{{ $elementClass }}" data-inserted="0" data-key="{{ $key }}" data-name="{{ $name }}"
-          data-toggle="collapse" data-target="#grid-collapse-{{ $name }}">
+          data-bs-toggle="collapse" data-bs-target="#grid-collapse-{{ $name }}">
         <a href="javascript:void(0)"><i class="fas fa-angle-double-down"></i>&nbsp;&nbsp;{{ $value }}</a>
     </span>
     <template class="grid-expand-{{ $name }}">
