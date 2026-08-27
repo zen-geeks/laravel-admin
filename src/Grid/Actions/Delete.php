@@ -3,11 +3,11 @@
 namespace Encore\Admin\Grid\Actions;
 
 use Encore\Admin\Actions\Response;
-use Encore\Admin\Actions\RowAction;
+use Encore\Admin\Actions\RowSimpleAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Delete extends RowAction
+class Delete extends RowSimpleAction
 {
     /**
      * @return array|null|string

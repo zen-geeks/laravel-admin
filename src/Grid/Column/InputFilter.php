@@ -104,7 +104,7 @@ SCRIPT;
         return <<<EOT
 <span class="dropdown">
     <form action="{$this->getFormAction()}" pjax-container style="display: inline-block;">
-    <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-bs-toggle="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle {$active}" data-bs-toggle="dropdown" data-bs-auto-close="outside">
         <i class="fas fa-filter"></i>
     </a>
     <ul class="dropdown-menu" role="menu" style="padding: 10px;box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);left: -70px;border-radius: 0;">
