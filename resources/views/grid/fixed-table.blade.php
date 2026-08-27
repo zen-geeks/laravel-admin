@@ -30,11 +30,7 @@
             <div class="table-wrap table-main">
                 <table class="table grid-table" id="{{ $grid->tableID }}">
                     <thead>
-                        <tr>
-                            @foreach($grid->visibleColumns() as $column)
-                            <th {!! $column->formatHtmlAttributes() !!}>{{$column->getLabel()}}{!! $column->renderHeader() !!}</th>
-                            @endforeach
-                        </tr>
+                        <tr>@foreach($grid->visibleColumns() as $column)<th {!! $column->formatHtmlAttributes() !!}>{{$column->getLabel()}}{!! $column->renderHeader() !!}</th>@endforeach</tr>
                     </thead>
 
                     <tbody>

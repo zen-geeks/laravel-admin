@@ -11,16 +11,12 @@ use \Encore\Admin\Grid\Filter\Period;
             <div class="col-12 col-md-4">
                 <select class="form-select" name="{{$name}}[type]" id="{{$name}}_type">
                     <option value="">{{ __('admin.choose') }}</option>
-                    @foreach($periods as $period_key => $period_name)
-                        <option value="{{ $period_key }}" {{ $period_key === $period_type ? 'selected' : '' }}>
-                            {{ $period_name }}
-                        </option>
-                    @endforeach
+                    @foreach($periods as $period_key => $period_name)<option value="{{ $period_key }}" {{ $period_key === $period_type ? 'selected' : '' }}>{{ $period_name }}</option>@endforeach
                 </select>
             </div>
 
             @if (!empty($periods[Period::CUSTOM_DATE]))
-                <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATE ? '' : ' d-none' }}">
+                <div id="toggle_{{$name}}_custom_date" class="js-filter-period-toggle-item row {{ $period_type === Period::CUSTOM_DATE ? '' : ' d-none' }}">
                     <div class="col-12 col-md-8">
                         <div class="input-group">
                             <span class="input-group-text"><i class="far fa-calendar"></i></span>
@@ -44,7 +40,7 @@ use \Encore\Admin\Grid\Filter\Period;
             @endif
 
             @if (!empty($periods[Period::CUSTOM_DATETIME]))
-                <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' d-none' }}">
+                <div id="toggle_{{$name}}_custom_datetime" class="js-filter-period-toggle-item row {{ $period_type === Period::CUSTOM_DATETIME ? '' : ' d-none' }}">
                     <div class="col-12 col-md-8">
                         <div class="input-group">
                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>

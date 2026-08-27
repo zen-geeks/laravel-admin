@@ -12,9 +12,7 @@
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu" role="menu">
-        @foreach($scopes as $scope)
-            {!! $scope->render() !!}
-        @endforeach
+        @foreach($scopes as $scope){!! $scope->render() !!}@endforeach
         <li role="separator" class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="{{ $cancel }}">{{ trans('admin.cancel') }}</a></li>
     </ul>

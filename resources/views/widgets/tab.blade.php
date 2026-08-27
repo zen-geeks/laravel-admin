@@ -15,9 +15,7 @@
                 Dropdown <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                @foreach($dropDown as $link)
-                <li role="presentation" class="dropdown-item"><a role="menuitem" tabindex="-1" href="{{ $link['href'] }}">{{ $link['name'] }}</a></li>
-                @endforeach
+                @foreach($dropDown as $link)<li role="presentation" class="dropdown-item"><a role="menuitem" tabindex="-1" href="{{ $link['href'] }}">{{ $link['name'] }}</a></li>@endforeach
             </ul>
         </li>
         @endif

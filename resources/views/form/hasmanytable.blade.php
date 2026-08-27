@@ -11,44 +11,25 @@
             <table class="table table-has-many has-many-{{$column}}">
                 <thead>
                 <tr>
-                    @foreach($headers as $header)
-                        <th>{{ $header }}</th>
-                    @endforeach
-
+                    @foreach($headers as $header)<th>{{ $header }}</th>@endforeach
                     <th class="d-none"></th>
-
-                    @if($options['allowDelete'])
-                        <th></th>
-                    @endif
+                    @if($options['allowDelete'])<th></th>@endif
                 </tr>
                 </thead>
                 <tbody class="has-many-{{$column}}-forms">
-                @foreach($forms as $pk => $form)
-                    <tr class="has-many-{{$column}}-form fields-group">
-
-                        <?php $hidden = ''; ?>
-
-                        @foreach($form->fields() as $field)
-
-                            @if (is_a($field, \Encore\Admin\Form\Field\Hidden::class))
-                                <?php $hidden .= $field->render(); ?>
-                                @continue
-                            @endif
-
-                            <td>{!! $field->setLabelClass(['d-none'])->setWidth(12, 0)->render() !!}</td>
-                        @endforeach
-
-                        <td class="d-none">{!! $hidden !!}</td>
-
-                        @if($options['allowDelete'])
-                            <td class="form-group">
-                                <div>
-                                    <div class="remove btn btn-warning btn-sm float-end"><i class="fas fa-trash">&nbsp;</i>{{ trans('admin.remove') }}</div>
-                                </div>
-                            </td>
-                        @endif
-                    </tr>
-                @endforeach
+@foreach($forms as $pk => $form)<tr class="has-many-{{$column}}-form fields-group">
+    <?php $hidden = ''; ?>
+    @foreach($form->fields() as $field)
+        @if (is_a($field, \Encore\Admin\Form\Field\Hidden::class))
+            <?php $hidden .= $field->render(); ?>
+            @continue
+        @endif
+    <td>{!! $field->setLabelClass(['d-none'])->setWidth(12, 0)->render() !!}</td>
+    @endforeach
+    <td class="d-none">{!! $hidden !!}</td>
+    @if($options['allowDelete'])<td class="form-group"><div><div class="remove btn btn-warning btn-sm float-end"><i class="fas fa-trash">&nbsp;</i>{{ trans('admin.remove') }}</div></div></td>@endif
+    </tr>
+@endforeach
                 </tbody>
             </table>
 

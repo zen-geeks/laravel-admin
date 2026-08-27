@@ -7,13 +7,7 @@
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            @foreach($actions as $action)
-                @if($action instanceof \Encore\Admin\Actions\BatchAction)
-                    <li class="dropdown-item">{!! $action->render() !!}</li>
-                @else
-                    <li class="dropdown-item"><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li>
-                @endif
-            @endforeach
+            @foreach($actions as $action )@if($action instanceof \Encore\Admin\Actions\BatchAction) <li class="dropdown-item">{!! $action->render() !!}</li> @else <li class="dropdown-item"><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li> @endif @endforeach
         </ul>
     @endif
 </div>

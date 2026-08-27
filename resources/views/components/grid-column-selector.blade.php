@@ -7,21 +7,7 @@
     <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li>
             <ul>
-                @foreach($columns as $key => $label)
-                @php
-                if (empty($visible)) {
-                    $checked = 'checked';
-                } else {
-                    $checked = in_array($key, $visible) ? 'checked' : '';
-                }
-                @endphp
-
-                <li class="checkbox icheck">
-                    <label>
-                        <input type="checkbox" class="column-select-item" value="{{ $key }}" {{ $checked }}/>&nbsp;&nbsp;&nbsp;{{ $label }}
-                    </label>
-                </li>
-                @endforeach
+@foreach($columns as $key => $label)<li class="checkbox icheck"><label><input type="checkbox" class="column-select-item" value="{{ $key }}" @if(empty($visible) || in_array($key, $visible)) checked @endif/>&nbsp;&nbsp;&nbsp;{{ $label }}</label></li>@endforeach
             </ul>
         </li>
         <li class="dropdown-divider"></li>
