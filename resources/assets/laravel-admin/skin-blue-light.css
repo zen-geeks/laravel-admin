@@ -367,17 +367,17 @@
 
 /* ---------- SIDEBAR ITEM SPACING / ICONS ---------- */
 
-.skin-blue-light .sidebar li.nav-item a.nav-link i.nav-icon {
+.skin-blue-light .app-sidebar li.nav-item a.nav-link i.nav-icon {
     font-size: 14px;
     margin: 0;
 }
 
-.skin-blue-light .sidebar li.nav-item a.nav-link {
+.skin-blue-light .app-sidebar li.nav-item a.nav-link {
     padding: 10px 0;
     width: 100%;
 }
 
-.skin-blue-light .sidebar li.nav-item ul.nav-treeview li.nav-item a.nav-link {
+.skin-blue-light .app-sidebar li.nav-item ul.nav-treeview li.nav-item a.nav-link {
     padding: 4px 0 4px 5px;
 }
 
@@ -712,10 +712,6 @@
     .sidebar-mini.sidebar-collapse .app-sidebar:not(.sidebar-no-expand):hover .user-panel .image {
         float: left;
     }
-}
-
-.skin-blue-light.sidebar-mini.sidebar-collapse .sidebar {
-    padding: 0 3px;
 }
 
 .skin-blue-light .app-sidebar .brand-link .logo-mini {
