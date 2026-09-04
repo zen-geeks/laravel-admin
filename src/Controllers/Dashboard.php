@@ -49,7 +49,7 @@ class Dashboard
             'helpers' => [
                 'name' => 'laravel-admin-ext/helpers',
                 'link' => 'https://github.com/laravel-admin-extensions/helpers',
-                'icon' => 'gears',
+                'icon' => 'cogs',
             ],
             'log-viewer' => [
                 'name' => 'laravel-admin-ext/log-viewer',
@@ -69,7 +69,7 @@ class Dashboard
             'api-tester' => [
                 'name' => 'laravel-admin-ext/api-tester',
                 'link' => 'https://github.com/laravel-admin-extensions/api-tester',
-                'icon' => 'sliders',
+                'icon' => 'sliders-h',
             ],
             'media-manager' => [
                 'name' => 'laravel-admin-ext/media-manager',
@@ -79,7 +79,7 @@ class Dashboard
             'scheduling' => [
                 'name' => 'laravel-admin-ext/scheduling',
                 'link' => 'https://github.com/laravel-admin-extensions/scheduling',
-                'icon' => 'clock-o',
+                'icon' => 'clock',
             ],
             'reporter' => [
                 'name' => 'laravel-admin-ext/reporter',

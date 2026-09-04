@@ -282,3 +282,14 @@ bootstrap.Dropdown.Default.popperConfig = function (defaultPopperConfig) {
         strategy: 'fixed',
     };
 };
+
+$(document).on('submit', 'form', function (e) {
+    console.log(123);
+    if ($(this).data('submitted')) {
+        e.preventDefault();
+        return false;
+    }
+
+    $(this).data('submitted', true);
+    $(this).find('button[type="submit"], input[type="submit"]').prop('disabled', true);
+});

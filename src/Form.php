@@ -617,7 +617,7 @@ class Form implements Renderable
             // view resource
             $url = rtrim($resourcesPath, '/')."/{$key}";
         } else {
-            $url = request(Builder::PREVIOUS_URL_KEY) ?: $resourcesPath;
+            $url = $resourcesPath;
         }
 
         admin_toastr(trans('admin.save_succeeded'));

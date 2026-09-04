@@ -1,11 +1,13 @@
 <style>
     .ext-icon {
-        color: rgba(0,0,0,0.5);
-        margin-left: 10px;
+        width: 42px;
+        flex: 0 0 42px;
+        text-align: center;
+        color: rgba(var(--bs-body-color-rgb), .5);
     }
+
     .installed {
-        color: #00a65a;
-        margin-right: 10px;
+        color: var(--bs-success);
     }
 </style>
 <div class="card card-default">
@@ -14,40 +16,43 @@
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" aria-label="Collapse card" title="Collapse">
-                <i data-lte-icon="expand" class="fa fa-plus"></i>
-                <i data-lte-icon="collapse" class="fa fa-minus"></i>
+                <i data-lte-icon="expand" class="fas fa-plus"></i>
+                <i data-lte-icon="collapse" class="fas fa-minus"></i>
             </button>
             <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" aria-label="Remove card" title="Remove">
-                <i class="fa fa-times"></i>
+                <i class="fas fa-times"></i>
             </button>
         </div>
     </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        <ul class="products-list product-list-in-card">
+
+    <div class="card-body p-0">
+        <div class="list-group list-group-flush table-responsive">
 
             @foreach($extensions as $extension)
-            <li class="item">
-                <div class="product-img">
-                    <i class="fas fa-{{$extension['icon']}} fa-2x ext-icon"></i>
-                </div>
-                <div class="product-info">
-                    <a href="{{ $extension['link'] }}" target="_blank" class="product-title">
-                        {{ $extension['name'] }}
-                    </a>
+                <div class="list-group-item d-flex align-items-center">
+                    <div class="ext-icon me-3">
+                        <i class="fas fa-{{ $extension['icon'] }} fa-2x"></i>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <a href="{{ $extension['link'] }}" target="_blank" class="fw-semibold text-decoration-none">
+                            {{ $extension['name'] }}
+                        </a>
+                    </div>
+
                     @if($extension['installed'])
-                        <span class="float-end installed"><i class="fas fa-check"></i></span>
+                        <span class="installed ms-3">
+                            <i class="fas fa-check"></i>
+                        </span>
                     @endif
                 </div>
-            </li>
             @endforeach
 
-            <!-- /.item -->
-        </ul>
+        </div>
     </div>
-    <!-- /.card-body -->
+
     <div class="card-footer text-center">
         <a href="https://github.com/laravel-admin-extensions" target="_blank" class="uppercase">View All Extensions</a>
     </div>
-    <!-- /.card-footer -->
+
 </div>
