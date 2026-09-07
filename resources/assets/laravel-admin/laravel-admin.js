@@ -283,8 +283,7 @@ bootstrap.Dropdown.Default.popperConfig = function (defaultPopperConfig) {
     };
 };
 
-$(document).on('submit', 'form', function (e) {
-    console.log(123);
+$(document).on('submit', 'form[pjax-container], .modal form', function (e) {
     if ($(this).data('submitted')) {
         e.preventDefault();
         return false;
