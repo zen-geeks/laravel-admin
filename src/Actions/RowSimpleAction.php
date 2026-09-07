@@ -243,7 +243,7 @@ abstract class RowSimpleAction extends RowAction
                         if (data.status === true) {
                             modal.modal('hide');
                         }
-                        $(':submit', modal).button('reset');
+                        $(':submit', modal).prop('disabled', false);
                     },
                     error:function(request){
                         reject(request);
@@ -312,9 +312,9 @@ PROMISE;
                     Object.assign(data, {$parameters});
                     {$this->actionScript()}
                     modal.modal('show');
-                    $(':submit', modal).button('reset');
+                    $(':submit', modal).prop('disabled', false);
                     $('form', modal).off('submit').on('submit', function (e) {
-                        $(':submit', e.target).button('loading');
+                        $(':submit', e.target).prop('disabled', true);
                         e.preventDefault();
                         var form = this;
                         {$action_script}

@@ -69,7 +69,7 @@ $(document).on('pjax:send', function (xhr) {
     if (xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
         $submit_btn = $('form[pjax-container] :submit');
         if ($submit_btn) {
-            $submit_btn.button('loading')
+            $submit_btn.prop('disabled', true)
         }
     }
     NProgress.start();
@@ -79,7 +79,7 @@ $(document).on('pjax:complete', function (xhr) {
     if (xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
         $submit_btn = $('form[pjax-container] :submit');
         if ($submit_btn) {
-            $submit_btn.button('reset')
+            $submit_btn.prop('disabled', false)
         }
     }
     NProgress.done();
@@ -282,13 +282,3 @@ bootstrap.Dropdown.Default.popperConfig = function (defaultPopperConfig) {
         strategy: 'fixed',
     };
 };
-
-$(document).on('submit', 'form[pjax-container], .modal form', function (e) {
-    if ($(this).data('submitted')) {
-        e.preventDefault();
-        return false;
-    }
-
-    $(this).data('submitted', true);
-    $(this).find('button[type="submit"], input[type="submit"]').prop('disabled', true);
-});
