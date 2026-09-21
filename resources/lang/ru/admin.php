@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Ошибка при выборе родителя',
     'pagination'            => [
         'range' => 'Записи с :first по :last из :total',
+        'count' => 'Показано :count записей',
     ],
     'role'                  => 'Роль',
     'permission'            => 'Доступ',

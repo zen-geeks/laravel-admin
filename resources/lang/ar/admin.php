@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'خطأ في تحديد الاصل',
     'pagination'            => [
         'range' => 'عرض :first الى :last من :total المدخلات',
+        'count' => 'عرض :count المدخلات',
     ],
     'role'                  => 'القاعدة',
     'permission'            => 'الصلاحية',

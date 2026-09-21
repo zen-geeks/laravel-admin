@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'প্যারেন্ট নির্বাচন ভুল',
     'pagination'            => [
         'range' => ':total টি রেকর্ডের মধ্যে :first থেকে :last টি দেখানো হচ্ছে',
+        'count' => ':count টি রেকর্ড দেখানো হচ্ছে',
     ],
     'role'                  => 'রোল',
     'permission'            => 'পারমিশন',

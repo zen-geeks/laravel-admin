@@ -72,7 +72,8 @@ return [
     'operation_log'         => 'Журнал подій',
     'parent_select_error'   => 'Помилка при виборі батька',
     'pagination'            => [
-        'range'             => 'Записи з :first по :last з :total',
+        'range' => 'Записи з :first по :last з :total',
+        'count' => 'Показано :count записів',
     ],
     'role'                  => 'Роль',
     'permission'            => 'Дозвіл',

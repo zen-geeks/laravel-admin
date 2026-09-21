@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Üst xəta',
     'pagination'            => [
         'range' => ':total qeyd içindən :first dən :last -ə kimi',
+        'count' => ':count qeyd göstərilir',
     ],
     'role'                  => 'Rol',
     'permission'            => 'İcazə',

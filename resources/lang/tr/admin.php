@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Üst hata',
     'pagination'            => [
         'range' => ':total kayıt içinden :first den :last e kadar',
+        'count' => ':count kayıt',
     ],
     'role'                  => 'Rol',
     'permission'            => 'İzin',

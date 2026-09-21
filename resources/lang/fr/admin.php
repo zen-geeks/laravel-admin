@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Parent select erreur',
     'pagination'            => [
         'range' => ':first à :last de :total lignes',
+        'count' => ':count lignes',
     ],
     'role'                  => 'Rôle',
     'permission'            => 'Permission',

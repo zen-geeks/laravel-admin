@@ -89,6 +89,16 @@ class Paginator extends AbstractTool
     }
 
     /**
+     * Return the item count.
+     *
+     * @return string|\Symfony\Component\Translation\TranslatorInterface
+     */
+    protected function paginationCount()
+    {
+        return trans('admin.pagination.count', ['count' => '<b>'.$this->paginator->count().'</b>']);
+    }
+
+    /**
      * Render Paginator.
      *
      * @return string
@@ -96,7 +106,7 @@ class Paginator extends AbstractTool
     public function render()
     {
         if (!$this->grid->showPagination()) {
-            return '';
+            return $this->paginationCount();
         }
 
         return $this->paginationRanger().

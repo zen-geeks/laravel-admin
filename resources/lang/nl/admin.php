@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => '\'Parent select\' fout',
     'pagination'            => [
         'range' => ':first tot :last van :total rijen',
+        'count' => ':count rijen',
     ],
     'role'                  => 'Rol',
     'permission'            => 'Permissie',

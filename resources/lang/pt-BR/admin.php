@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Erro ao selecionar o pai',
     'pagination'            => [
         'range' => 'Mostrando :first até :last de :total registros',
+        'count' => 'Mostrando :count registros',
     ],
     'role'                  => 'Papel',
     'permission'            => 'Permissão',

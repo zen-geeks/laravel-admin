@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => '親ID選択エラー',
     'pagination'            => [
         'range' => '全 :total 件中 :first - :last 件目',
+        'count' => '全 :count 件',
     ],
     'role'                  => '役割',
     'permission'            => '権限',

@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Fehler bei der Parent Auswahl',
     'pagination'            => [
         'range' => 'Zeigt :first bis :last von gesamt :total Einträgen',
+        'count' => ':count Einträge',
     ],
     'role'                  => 'Rolle',
     'permission'            => 'Rechte',

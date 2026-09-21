@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Ralat pemilihan ibu bapa',
     'pagination'            => [
         'range' => 'Dari :first Untuk :last ，Jumlah :total Perkara',
+        'count' => 'Jumlah :count Perkara',
     ],
     'role'       => 'Peranan',
     'permission' => 'Kebenaran',

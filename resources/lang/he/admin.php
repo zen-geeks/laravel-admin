@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'בעייה בבחירת האב',
     'pagination'            => [
         'range' => ':last מ :total תוצאות',
+        'count' => ':count תוצאות',
     ],
 
     'menu_titles' => [],

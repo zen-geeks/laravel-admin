@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Parent select error',
     'pagination'            => [
         'range' => 'Showing :first to :last of :total entries',
+        'count' => 'Showing :count entries',
     ],
     'role'                  => 'Role',
     'permission'            => 'Permission',

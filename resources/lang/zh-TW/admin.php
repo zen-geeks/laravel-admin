@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => '父級選擇錯誤',
     'pagination'            => [
         'range' => '從 :first 到 :last ，總共 :total 條',
+        'count' => '總共 :count 條',
     ],
     'role'                  => '角色',
     'permission'            => '權限',

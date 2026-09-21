@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Kesalahan pemilihan induk',
     'pagination'            => [
         'range' => 'Menampilkan :first dari :last dari :total masukan',
+        'count' => 'Menampilkan :count masukan',
     ],
     'role'                  => 'Aturan',
     'permission'            => 'Hak akses',

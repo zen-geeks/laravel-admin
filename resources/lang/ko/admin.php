@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => '상위 선택 오류',
     'pagination'            => [
         'range' => '전체 :total, :first 에서 :last 항목',
+        'count' => ':count 항목',
     ],
     'role'                  => '역할',
     'permission'            => '권한',

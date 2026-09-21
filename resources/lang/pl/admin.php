@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Wybór rodzica nie powiódł się',
     'pagination'            => [
         'range' => 'Wyświetlono :first do :last z wszystkich :total',
+        'count' => 'Wyświetlono :count',
     ],
     'menu_titles'           => [],
 ];

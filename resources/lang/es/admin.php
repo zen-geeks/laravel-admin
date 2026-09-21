@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'Error al seleccionar el elemento padre',
     'pagination'            => [
         'range' => 'Mostrando :first a :last de :total elementos',
+        'count' => 'Mostrando :count elementos',
     ],
     'role'                  => 'Rol',
     'permission'            => 'Permiso',

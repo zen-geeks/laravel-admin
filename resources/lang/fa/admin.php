@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'انتخاب والد با خطا مواجه شد',
     'pagination'            => [
         'range' => 'نمایش از :first تا :last از کل :total',
+        'count' => 'نمایش :count مورد',
     ],
     'role'                  => 'دسترسی ها',
     'permission'            => 'اجازه ها',

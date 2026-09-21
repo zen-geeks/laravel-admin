@@ -73,6 +73,7 @@ return [
     'parent_select_error'   => 'بنیادی انتخاب غلطی',
     'pagination'            => [
         'range' => 'دکھا رہا ہے۔ :first کرنے کے لئے :last کے :total اندراجات',
+        'count' => ':count اندراجات دکھائے جا رہے ہیں',
     ],
     'role'                  => 'کردار۔',
     'permission'            => 'اجازت۔',
