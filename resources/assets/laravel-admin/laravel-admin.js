@@ -305,6 +305,36 @@ $('#totop').on('click', function (e) {
 
         $(this).tooltip({title: 'Copied!', placement: 'bottom'}).tooltip('show');
     });
+
+    function updateCopyButton(textarea) {
+        $(textarea).parent().find('.textarea-copy-btn').css(
+            'right',
+            16 + textarea.offsetWidth - textarea.clientWidth
+        );
+    }
+
+    function updateTextareas() {
+        $('textarea').each(function () {
+            const button = $(this).parent().find('.textarea-copy-btn');
+
+            if (button.length) {
+                button.css(
+                    'right',
+                    16 + this.offsetWidth - this.clientWidth
+                );
+            }
+        });
+    }
+
+    $(document).on('input', 'textarea', function () {
+        updateCopyButton(this);
+    });
+
+    $(document).on('pjax:end', function () {
+        updateTextareas();
+    });
+
+    updateTextareas();
 })(jQuery);
 
 bootstrap.Dropdown.Default.boundary = 'viewport';

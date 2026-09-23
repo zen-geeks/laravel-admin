@@ -1,6 +1,6 @@
 <div class="{{$viewClass['form-group']}}">
     <label class="{{$viewClass['label']}} col-form-label">{{$label}}</label>
-    <div class="{{$viewClass['field']}}">
+    <div class="{{$viewClass['field']}} position-relative">
         <div class="card card-solid card-default no-margin">
             <!-- /.card-header -->
             <div class="card-header">

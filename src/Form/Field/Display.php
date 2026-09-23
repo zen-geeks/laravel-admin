@@ -11,8 +11,8 @@ class Display extends Field
         $this->customFormat = function ($value) {
             $id = uniqid();
             return <<<HTML
-<span id="{$id}">{$value}</span>
-<a href="javascript:void(0)" data-copy-target="#{$id}" class="float-end color-secondary">
+<span id="{$id}" class="copy-container">{$value}</span>
+<a href="javascript:void(0)" data-copy-target="#{$id}" class="color-secondary copy-btn">
     <i class="far fa-copy"></i>
 </a>
 HTML;

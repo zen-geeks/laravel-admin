@@ -2,7 +2,7 @@
 
     <label for="{{$id}}" class="{{$viewClass['label']}} col-form-label">{{$label}}</label>
 
-    <div class="{{$viewClass['field']}}">
+    <div class="{{$viewClass['field']}} position-relative">
 
         @include('admin::form.error')
 
