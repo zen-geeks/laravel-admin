@@ -107,4 +107,15 @@ class Text extends Field
 
         return $this;
     }
+
+    public function copyable()
+    {
+        $btn = '<button type="button" class="btn btn-outline-secondary" data-copy-target="#'.$this->id.'">
+            <i class="far fa-copy"></i>
+        </button>';
+
+        $this->addVariables(compact('btn'));
+
+        return $this;
+    }
 }

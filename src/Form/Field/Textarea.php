@@ -69,6 +69,8 @@ class Textarea extends Field
             $this->addPickBtn($btn);
         });
 
+        $this->attribute('id', $this->id);
+
         return parent::fieldRender([
             'append' => $this->append,
             'rows'   => $this->rows,
@@ -103,6 +105,17 @@ STYLE;
 <div class="text-end textarea-picker">
     {$btn}
 </div>
+HTML;
+
+        return $this;
+    }
+
+    public function copyable()
+    {
+        $this->append = <<<HTML
+<button type="button" class="btn btn-outline-secondary textarea-copy-btn" data-copy-target="#{$this->id}">
+    <i class="far fa-copy"></i>
+</button>
 HTML;
 
         return $this;

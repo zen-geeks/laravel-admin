@@ -272,6 +272,39 @@ $('#totop').on('click', function (e) {
             });
         });
     });
+
+    $(document).on('click', '[data-copy], [data-copy-target]', function () {
+        $(this).tooltip('dispose');
+
+        let value;
+
+        if ($(this).data('copy-target')) {
+            const target = $($(this).data('copy-target'));
+            value = target.val() || target.text();
+        } else {
+            value = $(this).attr('data-copy');
+        }
+
+        if (!value) {
+            $(this).tooltip({title: 'Nothing to copy!', placement: 'bottom'}).tooltip('show');
+            return;
+        }
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(value);
+        } else {
+            const textarea = $('<textarea>')
+                .val(value)
+                .appendTo('body')
+                .select();
+
+            document.execCommand('copy');
+
+            textarea.remove();
+        }
+
+        $(this).tooltip({title: 'Copied!', placement: 'bottom'}).tooltip('show');
+    });
 })(jQuery);
 
 bootstrap.Dropdown.Default.boundary = 'viewport';
