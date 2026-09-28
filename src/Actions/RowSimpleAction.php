@@ -259,10 +259,12 @@ SCRIPT;
                 preConfirm: () => {
                     {$action_script}
                     return process;
-                }
+                },
+                target: modal[0]
             });
             var process = $.admin.swal(swalOptions).then((result) => {
                 if (result.isDismissed) {
+                    $(':submit', modal).prop('disabled', false);
                     return Promise.reject();
                 }
             
