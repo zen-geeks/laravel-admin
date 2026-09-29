@@ -335,6 +335,12 @@ $('#totop').on('click', function (e) {
     });
 
     updateTextareas();
+
+    $(document).on('hide.bs.modal', '.modal', function () {
+        if (document.activeElement && this.contains(document.activeElement)) {
+            document.activeElement.blur();
+        }
+    });
 })(jQuery);
 
 bootstrap.Dropdown.Default.boundary = 'viewport';

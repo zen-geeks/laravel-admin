@@ -240,9 +240,6 @@ abstract class RowSimpleAction extends RowAction
                     processData: false,
                     success: function (data) {
                         resolve([data, target]);
-                        if (data.status === true) {
-                            modal.modal('hide');
-                        }
                         $(':submit', modal).prop('disabled', false);
                     },
                     error:function(request){
@@ -255,23 +252,37 @@ SCRIPT;
         if (!empty($confirm)) {
             $action_script = <<<PROMISE
             var settings = JSON.parse(target.attr('data-settings') ?? {});
+            var actionResult = null;
+        
             var swalOptions = $.extend({$this->getDefaultSettings()}, settings, {
                 preConfirm: () => {
                     {$action_script}
                     return process;
                 },
-                target: modal[0]
+                target: modal[0],
+                didDestroy: () => {
+                    if (!actionResult) {
+                        return;
+                    }
+        
+                    if (actionResult[0].status === true) {
+                        modal.modal('hide');
+                    }
+        
+                    actionResolver(actionResult);
+                }
             });
+        
             var process = $.admin.swal(swalOptions).then((result) => {
                 if (result.isDismissed) {
                     $(':submit', modal).prop('disabled', false);
-                    return Promise.reject();
+                    return;
                 }
             
                 var res = result.value[0];
                 var response = typeof res.status === "boolean" ? res : res.value;
             
-                return [response, target];
+                actionResult = [response, target];
             });
 PROMISE;
         }
