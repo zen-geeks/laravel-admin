@@ -219,6 +219,7 @@ abstract class RowSimpleAction extends RowAction
 
         $this->interactor->addModalHtml();
 
+        $js_is_confirm = empty($confirm) ? 'true' : 'false';
         $action_script = <<<SCRIPT
             var process = new Promise(function (resolve,reject) {
                 Object.assign(data, {
@@ -240,6 +241,11 @@ abstract class RowSimpleAction extends RowAction
                     processData: false,
                     success: function (data) {
                         resolve([data, target]);
+                        
+                        if (data.status === true && {$js_is_confirm}) {
+                            modal.modal('hide');
+                        }
+                        
                         $(':submit', modal).prop('disabled', false);
                     },
                     error:function(request){
